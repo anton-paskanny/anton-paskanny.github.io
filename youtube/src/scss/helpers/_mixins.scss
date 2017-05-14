@@ -1,0 +1,48 @@
+@mixin animation($args...) {
+  -webkit-animation: $args;
+     -moz-animation: $args;
+      -ms-animation: $args;
+          animation: $args;
+}
+
+@mixin box-sizing($type) {
+  -webkit-box-sizing: $type;
+     -moz-box-sizing: $type;
+      -ms-box-sizing: $type;
+          box-sizing: $type;
+}
+
+@mixin box-shadow($args...) {
+  -webkit-box-shadow: $args;
+     -moz-box-shadow: $args;
+      -ms-box-shadow: $args;
+          box-shadow: $args;
+}
+
+@mixin translate($args...) {
+  -webkit-translate: $args;
+     -moz-translate: $args;
+      -ms-translate: $args;
+          translate: $args;
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+     -moz-transition: $args;
+      -ms-transition: $args;
+          transition: $args;
+}
+
+@mixin transform($args...) {
+  -webkit-transform: $args;
+     -moz-transform: $args;
+      -ms-transform: $args;
+          transform: $args;
+}
+
+@mixin user-select($args...) {
+    -webkit-user-select: $args;
+       -moz-user-select: $args;
+        -ms-user-select: $args;
+            user-select: $args;
+}

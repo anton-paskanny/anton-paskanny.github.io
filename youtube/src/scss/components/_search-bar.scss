@@ -1,0 +1,38 @@
+/*------search-bar------*/
+.search-bar {
+  max-width: $search-bar-max-width;
+  min-width: $search-bar-min-width;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 0 5px;
+
+  &__form {
+    display: flex;
+    @include box-shadow(0 0 15px -5px $color-secondary);
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0 10px;
+    color: inherit;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__submit {
+    padding: 14px;
+    color: #fff;
+    border: none;
+    background-repeat: no-repeat;
+    background-color: $sb-submit-bg;
+
+    &:hover {
+      cursor: pointer;
+      background-color: darken($sb-submit-bg, 15%);
+    }
+  }
+
+}

@@ -1,0 +1,61 @@
+/*------fonts------*/
+$base-font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+$base-font-weight: normal;
+$base-font-size: 16px;
+$base-line-height: 1.2;
+
+
+
+/*------colors------*/
+$color-primary: #5AEED1;
+$color-secondary: #9A9EA9;
+
+$base-background-color: #ECEEF3;
+$base-text-color: $color-secondary;
+
+
+
+/*------breakpoints-----*/
+$bp-md: 1200px;
+$bp-sm: 768px;
+$bp-xsm: 460px;
+
+
+
+/*------video-list------*/
+$vl-width: 100vw;
+$vl-height: 400px;
+$vl-height-md: 450px;
+$vl-height-sm: 480px;
+$vl-height-xsm: 480px;
+
+
+
+/*-----columns------*/
+
+/* large (>1200) */
+$vl-columns-count-lr: 4;
+$vl-column-width-lr: 20vw;
+$vl-column-margin-left-lr: ($vl-width - ($vl-column-width-lr * $vl-columns-count-lr)) / $vl-columns-count-lr;
+
+/* middle (<1200) */
+$vl-columns-count-md: 3;
+$vl-column-width-md: 30vw;
+$vl-column-margin-left-md: ($vl-width - ($vl-column-width-md * $vl-columns-count-md)) / $vl-columns-count-md;
+
+/* small (<768) */
+$vl-columns-count-sm: 2;
+$vl-column-width-sm: 40vw;
+$vl-column-margin-left-sm: ($vl-width - ($vl-column-width-sm * $vl-columns-count-sm)) / $vl-columns-count-sm;
+
+/* extra small (<460) */
+$vl-columns-count-xsm: 1;
+$vl-column-width-xsm: 90vw;
+$vl-column-margin-left-xsm: ($vl-width - ($vl-column-width-xsm * $vl-columns-count-xsm)) / $vl-columns-count-xsm;
+
+
+
+/*------search-bar------*/
+$search-bar-max-width: 768px;
+$search-bar-min-width: 240px;
+$sb-submit-bg: $color-primary;

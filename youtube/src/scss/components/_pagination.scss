@@ -1,0 +1,40 @@
+/*------pagination------*/
+.pagination {
+  margin-top: 60px;
+  text-align: center;
+
+  &__link {
+    display: inline-block;
+    vertical-align: middle;
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    line-height: 40px;
+    text-align: center;
+    color: $color-primary;
+    background-color: #fff;
+    @include box-shadow(0 0 15px -5px $color-secondary);
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--active {
+      color: #fff;
+      background-color: $color-primary;
+    }
+  }
+
+  &--can-touch &__link:hover {
+      cursor: pointer;
+  }
+
+  &--non-touch &__link:hover {
+      cursor: pointer;
+      color: #fff;
+      background-color: $color-primary;
+  }
+
+}
