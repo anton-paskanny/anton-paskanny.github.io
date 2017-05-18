@@ -1,10 +1,10 @@
 import { getCorrectPublishedDate } from '../helpers';
 import { searchConfig } from '../variables';
 
-const getVideoItem = function(data) {
-    let videoItem = document.createElement('li');
-    let publishedDate = getCorrectPublishedDate(`${data.snippet.publishedAt}`);
-    let videoImage = `<img
+const getVideoItem = (data) => {
+    const videoItem = document.createElement('li');
+    const publishedDate = getCorrectPublishedDate(`${data.snippet.publishedAt}`);
+    const videoImage = `<img
                         class="video-item__preview"
                         src="${data.snippet.thumbnails.default.url}"
                         srcset="${data.snippet.thumbnails.medium.url} 1x, ${data.snippet.thumbnails.high.url} 2x"
@@ -12,11 +12,7 @@ const getVideoItem = function(data) {
                       >`;
     let videoDesc = `${data.snippet.description}`;
 
-    videoDesc = videoDesc.slice(0, 100) + '...';
-
-    // videoItem.setAttribute("ondrag", "return false");
-    // videoItem.setAttribute("ondragdrop", "return false");
-    // videoItem.setAttribute("ondragstart", "return false");
+    videoDesc = `${videoDesc.slice(0, 100)}...`;
 
     videoItem.className = 'video-item';
     videoItem.innerHTML = `<figure class="video-item__preview-wrapper">
@@ -42,6 +38,6 @@ const getVideoItem = function(data) {
                             <p class="video-item__desc">${videoDesc}</p>`;
 
     return videoItem;
-}
+};
 
 export default getVideoItem;

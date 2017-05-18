@@ -1,6 +1,6 @@
-const getVideosWrapperWithList = function() {
-    let videosWrapper = document.createElement('div');
-    let videosList = document.createElement('ul');
+const getVideosWrapperWithList = () => {
+    const videosWrapper = document.createElement('div');
+    const videosList = document.createElement('ul');
 
     videosWrapper.className = 'video-list-wrapper';
     videosList.className = 'video-list';
@@ -10,4 +10,4 @@ const getVideosWrapperWithList = function() {
     return videosWrapper;
 };
 
-export { getVideosWrapperWithList };
+export default getVideosWrapperWithList;

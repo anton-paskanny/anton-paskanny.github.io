@@ -1,14 +1,12 @@
 import getVideoItem from '../components/video-item';
 
-const insertVideosToList = function(videos) {
+const insertVideosToList = (videos) => {
     const videoList = document.querySelector('.video-list');
 
-    videos.items.map((item) => {
-       let videoNode =  getVideoItem(item);
-       videoList.appendChild(videoNode);
+    videos.forEach((item) => {
+        const videoNode = getVideoItem(item);
+        videoList.appendChild(videoNode);
     });
-}
+};
 
-export {
-    insertVideosToList
-}
+export default insertVideosToList;

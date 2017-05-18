@@ -1,1 +1,1 @@
-export const header = document.createElement('header');
+export default document.createElement('header');

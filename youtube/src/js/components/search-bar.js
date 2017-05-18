@@ -1,5 +1,5 @@
-const getSearchBar = function() {
-    let searchBarNode = document.createElement('div');
+const getSearchBar = () => {
+    const searchBarNode = document.createElement('div');
     searchBarNode.className = 'search-bar';
     searchBarNode.innerHTML = `<form class="search-bar__form" method="POST">
                         <input class="search-bar__input" type="text" placeholder="Type something...">
@@ -9,4 +9,4 @@ const getSearchBar = function() {
     return searchBarNode;
 };
 
-export { getSearchBar };
+export default getSearchBar;

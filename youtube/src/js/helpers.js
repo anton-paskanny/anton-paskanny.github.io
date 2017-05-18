@@ -1,6 +1,6 @@
 import { mediaConfig } from './variables';
 
-const getCurrentBreakPointWidth = function() {
+const getCurrentBreakPointWidth = () => {
     const pageWidth = document.documentElement.clientWidth;
 
     if (pageWidth < mediaConfig.xsm.maxWidth) {
@@ -16,56 +16,55 @@ const getCurrentBreakPointWidth = function() {
     }
 
     return 'default';
-}
+};
 
-const buildSearchURL = function(settings) {
+const buildSearchURL = (settings) => {
     let searchURL = `${settings.httpRequest}?`;
-    let copySettings = Object.assign({}, settings);
-    delete copySettings['httpRequest'];
+    const copySettings = Object.assign({}, settings);
+    delete copySettings.httpRequest;
 
-    for (let key in copySettings) {
-        searchURL += (`${key}=${settings[key]}&`);
-    };
+    Object.keys(copySettings).forEach((key) => {
+        if (Object.prototype.hasOwnProperty.call(copySettings, key)) {
+            searchURL += (`${key}=${settings[key]}&`);
+        }
+    });
 
     return searchURL.slice(0, searchURL.length - 1);
-}
+};
 
-const buildCommonIDForSearchURL = function(videos) {
+const buildCommonIDForSearchURL = (videos) => {
     let searchID = '';
 
-    videos.items.map((item) => {
-        searchID += item.id.videoId + ',';
+    videos.forEach((item) => {
+        searchID += `${item.id.videoId},`;
     });
 
     searchID = searchID.slice(0, searchID.length - 1);
 
     return searchID;
-}
+};
 
-const getCorrectPublishedDate = function(date) {
-    return date.slice(0, date.indexOf('T'));
-}
+const getCorrectPublishedDate = date => date.slice(0, date.indexOf('T'));
 
-const getPointObj = function(x, y) {
-    return { x, y };
-}
-
-const disableSearchElements = function(searchInput, searchBtn) {
+const disableSearchElements = () => {
+    const searchBtn = document.querySelector('.search-bar__submit');
+    const searchInput = document.querySelector('.search-bar__input');
     searchInput.readOnly = true;
     searchBtn.disabled = true;
-}
+};
 
-const enableSearchElements = function(searchInput, searchBtn) {
+const enableSearchElements = () => {
+    const searchBtn = document.querySelector('.search-bar__submit');
+    const searchInput = document.querySelector('.search-bar__input');
     searchInput.readOnly = false;
     searchBtn.disabled = false;
-}
+};
 
 export {
     getCurrentBreakPointWidth,
     buildSearchURL,
     getCorrectPublishedDate,
     buildCommonIDForSearchURL,
-    getPointObj,
     disableSearchElements,
     enableSearchElements
-}
+};
