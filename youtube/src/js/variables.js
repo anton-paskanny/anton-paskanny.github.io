@@ -21,7 +21,13 @@ const mediaConfig = {
     }
 };
 
+const sliderConfig = {
+    value: 100,
+    units: 'vw'
+};
+
 export {
     searchConfig,
-    mediaConfig
+    mediaConfig,
+    sliderConfig
 };

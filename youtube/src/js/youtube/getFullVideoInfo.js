@@ -1,6 +1,7 @@
 import { buildSearchURL, enableSearchElements } from '../helpers';
 import insertVideosToList from '../slider/videos';
 import { updatePaginationToggles } from '../slider/pagination';
+import { sliderConfig } from '../variables';
 
 const getFullVideoInfo = (settings, isMoveListToStartPosition) => {
     const searchRequest = new XMLHttpRequest();
@@ -14,7 +15,7 @@ const getFullVideoInfo = (settings, isMoveListToStartPosition) => {
             insertVideosToList(videos.items);
 
             // build pagination for videos
-            updatePaginationToggles({ value: 100, units: 'vw' }, isMoveListToStartPosition);
+            updatePaginationToggles(sliderConfig, isMoveListToStartPosition);
 
             // make search elements enable
             enableSearchElements(

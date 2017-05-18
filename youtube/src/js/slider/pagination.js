@@ -1,5 +1,5 @@
 import { getCountOfSliderPages } from './pages';
-import { mediaConfig } from '../variables';
+import { mediaConfig, sliderConfig } from '../variables';
 
 const getPaginationToggle = (number) => {
     const toggle = document.createElement('a');
@@ -62,7 +62,7 @@ const updatePaginationTogglesOnResize = (updatePaginationNavs) => {
     mediaQuery.forEach((item) => {
         item.addListener(() => {
             pagination.innerHTML = '';
-            updatePaginationNavs({ value: 100, units: 'vw' }, isMoveListToStartPosition);
+            updatePaginationNavs(sliderConfig, isMoveListToStartPosition);
         });
     });
 };
