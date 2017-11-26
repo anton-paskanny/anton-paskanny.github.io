@@ -11,8 +11,6 @@ class requestsServiceClass {
       sources: [
         'bbc-news',
         'cnn',
-        'fortune',
-        'mtv-news',
         'the-telegraph'
       ]
     }
@@ -25,8 +23,16 @@ class requestsServiceClass {
   getNewsSourcesURL() {
     return `${this.reqUrlPrefix}/${this.reqSourcesParam}?language=${this.defaultParams.language}&county=${this.defaultParams.country}&apiKey=${this.apiKey}`;
   }
+  getEverythingNewsURL(sources) {
+    return `${this.reqUrlPrefix}/${this.reqTopHeadlinesParam}?sources=${sources}&language=${this.defaultParams.language}&apiKey=${this.apiKey}`;
+  }
   getTopHeadlinesNews() {
     const url = this.getTopHeadlinesURL();
+
+    return fetch(url).then(data => data.json());
+  }
+  getEverythingNews(sources) {
+    const url = this.getEverythingNewsURL(sources);
 
     return fetch(url).then(data => data.json());
   }
