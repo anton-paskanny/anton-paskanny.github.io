@@ -1,10 +1,16 @@
 class SidebarClass {
-  generateTemplate(filter) {
-    const Sidebar = document.createElement('aside');
+  getComponent(filter) {
+    const sidebar = document.createElement('aside'),
+          sidebarTitle = document.createElement('h3')
 
-    Sidebar.className = 'sidebar';
-    Sidebar.append(filter);
+    sidebar.className = 'sidebar';
+    sidebarTitle.className = 'sidebar__title';
 
-    return Sidebar;
+    sidebarTitle.textContent = 'News Source filter';
+
+    sidebar.append(sidebarTitle);
+    sidebar.append(filter);
+
+    return sidebar;
   }
 }

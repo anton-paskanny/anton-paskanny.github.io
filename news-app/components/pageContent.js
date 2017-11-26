@@ -1,16 +1,12 @@
 class PageContentClass {
-  generateTemplate(newsComponent) {
-    const pageContent = document.createElement('section'),
-          pageContentHeader = document.createElement('header');
+  constructor() {
+    this.pageContent = document.createElement('section');
+  }
+  getComponent(newsComponent) {
+    this.pageContent.className = 'page-content';
 
-    pageContent.className = 'page-content';
-    pageContentHeader.className = 'page-content';
+    this.pageContent.append(newsComponent);
 
-    pageContentHeader.textContent = 'Top Headlines news';
-
-    pageContent.append(newsComponent);
-
-    return pageContent;
-
+    return this.pageContent;
   }
 }
