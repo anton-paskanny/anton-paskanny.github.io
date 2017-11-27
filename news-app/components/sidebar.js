@@ -1,4 +1,4 @@
-class SidebarClass {
+class Sidebar {
   getComponent(filter) {
     const sidebar = document.createElement('aside'),
           sidebarTitle = document.createElement('h3')

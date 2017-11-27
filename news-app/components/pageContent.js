@@ -1,4 +1,4 @@
-class PageContentClass {
+class PageContent {
   constructor() {
     this.pageContent = document.createElement('section');
   }
