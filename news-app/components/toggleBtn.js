@@ -1,4 +1,4 @@
-class ToggleBtnClass {
+class ToggleBtn {
   constructor() {
     this.toggleBtn = document.createElement('button');
   }

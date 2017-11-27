@@ -1,14 +1,14 @@
-class SpinnerClass {
-  getComponent() {
-    const spinner = document.createElement('div');
-
-    spinner.className = 'spinner';
-
-    spinner.innerHTML = '<img src="./img/spinner.svg">';
-
-    return spinner;
+class Spinner {
+  constructor() {
+    this.spinner = document.createElement('div');
   }
-  hideSpinner() {
-    document.querySelector('.spinner').style.display = none;
+  getComponent() {
+    this.spinner.className = 'spinner';
+    this.spinner.innerHTML = '<img class="spinner__img" src="./img/spinner.svg">';
+
+    return this.spinner;
+  }
+  toggle() {
+    this.spinner.classList.contains('spinner--show') ? this.spinner.classList.remove('spinner--show') : this.spinner.classList.add('spinner--show');
   }
 }
