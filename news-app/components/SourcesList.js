@@ -2,7 +2,7 @@ class SourcesList {
   constructor() {
     this.wrapper = this.createComponentWrapper();
     this.list = this.createComponent();
-    this.sourceItemDelay = 2000;
+    this.sourceItemDelay = 1300;
   }
   createComponent() {
     return document.createElement('ul');
