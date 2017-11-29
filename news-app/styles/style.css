@@ -92,11 +92,59 @@ body {
 }
 
 .filter {
+  position: relative;
   width: 100%;
   height: 80vh;
   overflow: hidden;
   overflow-y: visible;
-  box-shadow: 2px 0px 4px -1px rgba(0, 0, 0, 0.5)
+  cursor:text;
+  list-style: none;
+  //box-shadow: inset 0px -130px 190px -50px #fff,
+              inset 0px 130px 190px -50px #fff;
+}
+
+.filter:before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  top: -12px;
+  left: 0;
+  background-image: linear-gradient(to bottom, #fff 0%, #fff 60%, transparent 90%);
+  z-index: 5;
+}
+
+.filter:after,
+.filter:before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  background-image: linear-gradient(to bottom, #fff 0%, #fff 60%, transparent 90%);
+  z-index: 5;
+}
+
+.filter:before {
+  top: -12px;
+}
+
+.filter:after {
+  bottom: 0;
+  background-image: linear-gradient(to top, #fff 0%, #fff 60%, transparent 90%);
+}
+
+.filter__list {
+  display: block;
+  position: relative;
+  margin: 0;
+  height: inherit;
+  padding: 0px 0;
+  z-index: 1;
+  overflow: hidden;
+  overflow-y: visible;
 }
 
 @media all and (min-width: 641px) {
@@ -106,9 +154,13 @@ body {
   }
 }
 
-.filter__label {
+.filter__item {
   display: block;
   margin-bottom: 10px;
+}
+
+.filter__item:last-child {
+  margin-bottom: 18px;
 }
 
 .filter__text {
@@ -241,7 +293,7 @@ body {
   position: fixed;
   width: 100%;
   height: 100vh;
-  background-color: rgba(239, 239, 239, 0.9);
+  background-color: rgba(239, 239, 239, 0.8);
   z-index: 10;
 }
 

@@ -1,16 +1,20 @@
 class ToggleBtn {
   constructor() {
-    this.toggleBtn = document.createElement('button');
+    this.toggleBtn = this.createComponent();
   }
-  getComponent() {
+  createComponent() {
+    return document.createElement('button');
+  }
+  build() {
     this.toggleBtn.className = 'toggle-btn';
     this.toggleBtn.innerHTML = '<span class="toggle-btn__line"></span>'.repeat(3);
 
+    return this;
+  }
+  getComponent() {
     return this.toggleBtn;
   }
-  initToggleBtnHandler(sidebar) {
-    this.toggleBtn.addEventListener('click', () => {
-      sidebar.classList.contains('sidebar--opened') ? sidebar.classList.remove('sidebar--opened') : sidebar.classList.add('sidebar--opened')
-    });
+  initToggleBtnHandler(handler) {
+    this.toggleBtn.addEventListener('click', handler);
   }
 }

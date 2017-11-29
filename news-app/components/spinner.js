@@ -1,11 +1,17 @@
 class Spinner {
   constructor() {
-    this.spinner = document.createElement('div');
+    this.spinner = this.createComponent();
   }
-  getComponent() {
+  createComponent() {
+    return document.createElement('div');
+  }
+  build() {
     this.spinner.className = 'spinner';
     this.spinner.innerHTML = '<img class="spinner__img" src="./img/spinner.svg">';
 
+    return this;
+  }
+  getComponent() {
     return this.spinner;
   }
   toggle() {

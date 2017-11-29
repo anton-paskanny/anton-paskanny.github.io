@@ -1,22 +1,18 @@
 class RequestsService {
   constructor() {
-    this.apiKey = '88323f990dab404cb1369f23f88a2053';
-    this.reqUrlPrefix = 'https://newsapi.org/v2';
-    this.reqTopHeadlinesParam = 'top-headlines';
-    this.reqSourcesParam = 'sources';
-    this.sources = [
-      'bbc-news',
-      'cnn',
-      'the-telegraph'
-    ]
+    this.apiKey = configAPI.apiKey;
+    this.urlPrefix = configAPI.urlPrefix;
+    this.topHeadlinesParam = configAPI.topHeadlinesParam;
+    this.sourcesParam = configAPI.sourcesParam;
+    this.defaultSources = configAPI.defaultSources;
   }
   getTopHeadlinesURL(sources) {
-    const sourcesList = sources ? sources : this.sources.join(',');
+    const sourcesList = sources ? sources : this.defaultSources.join(',');
 
-    return `${this.reqUrlPrefix}/${this.reqTopHeadlinesParam}?sources=${sourcesList}&apiKey=${this.apiKey}`;
+    return `${this.urlPrefix}/${this.topHeadlinesParam}?sources=${sourcesList}&apiKey=${this.apiKey}`;
   }
   getNewsSourcesURL() {
-    return `${this.reqUrlPrefix}/${this.reqSourcesParam}?apiKey=${this.apiKey}`;
+    return `${this.urlPrefix}/${this.sourcesParam}?apiKey=${this.apiKey}`;
   }
   getTopHeadlinesNews(sources) {
     const url = this.getTopHeadlinesURL(sources);
