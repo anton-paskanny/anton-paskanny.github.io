@@ -1,54 +1,61 @@
-(function() {
-
-  // entry point
-  const App = document.querySelector('.root');
-
-  // classes
-  const sidebar = new Sidebar();
-  const spinner = new Spinner();
-  const pageContent = new PageContent();
-  const sourcesList = new SourcesList();
-  const newsList= new NewsList();
-  const toggleBtn = new ToggleBtn();
-  const footer = new Footer();
-
-  // services
-  const requestsService = new RequestsService();
-
-  // checkbox config
-  const checkboxHandlerConfig = {
-    getTopHeadlinesNews: requestsService.getTopHeadlinesNews.bind(requestsService),
-    updateNewsList: newsList.updateComponent.bind(newsList),
-    toggleSpinner: spinner.toggle.bind(spinner)
-  };
-
-  // get components
-  const toggleBtnComponent = toggleBtn.getComponent();
-  const footerComponent = footer.getComponent();
-  const spinnerComponent = spinner.getComponent();
-
-  // show spinner as we are going to fetch data
-  App.append(spinnerComponent);
-  spinner.toggle();
-
-  Promise.all([requestsService.getTopHeadlinesNews(), requestsService.getNewsSources()]).then(([{articles}, {sources}]) => {
-    const newsListComponent = newsList.getComponent(articles);
-    const pageContentComponent = pageContent.getComponent(newsListComponent);
-    const sourcesListComponent = sourcesList.getComponent(sources);
-    const sidebarComponent = sidebar.getComponent(sourcesListComponent);
-
-    sourcesList.initCheckboxHandler(checkboxHandlerConfig);
-    toggleBtn.initToggleBtnHandler(sidebarComponent);
+class App {
+  constructor() {
+    this.appElement = document.querySelector('.root');
+    this.sidebar = new Sidebar();
+    this.spinner = new Spinner();
+    this.pageContent = new PageContent();
+    this.sourcesList = new SourcesList();
+    this.newsList= new NewsList();
+    this.toggleBtn = new ToggleBtn();
+    this.footer = new Footer();
+    this.requestsService = new RequestsService();
+    this.hideSpinnerDelay = 1000;
+  }
+  initEventHandlers() {
+    this.sourcesList.initCheckboxHandler(this.getEventHandlersCallbacks());
+    this.toggleBtn.initToggleBtnHandler(this.sidebar.changeSidebarView.bind(this.sidebar));
+  }
+  build([{articles}, {sources}]) {
+    const newsListComponent = this.newsList.build(articles).getComponent();
+    const pageContentComponent = this.pageContent.build(newsListComponent).getComponent();
+    const sourcesListComponent = this.sourcesList.build(sources).getComponent();
+    const sidebarComponent = this.sidebar.build(sourcesListComponent).getComponent();
+    const toggleBtnComponent = this.toggleBtn.build().getComponent();
+    const footerComponent = this.footer.build().getComponent();
 
     pageContentComponent.append(footerComponent)
 
-    App.parentNode.append(toggleBtnComponent);
-    App.append(pageContentComponent);
-    App.prepend(sidebarComponent);
-
-    // hide spinner as we have already downloaded all data
+    this.appElement.append(toggleBtnComponent);
+    this.appElement.append(pageContentComponent);
+    this.appElement.prepend(sidebarComponent);
+  }
+  showSpinner() {
+    this.appElement.append(this.spinner.build().getComponent());
+    this.spinner.toggle();
+  }
+  hideSpinner() {
     setTimeout(() => {
-      spinner.toggle();
-    }, 1000)
-  });
-})();
+      this.spinner.toggle();
+    }, this.hideSpinnerDelay)
+  }
+  fetchData() {
+    return Promise.all([this.requestsService.getTopHeadlinesNews(), this.requestsService.getNewsSources()]);
+  }
+  getEventHandlersCallbacks() {
+    return {
+      getTopHeadlinesNews: this.requestsService.getTopHeadlinesNews.bind(this.requestsService),
+      updateNewsList: this.newsList.updateComponent.bind(this.newsList),
+      toggleSpinner: this.spinner.toggle.bind(this.spinner)
+    };
+  }
+  init() {
+
+    this.showSpinner();
+
+    this.fetchData().then(data => {
+      this.initEventHandlers(data);
+      this.build(data);
+      this.hideSpinner();
+    });
+  }
+}
