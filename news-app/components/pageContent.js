@@ -1,12 +1,17 @@
 class PageContent {
   constructor() {
-    this.pageContent = document.createElement('section');
+    this.pageContent = this.createComponent();
   }
-  getComponent(newsComponent) {
+  createComponent() {
+    return document.createElement('section');
+  }
+  build(component) {
     this.pageContent.className = 'page-content';
+    this.pageContent.append(component);
 
-    this.pageContent.append(newsComponent);
-
+    return this;
+  }
+  getComponent() {
     return this.pageContent;
   }
 }
