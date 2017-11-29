@@ -99,8 +99,6 @@ body {
   overflow-y: visible;
   cursor:text;
   list-style: none;
-  //box-shadow: inset 0px -130px 190px -50px #fff,
-              inset 0px 130px 190px -50px #fff;
 }
 
 .filter:before {
@@ -141,7 +139,7 @@ body {
   position: relative;
   margin: 0;
   height: inherit;
-  padding: 0px 0;
+  padding: 10px 0;
   z-index: 1;
   overflow: hidden;
   overflow-y: visible;
