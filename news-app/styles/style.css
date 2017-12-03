@@ -267,6 +267,7 @@ body {
   padding: 6px;
   background-color: var(--main-color);
   border: none;
+  z-index: 2;
 }
 
 @media all and (min-width: 769px) {

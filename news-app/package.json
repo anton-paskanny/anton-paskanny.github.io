@@ -1,0 +1,24 @@
+{
+  "name": "news-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "babel": "npm run build-components & npm run build-services & npm run build-configs & npm run build-app",
+    "build-components": "babel components -d compiled/components",
+    "build-services": "babel services -d compiled/services",
+    "build-configs": "babel config -d compiled/config",
+    "build-app": "babel app.js -d compiled",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "whatwg-fetch": "^2.0.3"
+  }
+}

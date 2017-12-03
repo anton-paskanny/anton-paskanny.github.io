@@ -1,3 +1,5 @@
+import "babel-polyfill";
+
 class App {
   constructor() {
     this.appElement = document.querySelector('.root');
@@ -23,14 +25,14 @@ class App {
     const toggleBtnComponent = this.toggleBtn.build().getComponent();
     const footerComponent = this.footer.build().getComponent();
 
-    pageContentComponent.append(footerComponent)
+    pageContentComponent.appendChild(footerComponent)
 
-    this.appElement.append(toggleBtnComponent);
-    this.appElement.append(pageContentComponent);
-    this.appElement.prepend(sidebarComponent);
+    this.appElement.appendChild(toggleBtnComponent);
+    this.appElement.appendChild(sidebarComponent);
+    this.appElement.appendChild(pageContentComponent);
   }
   showSpinner() {
-    this.appElement.append(this.spinner.build().getComponent());
+    this.appElement.appendChild(this.spinner.build().getComponent());
     this.spinner.toggle();
   }
   hideSpinner() {
@@ -59,3 +61,6 @@ class App {
     });
   }
 }
+
+const myApp = new App();
+myApp.init();
