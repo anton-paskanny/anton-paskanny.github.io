@@ -1,5 +1,3 @@
-import "babel-polyfill";
-
 class App {
   constructor() {
     this.appElement = document.querySelector('.root');
@@ -61,6 +59,3 @@ class App {
     });
   }
 }
-
-const myApp = new App();
-myApp.init();
