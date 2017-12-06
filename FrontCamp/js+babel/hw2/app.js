@@ -109,7 +109,7 @@ class PageContent {
   }
   build(component) {
     this.pageContent.className = 'page-content';
-    this.pageContent.appendChild(component);
+    this.pageContent.append(component);
 
     return this;
   }
@@ -136,8 +136,8 @@ class Sidebar {
     this.sidebarTitle.className = 'sidebar__title';
     this.sidebarTitle.textContent = 'News Source filter';
 
-    this.sidebar.appendChild(this.sidebarTitle);
-    this.sidebar.appendChild(component);
+    this.sidebar.append(this.sidebarTitle);
+    this.sidebar.append(component);
 
     return this;
   }
@@ -172,7 +172,7 @@ class SourcesList {
     this.list.className = 'filter__list';
     this.wrapper.className = 'filter';
     this.list.innerHTML = this.getListItems(sources);
-    this.wrapper.appendChild(this.list);
+    this.wrapper.append(this.list);
 
     return this;
   }
@@ -335,14 +335,14 @@ class App {
     const toggleBtnComponent = this.toggleBtn.build().getComponent();
     const footerComponent = this.footer.build().getComponent();
 
-    pageContentComponent.appendChild(footerComponent)
+    pageContentComponent.append(footerComponent)
 
-    this.appElement.appendChild(toggleBtnComponent);
-    this.appElement.appendChild(sidebarComponent);
-    this.appElement.appendChild(pageContentComponent);
+    this.appElement.append(toggleBtnComponent);
+    this.appElement.append(sidebarComponent);
+    this.appElement.append(pageContentComponent);
   }
   showSpinner() {
-    this.appElement.appendChild(this.spinner.build().getComponent());
+    this.appElement.append(this.spinner.build().getComponent());
     this.spinner.toggle();
   }
   hideSpinner() {
@@ -368,7 +368,7 @@ class App {
       this.initEventHandlers(data);
       this.build(data);
       this.hideSpinner();
-    });    
+    });
   }
 }
 
