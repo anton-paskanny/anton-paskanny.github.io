@@ -17,14 +17,18 @@ export default class RequestsService {
   getNewsSourcesURL() {
     return `${this.urlPrefix}/${this.sourcesParam}?apiKey=${this.apiKey}`;
   }
-  getTopHeadlinesNews(sources) {
+  async getTopHeadlinesNews(sources) {
     const url = this.getTopHeadlinesURL(sources);
+    const response = await fetch(url);
+    const data = await response.json();
 
-    return fetch(url).then(data => data.json());
+    return data.articles;
   }
-  getNewsSources() {
+  async getNewsSources() {
     const url = this.getNewsSourcesURL();
+    const response = await fetch(url);
+    const data = await response.json();
 
-    return fetch(url).then(data => data.json());
+    return data.sources;
   }
 }

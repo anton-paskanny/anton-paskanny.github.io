@@ -1,3 +1,5 @@
+import "./styles.css";
+
 export default class NewsList {
   constructor() {
     this.newsComponent = this.createComponent();

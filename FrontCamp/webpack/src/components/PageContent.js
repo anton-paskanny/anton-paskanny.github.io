@@ -7,7 +7,8 @@ export default class PageContent {
   }
   build(component) {
     this.pageContent.className = 'page-content';
-    this.pageContent.append(component);
+
+    if (component) this.pageContent.append(component);
 
     return this;
   }
