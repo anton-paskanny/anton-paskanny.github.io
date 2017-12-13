@@ -16,7 +16,7 @@ import RequestsService from './services/Requests.js';
 // Main class
 export default class App {
   constructor() {
-    this.appElement = this.createComponent();
+    this.appComponent = this.createComponent();
     this.sidebar = new Sidebar();
     this.spinner = new Spinner();
     this.pageContent = new PageContent();
@@ -26,41 +26,50 @@ export default class App {
     this.requestsService = new RequestsService();
     this.hideSpinnerDelay = 1000;
     this.getNewsButton = new GetNewsButton();
+    this.newsList = null;
 
-    // some components
+    // some components used by dynamic chunk
     this.pageContentComponent = null;
     this.newsListComponent = null;
     this.footerComponent = null;
+    this.sourcesListComponent = null;
+    this.sidebarComponent = null;
+    this.toggleBtnComponent = null;
+    this.getNewsButtonComponent = null;
   }
   createComponent() {
-    return document.createElement('div');
+    const div = document.createElement('div');
+    div.className = 'app';
+    
+    return div;
   }
   initEventHandlers() {
     this.toggleBtn.initToggleBtnHandler(this.sidebar.changeSidebarView.bind(this.sidebar));
+    this.getNewsButton.initGetNewsBtnHandler(this.fetchAndBuildNews.bind(this));
   }
   build(sources) {
-    const sourcesListComponent = this.sourcesList.build(sources).getComponent();
-    const sidebarComponent = this.sidebar.build(sourcesListComponent).getComponent();
-    const toggleBtnComponent = this.toggleBtn.build().getComponent();
-    const getNewsButtonComponent = this.getNewsButton.build().getComponent();
 
+    // define app's components
+    this.sourcesListComponent = this.sourcesList.build(sources).getComponent();
+    this.sidebarComponent = this.sidebar.build(this.sourcesListComponent).getComponent();
+    this.toggleBtnComponent = this.toggleBtn.build().getComponent();
+    this.getNewsButtonComponent = this.getNewsButton.build().getComponent();
     this.pageContentComponent = this.pageContent.build().getComponent();
     this.footerComponent = this.footer.build().getComponent();
-
-    this.appElement.className = 'app';
-    document.body.insertBefore(this.appElement, document.querySelector('script'));
-
+    
+    // insert main component
+    document.body.insertBefore(this.appComponent, document.querySelector('script'));
+    
+    // build another app's components
     this.pageContentComponent.appendChild(this.footerComponent)
-    sidebarComponent.appendChild(getNewsButtonComponent);
+    this.sidebarComponent.appendChild(this.getNewsButtonComponent);
 
-    this.getNewsButton.initGetNewsBtnHandler(this.fetchAndBuildNews.bind(this));
-
-    this.appElement.appendChild(toggleBtnComponent);
-    this.appElement.appendChild(sidebarComponent);
-    this.appElement.appendChild(this.pageContentComponent);
+    this.appComponent.appendChild(this.toggleBtnComponent);
+    this.appComponent.appendChild(this.sidebarComponent);
+    this.appComponent.appendChild(this.pageContentComponent);
   }
   showSpinner() {
-    this.appElement.appendChild(this.spinner.build().getComponent());
+    this.appComponent.appendChild(this.spinner.build().getComponent());
     this.spinner.toggle();
   }
   hideSpinner() {
@@ -69,27 +78,29 @@ export default class App {
     }, this.hideSpinnerDelay)
   }
   fetchAndBuildNews() {
-    return import(/* webpackChunkName: "news" */ './controllers/news.js').then(data => {
+    return import(/* webpackChunkName: "news" */ './components/news-list/NewsList.js').then(data => {
 
       // define instance of newsList from chunk file
-      const newsList = data.default.NewsList;
-
+      if (!this.newsList) {
+        this.newsList = new data.default;
+      }
+      
       // get checked news sources
       const checkedSources = this.sourcesList.getAllCheckedValues();
-
+      
       // fetch news
       this.showSpinner();
-
+      
       this.requestsService.getTopHeadlinesNews(checkedSources).then(articles => {
-
+      
         if (!this.newsListComponent) {
-          this.newsListComponent = newsList.build(articles).getComponent();
+          this.newsListComponent = this.newsList.build(articles).getComponent();
           this.pageContentComponent.insertBefore(this.newsListComponent, this.footerComponent);
         }
         else {
-          newsList.updateComponent(articles);
+          this.newsList.updateComponent(articles);
         }
-
+      
         this.hideSpinner();
       });
     }).catch(error => 'An error occurred while loading the component');
