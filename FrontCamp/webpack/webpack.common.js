@@ -6,7 +6,8 @@ module.exports = {
   entry: ['babel-polyfill', 'whatwg-fetch', './index.js'],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.bundle.js'
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js'
   },
   module: {
     rules: [

@@ -32,41 +32,6 @@ export default class SourcesList {
   getComponent(sources) {
     return this.wrapper;
   }
-  initCheckboxHandler({getTopHeadlinesNews, updateNewsList, toggleSpinner}) {
-    let timer = null;
-
-    this.list.addEventListener('click', (e) => {
-
-      if (timer) {
-        clearTimeout(timer);
-      };
-
-       timer = setTimeout(() => {
-         // check if click was made on input tag
-         if (e.target.tagName === 'INPUT') {
-
-           // get all checked values from sources list
-           const checkedValues = this.getAllCheckedValues();
-
-           // show spinner as we are going to fetch data
-           toggleSpinner();
-
-           // fetch top headlines news for checked sources
-           getTopHeadlinesNews(checkedValues).then(({articles}) => {
-
-             // re-render news-list component with new data
-             updateNewsList(articles);
-
-             // hide spinner as we have already downloaded data
-             setTimeout(() => {
-               toggleSpinner();
-             }, 1000);
-
-           });
-         }
-       }, this.sourceItemDelay);
-    });
-  }
   getAllCheckedValues() {
     let checkedValues = [];
 
