@@ -25,7 +25,7 @@ export default class SourcesList {
     this.list.className = 'filter__list';
     this.wrapper.className = 'filter';
     this.list.innerHTML = this.getListItems(sources);
-    this.wrapper.append(this.list);
+    this.wrapper.appendChild(this.list);
 
     return this;
   }

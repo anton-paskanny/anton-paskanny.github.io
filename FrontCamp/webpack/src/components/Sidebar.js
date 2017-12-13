@@ -15,10 +15,10 @@ export default class Sidebar {
   build(component) {
     this.sidebar.className = 'sidebar';
     this.sidebarTitle.className = 'sidebar__title';
-    this.sidebarTitle.textContent = 'News Source filter';
+    this.sidebarTitle.textContent = 'News Sources filter';
 
-    this.sidebar.append(this.sidebarTitle);
-    this.sidebar.append(component);
+    this.sidebar.appendChild(this.sidebarTitle);
+    this.sidebar.appendChild(component);
 
     return this;
   }
