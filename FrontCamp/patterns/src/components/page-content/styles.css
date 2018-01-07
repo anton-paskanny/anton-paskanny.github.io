@@ -1,0 +1,21 @@
+.page-content {
+  width: 100%;
+  padding: 0 15px;
+  padding-top: 15px;
+}
+
+@media all and (min-width: 769px) {
+
+  .page-content {
+    width: 70%;
+    margin-left: 30%;
+  }
+}
+
+@media all and (min-width: 1025px) {
+
+  .page-content {
+    width: 80%;
+    margin-left: 20%;
+  }
+}

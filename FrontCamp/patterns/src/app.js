@@ -3,150 +3,81 @@ import CalendarIcon from './img/calendar.svg';
 import NewsIcon from './img/news.svg';
 import SpinnerIcon from './img/spinner.svg';
 
+// Containers
+import NewsList from './containers/news-list/index.js';
+import SourcesList from './containers/sources-list/index.js';
+
 // Components
-import NewsList from './components/news-list/NewsList.js';
-import Sidebar from './components/sidebar/Sidebar.js';
-import SidebarTitle from './components/sidebar/SidebarTitle.js';
-import Spinner from './components/Spinner.js';
-import PageContent from './components/PageContent.js';
-import SourcesList from './components/SourcesList.js';
-import ToggleBtn from './components/ToggleBtn.js';
-import Footer from './components/Footer.js';
+import Sidebar from './components/sidebar/index.js';
+import SidebarTitle from './components/sidebar/sidebar-title/index.js';
+import Spinner from './components/spinner/index.js';
+import PageContent from './components/page-content/index.js';
+import ToggleBtn from './components/toggle-btn/index.js';
+import Footer from './components/footer/index.js';
 
 // Services
 import RequestsService from './services/Requests.js';
 
-// Store
-import Store from './store.js';
-
-// Actions
-import { addNews, addSources } from './actions.js';
+// Helper
+import View from './view.js';
 
 // Main class
-export default class App {
+export default class App extends View {
   constructor() {
-    this.appComponent = this.createComponent();
-
-    this.store = new Store();
+    super();
+    this.AppElement = this.createElement('div');
+    this.AppClassName = 'app';
     this.requestsService = new RequestsService();
 
     // components used in App
-    this.sidebarComponent =
-    this.components = {
-      'sidebar': Sidebar,
-      'sidebarTitle': SidebarTitle,
-      'pageContent': PageContent,
-      'newsList': NewsList,
-      'footer': Footer,
-      'spinner': Spinner,
-      'sourcesList': SourcesList,
-      'toggleBtn': ToggleBtn
-    }
+    this.components = [
+      NewsList,
+      SourcesList,
+      Sidebar,
+      SidebarTitle,
+      Spinner,
+      PageContent,
+      ToggleBtn,
+      Footer
+    ];
 
-    // constants
-    this.hideSpinnerDelay = 1000;
+    this.onInit(this.AppElement, this.AppClassName);
   }
-  createComponent() {
-    const div = document.createElement('div');
-    div.className = 'app';
-
-    return div;
-  }
+  /**
+   * Init App's components events handlers
+   * @function
+   */
   initEventHandlers() {
-    this.toggleBtnComponent.initToggleBtnHandler(this.sidebarComponent.changeSidebarView.bind(this.sidebarComponent));
-    this.sourcesListComponent.initCheckboxHandler(this.checkboxHandler.bind(this));
+    this.ToggleBtn.initHandler(this.Sidebar.changeSidebarView.bind(this.Sidebar));
   }
+  /**
+   * Fabric method for creating App's components
+   * @function
+   */
   defineComponents() {
-    for (let component in this.components) {
-      this.create(component);
-    }
+    this.components.forEach(Component => {
+      this[Component.name] = new Component();
+    });
   }
+  /**
+   * Insert defined components into page
+   * @function
+   */
   render() {
-    // insert main component
-    document.body.insertBefore(this.appComponent, document.querySelector('script'));
+    document.body.insertBefore(this.AppElement, document.querySelector('script'));
 
-    // build another app's components
-    this.pageContentComponent.domNode.appendChild(this.newsListComponent.domNode);
-    this.pageContentComponent.domNode.appendChild(this.footerComponent.domNode);
-    this.sidebarComponent.domNode.appendChild(this.sidebarTitleComponent.domNode);
-    this.sidebarComponent.domNode.appendChild(this.sourcesListComponent.domNode);
-
-    this.appComponent.appendChild(this.toggleBtnComponent.domNode);
-    this.appComponent.appendChild(this.sidebarComponent.domNode);
-    this.appComponent.appendChild(this.pageContentComponent.domNode);
+    this.append(this.PageContent.element, [this.NewsList, this.Footer]);
+    this.append(this.Sidebar.element, [this.SidebarTitle, this.SourcesList]);
+    this.append(this.AppElement, [this.Spinner, this.PageContent, this.Sidebar, this.ToggleBtn]);
   }
   /**
-   * Fabric method for creating app's components
+   * Init App component
+   * Define all App's components, insert them into page and init necessary event handlers
    * @function
-   * @param {string} type - component to create ('Sidebar', 'Header', etc.)
-   * @param {string} data - data for building component (optional). Data (received using API) is needed for building news or sources lists
    */
-  create(type) {
-    if (this.components[type]) {
-
-      this[`${type}Component`] = new (this.components[type]);
-
-      this[`${type}Component`].build();
-    }
-    else {
-      console.log("App doesn't contain such a component");
-    }
-  }
-  showSpinner() {
-    this.appComponent.appendChild(this.spinnerComponent.domNode);
-    this.spinnerComponent.toggle();
-  }
-  hideSpinner() {
-    setTimeout(() => {
-      this.spinnerComponent.toggle();
-    }, this.hideSpinnerDelay)
-  }
-  fetchData() {
-    return Promise.all([this.requestsService.getTopHeadlinesNews(), this.requestsService.getNewsSources()]);
-  }
-  /**
-   * Method for getting news by click on input in sourcesListComponent
-   * @function
-   * @param {string} sources - checked news sources
-   */
-  checkboxHandler(sources) {
-    this.showSpinner();
-
-    this.requestsService.getTopHeadlinesNews(sources).then(news => {
-      this.store.dispatch(addNews(news));
-
-      this.hideSpinner();
-    });
-  }
   init() {
-    // define app's components
     this.defineComponents();
-
-    // add subscribers in store
-    this.store.addSubscriber([
-      this.newsListComponent.render.bind(this.newsListComponent),
-      this.sourcesListComponent.render.bind(this.sourcesListComponent)
-    ]);
-
-    // show loading animation before fetching data
-    this.showSpinner();
-
-    // start fetching all necessary data for the app
-    this.fetchData().then(data => {
-      //this.initEventHandlers(data);
-
-      this.store.dispatch(addNews(data[0]));
-      this.store.dispatch(addSources(data[1]));
-
-      console.log(this.store)
-
-      // insert components into page
-      this.render();
-
-      this.initEventHandlers();
-
-      // hide loading animation
-      this.hideSpinner();
-    });
+    this.render();
+    this.initEventHandlers();
   }
 }
