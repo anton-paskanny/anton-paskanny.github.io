@@ -1,4 +1,4 @@
-import RequestsService from '../services/Requests.js';
+import RequestsService from '../../services/Requests.js';
 
 const requestsService = new RequestsService();
 
