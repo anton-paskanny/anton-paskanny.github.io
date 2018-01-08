@@ -1,16 +1,17 @@
-import View from '../../view.js';
-import store from '../../redux/store.js'
+import View from '../../core/view.js';
+import store from '../../core/redux/store.js'
 import './styles.css';
 
 export default class Spinner extends View {
   constructor() {
-    super();
-    this.element = this.createElement('div');
-    this.className = 'spinner';
-    this.content = '<img class="spinner__img" src="./img/spinner.svg">';
+    super({
+      selector: 'div',
+      className: 'spinner',
+      content: '<img class="spinner__img" src="./img/spinner.svg">'
+    });
+    
     this.hideDelay = 900;
 
-    this.onInit(this.element, this.className, this.content);
     store.subscribe(this.toggle.bind(this));
   }
   /**

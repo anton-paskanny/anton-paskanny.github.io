@@ -19,14 +19,16 @@ import Footer from './components/footer/index.js';
 import RequestsService from './services/Requests.js';
 
 // Helper
-import View from './view.js';
+import View from './core/view.js';
 
 // Main class
 export default class App extends View {
   constructor() {
-    super();
-    this.AppElement = this.createElement('div');
-    this.AppClassName = 'app';
+    super({
+      selector: 'main',
+      className: 'app'
+    });
+
     this.requestsService = new RequestsService();
 
     // components used in App
@@ -40,8 +42,6 @@ export default class App extends View {
       ToggleBtn,
       Footer
     ];
-
-    this.onInit(this.AppElement, this.AppClassName);
   }
   /**
    * Init App's components events handlers
@@ -64,18 +64,18 @@ export default class App extends View {
    * @function
    */
   render() {
-    document.body.insertBefore(this.AppElement, document.querySelector('script'));
+    document.body.insertBefore(this.element, document.querySelector('script'));
 
     this.append(this.PageContent.element, [this.NewsList, this.Footer]);
     this.append(this.Sidebar.element, [this.SidebarTitle, this.SourcesList]);
-    this.append(this.AppElement, [this.Spinner, this.PageContent, this.Sidebar, this.ToggleBtn]);
+    this.append(this.element, [this.Spinner, this.PageContent, this.Sidebar, this.ToggleBtn]);
   }
   /**
    * Init App component
    * Define all App's components, insert them into page and init necessary event handlers
    * @function
    */
-  init() {
+  build() {
     this.defineComponents();
     this.render();
     this.initEventHandlers();

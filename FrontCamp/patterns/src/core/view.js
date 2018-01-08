@@ -1,7 +1,11 @@
 import Store from './redux/store.js';
 
 export default class View {
-  constructor() {}
+  constructor(options) {
+    this.element = this.createElement(options.selector);
+    this.element.className = options.className || 'item';
+    this.element.innerHTML = options.content || this.element.innerHTML;
+  }
   /**
    * Create DOM node according to the passed type
    * @function
@@ -9,17 +13,6 @@ export default class View {
    */
   createElement(type) {
     return document.createElement(type ? type : 'div');
-  }
-  /**
-   * Set className and innerHTML for passed element
-   * @function
-   * @param {Node} element - element created by createElement method
-   * @param {string} className - elemen't class name
-   * @param {string} content - innerHTML for element
-   */
-  onInit(element, className, content) {
-    if (className) element.className = className;
-    if (content) element.innerHTML = content;
   }
   /**
    * Append passed elements into necessary element

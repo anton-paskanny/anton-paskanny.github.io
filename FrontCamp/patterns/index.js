@@ -5,5 +5,5 @@ import './src/styles/style.css';
 
 (function() {
   const myApp = new App();
-  myApp.init();
+  myApp.build();
 })();

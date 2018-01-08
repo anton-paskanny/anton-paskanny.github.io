@@ -1,13 +1,12 @@
-import View from '../../view.js';
+import View from '../../core/view.js';
 import './styles.css';
 
 export default class Sidebar extends View {
   constructor() {
-    super();
-    this.element = this.createElement('aside');
-    this.className = 'sidebar';
-
-    this.onInit(this.element, this.className);
+    super({
+      selector: 'aside',
+      className: 'sidebar'
+    });
   }
   changeSidebarView() {
     this.element.classList.contains('sidebar--opened') ?
