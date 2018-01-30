@@ -1,0 +1,96 @@
+.sources {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
+  overflow-y: visible;
+  cursor:text;
+  list-style: none;
+}
+
+.sources:before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  top: -12px;
+  left: 0;
+  background-image: linear-gradient(to bottom, #fff 0%, #fff 60%, transparent 90%);
+  z-index: 5;
+}
+
+.sources:after,
+.sources:before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 30px;
+  position: absolute;
+  left: 0;
+  background-image: linear-gradient(to bottom, #fff 0%, #fff 60%, transparent 90%);
+  z-index: 5;
+}
+
+.sources:before {
+  top: -12px;
+}
+
+.sources:after {
+  bottom: 0;
+  background-image: linear-gradient(to top, #fff 0%, #fff 60%, transparent 90%);
+}
+
+.sources__list {
+  display: block;
+  position: relative;
+  margin: 0;
+  height: inherit;
+  padding: 10px 0;
+  z-index: 1;
+  overflow: hidden;
+  overflow-y: visible;
+}
+
+@media all and (min-width: 641px) {
+
+  .sources {
+    height: 80vh;
+  }
+}
+
+.sources__item {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.sources__item:last-child {
+  margin-bottom: 18px;
+}
+
+.sources__text {
+  margin-left: 5px;
+}
+
+.sources__input {
+  display: none;
+}
+
+.sources__input:checked ~ .sources__checkbox {
+  background-image: url('../../img/check-mark.svg');
+}
+
+.sources__checkbox {
+  width: 22px;
+  height: 22px;
+  border: 1px solid #000;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.sources__text,
+.sources__checkbox {
+  display: inline-block;
+  vertical-align: middle;
+}

@@ -1,0 +1,27 @@
+.toggle-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 50px;
+  padding: 6px;
+  background-color: #032b2f;
+  border: none;
+  z-index: 2;
+}
+
+@media all and (min-width: 769px) {
+
+  .toggle-btn {
+    display: none;
+  }
+}
+
+.toggle-btn__line {
+  display: block;
+  margin-bottom: 5px;
+  border: 2px solid #fff;
+}
+
+.toggle-btn__line:last-child {
+  margin-bottom: 0;
+}
