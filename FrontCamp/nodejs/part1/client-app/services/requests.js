@@ -1,5 +1,5 @@
 // Config
-import { configServer } from '../config/configServer.js';
+import { configServer } from '../../configs/configServer.js';
 
 export default class RequestsService {
   constructor() {
@@ -9,11 +9,9 @@ export default class RequestsService {
     this.serverPort = configServer.port;
     this.blogsParam = configServer.blogsParam;
     this.sourcesParam = configServer.sourcesParam;
-    this.defaultSources = configServer.defaultSources;
   }
   getTopHeadlinesURL(sources) {
-    const sourcesList = sources ? sources : this.defaultSources.join(',');
-    return `${this.urlPrefix}${this.serverPort}/${this.blogsParam}?sources=${sourcesList}`;
+    return `${this.urlPrefix}${this.serverPort}/${this.blogsParam}?sources=${sources}`;
   }
   getNewsSourcesURL() {
     return `${this.urlPrefix}${this.serverPort}/${this.sourcesParam}`;

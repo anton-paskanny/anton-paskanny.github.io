@@ -1,3 +1,0 @@
-{"level":"debug","message":"Get blog news","timestamp":"Tue, 30 Jan 2018 20:17:03 GMT","label":{"params":{"sources":"bbc-news,cnn,the-telegraph"},"url":"http://localhost:3000/api/blogs?sources=bbc-news,cnn,the-telegraph"}}
-{"level":"debug","message":"Get news sources","timestamp":"Tue, 30 Jan 2018 20:17:03 GMT","label":{"url":"http://localhost:3000/api/sources"}}
-{"level":"debug","message":"Get blog news","timestamp":"Tue, 30 Jan 2018 20:17:18 GMT","label":{"params":{"sources":"bbc-news"},"url":"http://localhost:3000/api/blogs?sources=bbc-news"}}

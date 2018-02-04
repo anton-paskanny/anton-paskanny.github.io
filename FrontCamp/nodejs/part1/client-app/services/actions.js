@@ -2,8 +2,6 @@ import * as actions from '../core/redux/actions.js';
 import store from '../core/redux/store.js';
 
 
-
-
 export const fetchNews = (sources) => {
   store.dispatch(actions.startFetching());
 
