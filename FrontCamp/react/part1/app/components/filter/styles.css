@@ -1,0 +1,9 @@
+.filter__btn {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border: none;
+  background-color: #A784D6;
+  color: #fff;
+  font-size: inherit;
+}
