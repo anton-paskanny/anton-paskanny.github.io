@@ -7,7 +7,7 @@
   display: block;
   width: 100%;
   padding: 12px 6px;
-  font-size: inherit;
+  font: inherit;
 }
 
 .form__textarea {
@@ -16,7 +16,7 @@
   min-height: 100px;
   margin: 20px 0;
   padding: 12px 6px;
-  font-size: inherit;
+  font: inherit;
   resize: none;
 }
 
@@ -27,7 +27,7 @@
   border: none;
   background-color: #A784D6;
   color: #fff;
-  font-size: inherit;
+  font: inherit;
 }
 
 .form__error {
