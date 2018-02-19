@@ -25,11 +25,13 @@ export default class CreateBlogForm extends React.PureComponent {
       });
     }
     else {
-      this.setState({
-        showError: false
-      });
-
       this.props.addBlog(this.state);
+      
+      this.setState({
+          author: '',
+          description: '',
+          showError: false
+      });
     }
   }
   handleAuthorChange(event) {
@@ -47,7 +49,7 @@ export default class CreateBlogForm extends React.PureComponent {
       <form className="form" onSubmit={this.handleSubmit}>
         <input className="form__input"
                type="text"
-               value={this.test}
+               value={this.state.author}
                onChange={this.handleAuthorChange}
                placeholder="Author"
         />
