@@ -8,6 +8,7 @@ module.exports = {
   entry: './app/server.js',
   output: {
       path: path.resolve(__dirname, 'dist'),
+      publicPath: '/dist/',
       filename: 'bundleServer.js'
   },
   module: {
@@ -24,7 +25,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: 'css-loader/locals'
       }
     ]
   },
