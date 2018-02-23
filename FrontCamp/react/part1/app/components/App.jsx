@@ -15,12 +15,21 @@ export default class App extends React.Component {
     };
 
     this.addBlog = this.addBlog.bind(this);
+    this.deleteBlog = this.deleteBlog.bind(this);
     this.filterByAuthor = this.filterByAuthor.bind(this);
   }
   addBlog(blog) {
     this.setState(prevState => ({
       blogs: [ ...prevState.blogs, blog]
     }));
+  }
+  deleteBlog(key) {
+    const blogs = this.state.blogs.slice();
+    blogs.splice(key, 1);
+
+    this.setState({
+      blogs
+    });
   }
   filterByAuthor() {
     var filteredBlogs = this.state.blogs.sort((a, b) => {
@@ -39,7 +48,7 @@ export default class App extends React.Component {
       <React.Fragment>
         <h1>Simple blogs app</h1>
         <BlogsCreationForm addBlog={this.addBlog} />
-        <BlogsList blogs={this.state.blogs} />
+        <BlogsList blogs={this.state.blogs} deleteBlog={this.deleteBlog} />
         { this.state.blogs.length > 1 && <Filter filterByAuthor={this.filterByAuthor} /> }
       </React.Fragment>
     )

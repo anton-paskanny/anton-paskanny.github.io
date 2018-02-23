@@ -9,7 +9,13 @@ export default class BlogsList extends React.Component {
     super(props);
   }
   renderBlogs() {
-    return this.props.blogs.map((blog, index) => <Blog key={index} data={blog} />);
+    return this.props.blogs.map((blog, index) => {
+      return <Blog key={index}
+                   data={blog}
+                   deleteBlog={this.props.deleteBlog}
+                   index={index}
+             />;
+    });
   }
   render() {
     return (

@@ -25,8 +25,11 @@ export default class CreateBlogForm extends React.PureComponent {
       });
     }
     else {
-      this.props.addBlog(this.state);
-      
+      this.props.addBlog({
+        author: this.state.author,
+        description: this.state.description
+      });
+
       this.setState({
           author: '',
           description: '',
