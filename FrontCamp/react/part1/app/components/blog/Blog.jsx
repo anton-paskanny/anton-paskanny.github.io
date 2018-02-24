@@ -3,7 +3,7 @@ import React from 'react';
 export default (props) => {
 
   const deleteBlog = () => {
-    props.deleteBlog(props.index);
+    props.deleteBlog(props.index, props.filteredIndex);
   };
 
   return (
