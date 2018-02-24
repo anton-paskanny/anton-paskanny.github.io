@@ -25,8 +25,11 @@ export default class CreateBlogForm extends React.PureComponent {
       });
     }
     else {
-      this.props.addBlog(this.state);
-      
+      this.props.addBlog({
+        author: this.state.author,
+        description: this.state.description
+      });
+
       this.setState({
           author: '',
           description: '',
@@ -47,6 +50,10 @@ export default class CreateBlogForm extends React.PureComponent {
   render() {
     return (
       <form className="form" onSubmit={this.handleSubmit}>
+        <h2 className="form__title">
+          Add new blog
+        </h2>
+        <button className="form__close-btn" type="button" onClick={this.props.togglePopup}>&times;</button>
         <input className="form__input"
                type="text"
                value={this.state.author}

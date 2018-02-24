@@ -1,9 +1,21 @@
-.filter__btn {
-  display: block;
+.filter {
+  width: 100%;
+  max-width: 700px;
   margin: 0 auto;
-  padding: 10px 20px;
-  border: none;
-  background-color: #A784D6;
-  color: #fff;
-  font-size: inherit;
+  margin-top: 60px;
+}
+
+.filter__title {
+  text-align: center;
+}
+
+.filter__input {
+  display: block;
+  width: 100%;
+  padding: 12px 6px;
+  font: inherit;
+}
+
+.filter__error {
+  text-align: center;
 }
