@@ -1,0 +1,23 @@
+.filter {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+.filter__title {
+  text-align: center;
+}
+
+.filter__input {
+  display: block;
+  width: 100%;
+  padding: 12px 6px;
+  font: inherit;
+}
+
+.filter__error {
+  margin-top: 15px;
+  color: var(--error-color);
+  text-align: center;
+}

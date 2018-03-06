@@ -1,0 +1,45 @@
+.blogs {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 40px;
+}
+
+.blogs__item {
+  position: relative;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid var(--primary);
+  background-color: #fff;
+  box-shadow: var(--box-shadow);
+}
+
+.blogs__title {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.blogs__text {
+  margin: 0;
+}
+
+.blogs__delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  border: 1px solid var(--primary);
+  background-color: #fff;
+}
+
+@media only screen and (max-width: 641px) {
+
+  .blogs {
+    padding: 0 10px;
+  }
+
+}

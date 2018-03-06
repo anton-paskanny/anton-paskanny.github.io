@@ -1,0 +1,25 @@
+.add-blog-btn {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 120px;
+  height: 120px;
+  border: none;
+  border-radius: 50%;
+  font-size: 64px;
+  line-height: 1;
+  background-color: var(--primary);
+  color: #fff;
+  cursor: pointer;
+  z-index: 1;
+}
+
+@media only screen and (max-width: 641px) {
+
+  .add-blog-btn {
+    width: 80px;
+    height: 80px;
+    right: 15px;
+  }
+
+}

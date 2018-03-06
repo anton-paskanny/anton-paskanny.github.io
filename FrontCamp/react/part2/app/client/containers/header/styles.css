@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.header__title {
+  margin: 0;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.header__link {
+  display: inline-block;
+  vertical-align: middle;
+  color: #fff;
+  background-color: var(--primary);
+  margin-right: 20px;
+  padding: 8px 16px;
+  border-radius: 18px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.header__link:last-child {
+  margin-right: 0;
+}
