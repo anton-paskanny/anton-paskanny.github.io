@@ -60,87 +60,41 @@
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 17);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-hot-loader");
+module.exports = require("react");
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = function(module) {
-	if(!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
+module.exports = require("react-redux");
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = require("react");
+module.exports = require("express");
 
 /***/ }),
 /* 3 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-redux");
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-router-dom");
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports) {
-
-module.exports = require("express");
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
 module.exports = require("passport-local");
 
 /***/ }),
-/* 7 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
 
-(function () {
-    var enterModule = __webpack_require__(0).enterModule;
 
-    enterModule && enterModule(module);
-})();
-
-var mongoose = __webpack_require__(9);
+var mongoose = __webpack_require__(7);
 var passportLocalMongoose = __webpack_require__(28);
 var Schema = mongoose.Schema;
 
@@ -154,177 +108,140 @@ userSchema.plugin(passportLocalMongoose);
 var User = mongoose.model('User', userSchema);
 
 module.exports = User;
-;
-
-(function () {
-    var reactHotLoader = __webpack_require__(0).default;
-
-    var leaveModule = __webpack_require__(0).leaveModule;
-
-    if (!reactHotLoader) {
-        return;
-    }
-
-    reactHotLoader.register(Schema, 'Schema', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/models/user.js');
-    reactHotLoader.register(userSchema, 'userSchema', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/models/user.js');
-    reactHotLoader.register(User, 'User', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/models/user.js');
-    leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 8 */
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-dom");
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+// blogs
+var ADD_BLOG = exports.ADD_BLOG = "ADD_BLOG";
+var DELETE_BLOG = exports.DELETE_BLOG = "DELETE_BLOG";
+var FETCH_BLOGS = exports.FETCH_BLOGS = "FETCH_BLOGS";
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
-
+// user
 var SET_LOGGED_IN = exports.SET_LOGGED_IN = 'SET_LOGGED_IN';
 
-var setLoggedIn = exports.setLoggedIn = function setLoggedIn(user) {
-  return {
-    type: SET_LOGGED_IN,
-    user: user
-  };
-};
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(SET_LOGGED_IN, 'SET_LOGGED_IN', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/actions/user.js');
-  reactHotLoader.register(setLoggedIn, 'setLoggedIn', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/actions/user.js');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
-
 /***/ }),
-/* 9 */
+/* 7 */
 /***/ (function(module, exports) {
 
 module.exports = require("mongoose");
 
 /***/ }),
-/* 10 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = require("passport");
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var config = {
+  port: 3000,
+  db: {
+    host: 'localhost',
+    name: 'blogs-app'
+  },
+  routes: {
+    users: {
+      logout: 'users/logout',
+      signin: 'users/signin',
+      signup: 'users/signup'
+    },
+    blogs: {
+      base: 'api/blogs'
+    }
+  }
+};
+
+module.exports = config;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.setLoggedIn = undefined;
+
+var _actionsTypes = __webpack_require__(6);
+
+var setLoggedIn = exports.setLoggedIn = function setLoggedIn(user) {
+  return {
+    type: _actionsTypes.SET_LOGGED_IN,
+    user: user
+  };
+};
 
 /***/ }),
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.signUpUser = exports.signInUser = exports.logoutUser = undefined;
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
+var _config = __webpack_require__(9);
 
-  enterModule && enterModule(module);
-})();
+var _config2 = _interopRequireDefault(_config);
 
-var ADD_BLOG = exports.ADD_BLOG = "ADD_BLOG";
-var DELETE_BLOG = exports.DELETE_BLOG = "DELETE_BLOG";
-var FETCH_BLOGS = exports.FETCH_BLOGS = "FETCH_BLOGS";
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var addBlog = exports.addBlog = function addBlog(blog) {
-  return function (dispatch) {
+var baseUrl = 'http://' + _config2.default.db.host + ':' + _config2.default.port;
 
-    fetch('http://localhost:3000/api/blogs', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(blog),
-      credentials: 'include',
-      mode: 'cors'
-    }).then(function (res) {
-      return res.json();
-    }).then(function (res) {
-      console.log('Add blog, response: ', res);
-
-      dispatch({
-        type: ADD_BLOG,
-        blog: res.blog
-      });
-    });
-  };
-};
-
-var deleteBlog = exports.deleteBlog = function deleteBlog(id) {
-  fetch('http://localhost:3000/api/blogs/' + encodeURI(id), {
-    method: 'DELETE',
-    mode: 'cors',
+var logoutUser = exports.logoutUser = function logoutUser() {
+  return fetch(baseUrl + '/' + _config2.default.routes.users.logout, {
     credentials: 'include'
+  }).then(function (res) {
+    return res.json();
   });
-
-  return {
-    type: DELETE_BLOG,
-    _id: id
-  };
 };
 
-var fetchBlogs = exports.fetchBlogs = function fetchBlogs() {
-  return function (dispatch) {
-
-    fetch('http://localhost:3000/api/blogs', {
-      method: 'GET',
-      mode: 'cors',
-      credentials: 'include'
-    }).then(function (res) {
-      return res.json();
-    }).then(function (res) {
-      dispatch({
-        type: FETCH_BLOGS,
-        blogs: res.blogs
-      });
-    });
-  };
+var signInUser = exports.signInUser = function signInUser(data) {
+  return fetch(baseUrl + '/' + _config2.default.routes.users.signin, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify(data)
+  }).then(function (res) {
+    return res.json();
+  });
 };
-;
 
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(ADD_BLOG, "ADD_BLOG", "D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/actions/blogs.js");
-  reactHotLoader.register(DELETE_BLOG, "DELETE_BLOG", "D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/actions/blogs.js");
-  reactHotLoader.register(FETCH_BLOGS, "FETCH_BLOGS", "D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/actions/blogs.js");
-  reactHotLoader.register(addBlog, "addBlog", "D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/actions/blogs.js");
-  reactHotLoader.register(deleteBlog, "deleteBlog", "D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/actions/blogs.js");
-  reactHotLoader.register(fetchBlogs, "fetchBlogs", "D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/actions/blogs.js");
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
+var signUpUser = exports.signUpUser = function signUpUser(data) {
+  return fetch(baseUrl + '/' + _config2.default.routes.users.signup, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify(data)
+  }).then(function (res) {
+    return res.json();
+  });
+};
 
 /***/ }),
 /* 12 */
@@ -337,13 +254,7 @@ module.exports = require("bcrypt-nodejs");
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
 
 var winston = __webpack_require__(23);
 
@@ -359,59 +270,19 @@ var logger = winston.createLogger({
 });
 
 module.exports = logger;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(logger, 'logger', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/logger.js');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
 
 var getRequestURL = function getRequestURL(req) {
   return req.protocol + '://' + req.get('host') + req.originalUrl;
 };
 
 module.exports = getRequestURL;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(getRequestURL, 'getRequestURL', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/utils/parseUrl.js');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
 /* 15 */
@@ -421,31 +292,103 @@ module.exports = require("redux");
 
 /***/ }),
 /* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.fetchBlogs = exports.deleteBlog = exports.addBlog = undefined;
+
+var _actionsTypes = __webpack_require__(6);
+
+var _config = __webpack_require__(9);
+
+var _config2 = _interopRequireDefault(_config);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var baseUrl = 'http://' + _config2.default.db.host + ':' + _config2.default.port + '/' + _config2.default.routes.blogs.base;
+
+var addBlog = exports.addBlog = function addBlog(blog) {
+  return function (dispatch) {
+
+    return fetch(baseUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(blog),
+      credentials: 'include',
+      mode: 'cors'
+    }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      dispatch({
+        type: _actionsTypes.ADD_BLOG,
+        blog: res.blog
+      });
+    });
+  };
+};
+
+var deleteBlog = exports.deleteBlog = function deleteBlog(id) {
+  return function (dispatch) {
+
+    return fetch(baseUrl + '/' + encodeURI(id), {
+      method: 'DELETE',
+      mode: 'cors',
+      credentials: 'include'
+    }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      dispatch({
+        type: _actionsTypes.DELETE_BLOG,
+        _id: res._id
+      });
+    });
+  };
+};
+
+var fetchBlogs = exports.fetchBlogs = function fetchBlogs() {
+  return function (dispatch) {
+
+    return fetch(baseUrl, {
+      method: 'GET',
+      mode: 'cors',
+      credentials: 'include'
+    }).then(function (res) {
+      return res.json();
+    }).then(function (res) {
+      dispatch({
+        type: _actionsTypes.FETCH_BLOGS,
+        blogs: res.blogs
+      });
+    });
+  };
+};
+
+/***/ }),
+/* 17 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module, __dirname) {
+/* WEBPACK VAR INJECTION */(function(__dirname) {
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
+var express = __webpack_require__(2);
+var path = __webpack_require__(19);
+var mongoose = __webpack_require__(7);
+var passport = __webpack_require__(8);
+var session = __webpack_require__(20);
+var LocalStrategy = __webpack_require__(3).Strategy;
 
-  enterModule && enterModule(module);
-})();
-
-var express = __webpack_require__(5);
-var path = __webpack_require__(18);
-var mongoose = __webpack_require__(9);
-var passport = __webpack_require__(10);
-var session = __webpack_require__(19);
-var LocalStrategy = __webpack_require__(6).Strategy;
-
-var config = __webpack_require__(20);
+var config = __webpack_require__(9);
 
 // App's routes
 var blogs_router = __webpack_require__(21);
@@ -479,7 +422,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Initialize passport
-var initPassport = __webpack_require__(57);
+var initPassport = __webpack_require__(58);
 initPassport(passport);
 
 // Enable taking data from req.body
@@ -504,101 +447,34 @@ app.use(function (err, req, res, next) {
     });
   }
 
-  res.status(err.status || 500).send({ msg: err.message });
+  res.status(err.status || 500).send({ message: err.message });
 });
 
 app.listen(config.port, function () {
   return console.log("Server is listening on port " + config.port);
 });
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(LocalStrategy, "LocalStrategy", "D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/app.js");
-  reactHotLoader.register(app, "app", "D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/app.js");
-  reactHotLoader.register(db, "db", "D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/app.js");
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module), "/"))
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports) {
-
-module.exports = require("path");
+/* WEBPACK VAR INJECTION */}.call(exports, "/"))
 
 /***/ }),
 /* 19 */
 /***/ (function(module, exports) {
 
-module.exports = require("express-session");
+module.exports = require("path");
 
 /***/ }),
 /* 20 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
-
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
-
-var config = {
-  port: 3000,
-  db: {
-    host: 'localhost',
-    name: 'blogs-app'
-  }
-};
-
-module.exports = config;
-
-// "blogs-app" - new name
-
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(config, 'config', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/config.js');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
+module.exports = require("express-session");
 
 /***/ }),
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
 
-  enterModule && enterModule(module);
-})();
-
-var express = __webpack_require__(5);
+var express = __webpack_require__(2);
 var blogsApiController = __webpack_require__(22);
 var isAuthenticated = __webpack_require__(25);
 
@@ -611,23 +487,6 @@ router.post('/', isAuthenticated, blogsApiController.createBlog);
 router.delete('/:id', isAuthenticated, blogsApiController.deleteBlog);
 
 module.exports = router;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(router, 'router', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/routes/blogs.js');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
 /* 22 */
@@ -686,10 +545,10 @@ exports.deleteBlog = function (req, res, next) {
   Blog.findById(decodeURI(req.params.id), function (err, blog) {
     if (err) throw next(err);
 
-    blog.remove(function (err) {
+    blog.remove(function (err, result) {
       if (err) throw next(err);
 
-      res.send({ msg: 'Blog was deleted' });
+      res.send({ msg: 'Blog was deleted', _id: result._id });
     });
   });
 };
@@ -705,15 +564,9 @@ module.exports = require("winston");
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
 
-  enterModule && enterModule(module);
-})();
-
-var mongoose = __webpack_require__(9);
+var mongoose = __webpack_require__(7);
 var Schema = mongoose.Schema;
 
 var blogSchema = new Schema({
@@ -724,38 +577,13 @@ var blogSchema = new Schema({
 var Blog = mongoose.model('Blog', blogSchema);
 
 module.exports = Blog;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(Schema, 'Schema', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/models/blog.js');
-  reactHotLoader.register(blogSchema, 'blogSchema', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/models/blog.js');
-  reactHotLoader.register(Blog, 'Blog', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/models/blog.js');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
 /* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
 
 var isAuthenticated = function isAuthenticated(req, res, next) {
   if (req.isAuthenticated()) return next();
@@ -767,39 +595,16 @@ var isAuthenticated = function isAuthenticated(req, res, next) {
 };
 
 module.exports = isAuthenticated;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(isAuthenticated, 'isAuthenticated', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/utils/authChecker.js');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
 
-  enterModule && enterModule(module);
-})();
-
-var express = __webpack_require__(5);
-var passport = __webpack_require__(10);
+var express = __webpack_require__(2);
+var passport = __webpack_require__(8);
 var usersApiController = __webpack_require__(27);
 
 var router = express.Router();
@@ -814,23 +619,6 @@ router.post('/signin', passport.authenticate('signin'), usersApiController.doSig
 router.get('/logout', usersApiController.doLogOut);
 
 module.exports = router;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(router, "router", "D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/routes/users.js");
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
 /* 27 */
@@ -841,8 +629,8 @@ module.exports = router;
 
 var logger = __webpack_require__(13);
 var getRequestURL = __webpack_require__(14);
-var passport = __webpack_require__(10);
-var User = __webpack_require__(7);
+var passport = __webpack_require__(8);
+var User = __webpack_require__(4);
 
 // signup action
 exports.doSignup = function (req, res, next) {
@@ -859,37 +647,7 @@ exports.doSignup = function (req, res, next) {
     msg: 'You have successfully signed up!',
     user: req.user
   });
-
-  // return passport.authenticate('signup', (err, userData) => {
-  //
-  //   if (err) {
-  //     return res.status(400).json({
-  //       success: false,
-  //       msg: err.message
-  //     });
-  //   }
-  //
-  //   return res.status(200).json({
-  //     success: true,
-  //     msg: 'You have successfully signed up! Now you should be able to log in',
-  //     userSessionId: userData._id
-  //   });
-  //
-  // })(req, res, next);
 };
-
-// signin page
-/*exports.signin = function(req, res) {
-
-  logger.log({
-    level: 'debug',
-    message: 'Redirect to login page',
-    timestamp: (new Date()).toUTCString(),
-    label: { url: getRequestURL(req) }
-  });
-
-  res.send({ succes: true, msg: "Signin page" });
-};*/
 
 // signin action
 exports.doSignIn = function (req, res, next) {
@@ -932,36 +690,15 @@ module.exports = require("passport-local-mongoose");
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module, React) {
 
-var _redux = __webpack_require__(15);
 
-var _server = __webpack_require__(30);
+var _ssr = __webpack_require__(30);
 
-var _reactRedux = __webpack_require__(3);
-
-var _reactRouterDom = __webpack_require__(4);
-
-var _index = __webpack_require__(31);
-
-var _index2 = _interopRequireDefault(_index);
-
-var _App = __webpack_require__(34);
-
-var _App2 = _interopRequireDefault(_App);
+var _ssr2 = _interopRequireDefault(_ssr);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
-
-// var App
-// var ReactDOMServer = require('react-dom/server');
-var express = __webpack_require__(5);
-
+var express = __webpack_require__(2);
 var router = express.Router();
 
 router.use(function (req, res, next) {
@@ -972,12 +709,46 @@ router.use(function (req, res, next) {
 });
 
 router.get('/', function (req, res, next) {
-  // res.sendFile(__dirname + '../../dist/index.html');
-  console.log('Get index page');
-  handleRender(req, res);
+  (0, _ssr2.default)(req, res);
+  next();
 });
 
-function handleRender(req, res) {
+module.exports = router;
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(React) {
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _redux = __webpack_require__(15);
+
+var _server = __webpack_require__(31);
+
+var _reactRedux = __webpack_require__(1);
+
+var _reactRouterDom = __webpack_require__(5);
+
+var _index = __webpack_require__(32);
+
+var _index2 = _interopRequireDefault(_index);
+
+var _App = __webpack_require__(35);
+
+var _App2 = _interopRequireDefault(_App);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var renderFullPage = function renderFullPage(html, preloadedState) {
+  return '\n    <!DOCTYPE html>\n    <html lang="en">\n    <head>\n      <meta charset="UTF-8">\n      <meta name="viewport" content="width=device-width, initial-scale=1.0">\n      <meta http-equiv="X-UA-Compatible" content="ie=edge">\n      <link href="/dist/styles.css" rel="stylesheet">\n      <title>Simple react app</title>\n    </head>\n    <body>\n      <div class="app">' + html + '</div>\n\n      <script>\n        window.__PRELOADED_STATE__ = ' + JSON.stringify(preloadedState).replace(/</g, '\\u003c') + '\n      </script>\n      <script src="/dist/bundle.js"></script>\n    </body>\n    </html>\n  ';
+};
+
+var handleInitialRender = function handleInitialRender(req, res) {
   var store = (0, _redux.createStore)(_index2.default);
 
   var html = (0, _server.renderToString)(React.createElement(
@@ -995,43 +766,21 @@ function handleRender(req, res) {
   res.send(renderFullPage(html, preloadedState));
 };
 
-function renderFullPage(html, preloadedState) {
-  return '\n    <!DOCTYPE html>\n    <html lang="en">\n    <head>\n      <meta charset="UTF-8">\n      <meta name="viewport" content="width=device-width, initial-scale=1.0">\n      <meta http-equiv="X-UA-Compatible" content="ie=edge">\n      <link href="/dist/styles.css" rel="stylesheet">\n      <title>Simple react app</title>\n    </head>\n    <body>\n      <div class="app">' + html + '</div>\n\n      <script>\n        window.__PRELOADED_STATE__ = ' + JSON.stringify(preloadedState).replace(/</g, '\\u003c') + '\n      </script>\n      <script src="/dist/bundle.js"></script>\n    </body>\n    </html>\n  ';
-}
-
-module.exports = router;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(router, 'router', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/routes/index.js');
-  reactHotLoader.register(handleRender, 'handleRender', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/routes/index.js');
-  reactHotLoader.register(renderFullPage, 'renderFullPage', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/routes/index.js');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module), __webpack_require__(2)))
+exports.default = handleInitialRender;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -1039,85 +788,54 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(15);
 
-var _blogs = __webpack_require__(32);
+var _blogs = __webpack_require__(33);
 
 var _blogs2 = _interopRequireDefault(_blogs);
 
-var _user = __webpack_require__(33);
+var _user = __webpack_require__(34);
 
 var _user2 = _interopRequireDefault(_user);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
 
 var blogsApp = (0, _redux.combineReducers)({
   blogs: _blogs2.default,
   user: _user2.default
 });
 
-var _default = blogsApp;
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(blogsApp, 'blogsApp', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/reducers/index.js');
-  reactHotLoader.register(_default, 'default', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/reducers/index.js');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
+exports.default = blogsApp;
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _blogs = __webpack_require__(11);
-
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
+var _actionsTypes = __webpack_require__(6);
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-var _default = function _default() {
+exports.default = function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
   switch (action.type) {
-    case _blogs.ADD_BLOG:
+    case _actionsTypes.ADD_BLOG:
       {
         return [].concat(_toConsumableArray(state), [action.blog]);
       }
-    case _blogs.DELETE_BLOG:
+    case _actionsTypes.DELETE_BLOG:
       {
         return state.filter(function (blog) {
           return blog._id !== action._id;
         });
       }
-    case _blogs.FETCH_BLOGS:
+    case _actionsTypes.FETCH_BLOGS:
       {
         return action.blogs;
       }
@@ -1128,50 +846,25 @@ var _default = function _default() {
   }
 };
 
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(_default, 'default', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/reducers/blogs.js');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
-
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _user = __webpack_require__(8);
+var _actionsTypes = __webpack_require__(6);
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
-
-var _default = function _default() {
+exports.default = function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { isLoggedIn: false, data: null };
   var action = arguments[1];
 
   switch (action.type) {
-    case _user.SET_LOGGED_IN:
+    case _actionsTypes.SET_LOGGED_IN:
       {
         return {
           isLoggedIn: action.user ? true : false,
@@ -1185,31 +878,12 @@ var _default = function _default() {
   }
 };
 
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(_default, 'default', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/reducers/user.js');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
-
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -1217,49 +891,43 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(4);
+var _reactRouterDom = __webpack_require__(5);
 
-var _reactRedux = __webpack_require__(3);
+var _reactRedux = __webpack_require__(1);
 
-var _AuthRoute = __webpack_require__(35);
+var _AuthRoute = __webpack_require__(36);
 
 var _AuthRoute2 = _interopRequireDefault(_AuthRoute);
 
-var _Blogs = __webpack_require__(36);
+var _Blogs = __webpack_require__(37);
 
 var _Blogs2 = _interopRequireDefault(_Blogs);
 
-var _Header = __webpack_require__(49);
+var _Header = __webpack_require__(50);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Intro = __webpack_require__(51);
+var _Intro = __webpack_require__(52);
 
 var _Intro2 = _interopRequireDefault(_Intro);
 
-var _SignUp = __webpack_require__(53);
+var _SignUp = __webpack_require__(54);
 
 var _SignUp2 = _interopRequireDefault(_SignUp);
 
-var _SignIn = __webpack_require__(54);
+var _SignIn = __webpack_require__(55);
 
 var _SignIn2 = _interopRequireDefault(_SignIn);
 
-__webpack_require__(55);
-
 __webpack_require__(56);
 
+__webpack_require__(57);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1297,50 +965,19 @@ var App = function (_React$Component) {
         )
       );
     }
-  }, {
-    key: '__reactstandin__regenerateByEval',
-    value: function __reactstandin__regenerateByEval(key, code) {
-      this[key] = eval(code);
-    }
   }]);
 
   return App;
 }(_react2.default.Component);
 
-// const mapStateToProps = state => ({
-//   isLoggedIn: state.user.isLoggedIn
-// });
-
-// export default connect(mapStateToProps, null)(App);
-
-
-var _default = App;
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(App, 'App', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/app/App.jsx');
-  reactHotLoader.register(_default, 'default', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/app/App.jsx');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
+exports.default = App;
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -1348,21 +985,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(4);
+var _reactRouterDom = __webpack_require__(5);
 
-var _reactRedux = __webpack_require__(3);
+var _reactRedux = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1388,11 +1019,6 @@ var AuthRoute = function (_React$Component) {
           return _this2.props.isLoggedIn ? _this2.props.component : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' });
         } });
     }
-  }, {
-    key: '__reactstandin__regenerateByEval',
-    value: function __reactstandin__regenerateByEval(key, code) {
-      this[key] = eval(code);
-    }
   }]);
 
   return AuthRoute;
@@ -1406,35 +1032,14 @@ var mapStateToProps = function mapStateToProps(state) {
   };
 };
 
-var _default = (0, _reactRedux.connect)(mapStateToProps, null)(AuthRoute);
-
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(AuthRoute, 'AuthRoute', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/authRoute/AuthRoute.jsx');
-  reactHotLoader.register(mapStateToProps, 'mapStateToProps', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/authRoute/AuthRoute.jsx');
-  reactHotLoader.register(_default, 'default', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/authRoute/AuthRoute.jsx');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
+exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(AuthRoute);
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -1442,43 +1047,37 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(3);
+var _reactRedux = __webpack_require__(1);
 
-var _blogs = __webpack_require__(11);
+var _blogs = __webpack_require__(16);
 
-var _AddBlogBtn = __webpack_require__(37);
+var _AddBlogBtn = __webpack_require__(38);
 
 var _AddBlogBtn2 = _interopRequireDefault(_AddBlogBtn);
 
-var _BlogsList = __webpack_require__(39);
+var _BlogsList = __webpack_require__(40);
 
 var _BlogsList2 = _interopRequireDefault(_BlogsList);
 
-var _CreateBlogForm = __webpack_require__(41);
+var _CreateBlogForm = __webpack_require__(42);
 
 var _CreateBlogForm2 = _interopRequireDefault(_CreateBlogForm);
 
-var _Filter = __webpack_require__(43);
+var _Filter = __webpack_require__(44);
 
 var _Filter2 = _interopRequireDefault(_Filter);
 
-var _Overlay = __webpack_require__(45);
+var _Overlay = __webpack_require__(46);
 
 var _Overlay2 = _interopRequireDefault(_Overlay);
 
-__webpack_require__(48);
+__webpack_require__(49);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1500,7 +1099,6 @@ var Blogs = function (_React$Component) {
       searchValue: ''
     };
 
-    _this.addBlog = _this.addBlog.bind(_this);
     _this.filterByAuthor = _this.filterByAuthor.bind(_this);
     _this.togglePopup = _this.togglePopup.bind(_this);
     return _this;
@@ -1516,11 +1114,6 @@ var Blogs = function (_React$Component) {
       }
     }
   }, {
-    key: 'addBlog',
-    value: function addBlog(blog) {
-      this.props.addBlog(blog);
-    }
-  }, {
     key: 'filterBlogsArray',
     value: function filterBlogsArray(blogs, searchVal) {
       return blogs.filter(function (blog, index) {
@@ -1533,9 +1126,7 @@ var Blogs = function (_React$Component) {
       var searchVal = event.target.value;
 
       if (searchVal.trim()) {
-
         var blogs = this.filterBlogsArray(this.props.blogs, searchVal);
-
         this.setState({
           blogs: blogs,
           searchVal: searchVal
@@ -1588,11 +1179,6 @@ var Blogs = function (_React$Component) {
         this.state.showPopup && _react2.default.createElement(_Overlay2.default, { component: _react2.default.createElement(_CreateBlogForm2.default, { togglePopup: this.togglePopup }) })
       );
     }
-  }, {
-    key: '__reactstandin__regenerateByEval',
-    value: function __reactstandin__regenerateByEval(key, code) {
-      this[key] = eval(code);
-    }
   }]);
 
   return Blogs;
@@ -1615,94 +1201,47 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Blogs);
-
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(Blogs, 'Blogs', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/blogs/Blogs.jsx');
-  reactHotLoader.register(mapStateToProps, 'mapStateToProps', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/blogs/Blogs.jsx');
-  reactHotLoader.register(mapDispatchToProps, 'mapDispatchToProps', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/blogs/Blogs.jsx');
-  reactHotLoader.register(_default, 'default', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/blogs/Blogs.jsx');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Blogs);
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(38);
+__webpack_require__(39);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
-
-var _default = function _default(props) {
+exports.default = function (props) {
   return _react2.default.createElement(
     'button',
-    { className: 'add-blog-btn', onClick: props.togglePopup },
+    { className: 'add-blog-btn hoverable', onClick: props.togglePopup },
     '+'
   );
 };
 
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(_default, 'default', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/addBlogBtn/AddBlogBtn.jsx');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
-
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -1710,21 +1249,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Blog = __webpack_require__(40);
+var _Blog = __webpack_require__(41);
 
 var _Blog2 = _interopRequireDefault(_Blog);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1759,61 +1292,31 @@ var BlogsList = function (_React$Component) {
         this.renderBlogs()
       );
     }
-  }, {
-    key: '__reactstandin__regenerateByEval',
-    value: function __reactstandin__regenerateByEval(key, code) {
-      this[key] = eval(code);
-    }
   }]);
 
   return BlogsList;
 }(_react2.default.Component);
 
-var _default = BlogsList;
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(BlogsList, 'BlogsList', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/blogs/list/BlogsList.jsx');
-  reactHotLoader.register(_default, 'default', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/blogs/list/BlogsList.jsx');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
+exports.default = BlogsList;
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
-
-var _default = function _default(props) {
+exports.default = function (props) {
 
   var deleteBlog = function deleteBlog() {
     props.deleteBlog(props.data._id);
@@ -1840,31 +1343,12 @@ var _default = function _default(props) {
   );
 };
 
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(_default, "default", "D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/blogs/blog/Blog.jsx");
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
-
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -1872,23 +1356,17 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(3);
+var _reactRedux = __webpack_require__(1);
 
-var _blogs = __webpack_require__(11);
+var _blogs = __webpack_require__(16);
 
-__webpack_require__(42);
+__webpack_require__(43);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1979,18 +1457,13 @@ var CreateBlogForm = function (_React$PureComponent) {
           onChange: this.handleDescriptionChange,
           placeholder: 'Description'
         }),
-        _react2.default.createElement('input', { className: 'form__submit', type: 'submit', value: 'Send' }),
+        _react2.default.createElement('input', { className: 'form__submit hoverable', type: 'submit', value: 'Send' }),
         this.state.showError && _react2.default.createElement(
           'p',
           { className: 'form__error' },
           'Please, fill in all necessary fields'
         )
       );
-    }
-  }, {
-    key: '__reactstandin__regenerateByEval',
-    value: function __reactstandin__regenerateByEval(key, code) {
-      this[key] = eval(code);
     }
   }]);
 
@@ -2005,41 +1478,20 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-var _default = (0, _reactRedux.connect)(null, mapDispatchToProps)(CreateBlogForm);
-
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(CreateBlogForm, 'CreateBlogForm', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/forms/createBlog/CreateBlogForm.jsx');
-  reactHotLoader.register(mapDispatchToProps, 'mapDispatchToProps', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/forms/createBlog/CreateBlogForm.jsx');
-  reactHotLoader.register(_default, 'default', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/forms/createBlog/CreateBlogForm.jsx');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
+exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(CreateBlogForm);
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -2047,21 +1499,13 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(3);
-
-__webpack_require__(44);
+__webpack_require__(45);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2078,10 +1522,6 @@ var Filter = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Filter.__proto__ || Object.getPrototypeOf(Filter)).call(this, props));
 
     _this.searchInput = {};
-
-    _this.state = {
-      showFilteringError: false
-    };
     return _this;
   }
 
@@ -2113,73 +1553,43 @@ var Filter = function (_React$Component) {
         )
       );
     }
-  }, {
-    key: '__reactstandin__regenerateByEval',
-    value: function __reactstandin__regenerateByEval(key, code) {
-      this[key] = eval(code);
-    }
   }]);
 
   return Filter;
 }(_react2.default.Component);
 
-var _default = Filter;
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(Filter, 'Filter', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/filter/Filter.jsx');
-  reactHotLoader.register(_default, 'default', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/filter/Filter.jsx');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
+exports.default = Filter;
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(46);
+var _reactDom = __webpack_require__(47);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-__webpack_require__(47);
+__webpack_require__(48);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
-
-var _default = function _default(props) {
+exports.default = function (props) {
   return _reactDom2.default.createPortal(_react2.default.createElement(
     'div',
     { className: 'overlay' },
@@ -2187,36 +1597,11 @@ var _default = function _default(props) {
   ), document.querySelector("body"));
 };
 
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(_default, 'default', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/overlay/Overlay.jsx');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
-
-/***/ }),
-/* 46 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-dom");
-
 /***/ }),
 /* 47 */
 /***/ (function(module, exports) {
 
-
+module.exports = require("react-dom");
 
 /***/ }),
 /* 48 */
@@ -2226,10 +1611,16 @@ module.exports = require("react-dom");
 
 /***/ }),
 /* 49 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -2237,25 +1628,21 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(4);
+var _reactRouterDom = __webpack_require__(5);
 
-var _reactRedux = __webpack_require__(3);
+var _reactRedux = __webpack_require__(1);
 
-var _user = __webpack_require__(8);
+var _user = __webpack_require__(10);
 
-__webpack_require__(50);
+var _user2 = __webpack_require__(11);
+
+__webpack_require__(51);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2282,12 +1669,7 @@ var Header = function (_React$Component) {
 
       event.preventDefault();
 
-      fetch('http://localhost:3000/users/logout', {
-        credentials: 'include'
-      }).then(function (res) {
-        return res.json();
-      }).then(function (res) {
-        console.log('Logout handler: ', res);
+      (0, _user2.logoutUser)().then(function (res) {
         _this2.props.setLoggedIn(res.user);
       });
     }
@@ -2311,31 +1693,26 @@ var Header = function (_React$Component) {
           { className: 'header__nav' },
           !this.props.isLoggedIn && _react2.default.createElement(
             _reactRouterDom.Link,
-            { className: 'header__link', to: '/signin' },
+            { className: 'header__link hoverable', to: '/signin' },
             'Sign In'
           ),
           _react2.default.createElement(
             _reactRouterDom.Link,
-            { className: 'header__link', to: '/signup' },
+            { className: 'header__link hoverable', to: '/signup' },
             'Sign Up'
           ),
           this.props.isLoggedIn && _react2.default.createElement(
             _reactRouterDom.Link,
-            { className: 'header__link', to: '/blogs' },
+            { className: 'header__link hoverable', to: '/blogs' },
             'Blogs'
           ),
           this.props.isLoggedIn && _react2.default.createElement(
             'a',
-            { className: 'header__link', href: '#', onClick: this.logOutHandler },
+            { className: 'header__link hoverable', href: '#', onClick: this.logOutHandler },
             'Log Out'
           )
         )
       );
-    }
-  }, {
-    key: '__reactstandin__regenerateByEval',
-    value: function __reactstandin__regenerateByEval(key, code) {
-      this[key] = eval(code);
     }
   }]);
 
@@ -2357,62 +1734,34 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-var _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Header);
-
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(Header, 'Header', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/header/Header.jsx');
-  reactHotLoader.register(mapStateToProps, 'mapStateToProps', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/header/Header.jsx');
-  reactHotLoader.register(mapDispatchToProps, 'mapDispatchToProps', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/header/Header.jsx');
-  reactHotLoader.register(_default, 'default', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/header/Header.jsx');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
+exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Header);
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(52);
+__webpack_require__(53);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
-
-var _default = function _default(props) {
+exports.default = function (props) {
   return _react2.default.createElement(
     'div',
     { className: 'intro' },
@@ -2429,37 +1778,18 @@ var _default = function _default(props) {
   );
 };
 
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(_default, 'default', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/intro/Intro.jsx');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
-
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -2467,23 +1797,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(3);
+var _reactRedux = __webpack_require__(1);
 
-var _user = __webpack_require__(8);
+var _user = __webpack_require__(10);
 
-__webpack_require__(16);
+var _user2 = __webpack_require__(11);
+
+__webpack_require__(17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2537,23 +1863,12 @@ var SignUp = function (_React$Component) {
         showSignInError: false
       });
 
-      fetch('http://localhost:3000/users/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({
-          username: this.inputLogin.value,
-          password: this.inputPass.value
-        })
+      (0, _user2.signUpUser)({
+        username: this.inputLogin.value,
+        password: this.inputPass.value
       }).then(function (res) {
-        return res.json();
-      }).then(function (res) {
-
-        // res.success ? : this.errorResponseHandler(res.msg);
 
         if (res.success) {
-          console.log('Success!!!');
-
           _this2.props.setLoggedIn(res.user);
           _this2.props.history.push('/blogs');
         } else {
@@ -2601,7 +1916,7 @@ var SignUp = function (_React$Component) {
           },
           disable: this.state.disableElements ? 'true' : 'false'
         }),
-        _react2.default.createElement('input', { className: 'auth-form__submit',
+        _react2.default.createElement('input', { className: 'auth-form__submit hoverable',
           type: 'submit',
           value: 'Sign Up',
           disable: this.state.disableElements ? 'true' : 'false'
@@ -2612,11 +1927,6 @@ var SignUp = function (_React$Component) {
           this.state.errorMsg
         )
       );
-    }
-  }, {
-    key: '__reactstandin__regenerateByEval',
-    value: function __reactstandin__regenerateByEval(key, code) {
-      this[key] = eval(code);
     }
   }]);
 
@@ -2631,35 +1941,14 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-var _default = (0, _reactRedux.connect)(null, mapDispatchToProps)(SignUp);
-
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(SignUp, 'SignUp', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/forms/auth/signup/SignUp.jsx');
-  reactHotLoader.register(mapDispatchToProps, 'mapDispatchToProps', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/forms/auth/signup/SignUp.jsx');
-  reactHotLoader.register(_default, 'default', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/forms/auth/signup/SignUp.jsx');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
+exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(SignUp);
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
+
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -2667,25 +1956,19 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(2);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _user = __webpack_require__(8);
+var _user = __webpack_require__(10);
 
-var _reactRedux = __webpack_require__(3);
+var _reactRedux = __webpack_require__(1);
 
-var _reactRouterDom = __webpack_require__(4);
+var _user2 = __webpack_require__(11);
 
-__webpack_require__(16);
+__webpack_require__(17);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
-
-  enterModule && enterModule(module);
-})();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -2739,22 +2022,15 @@ var SignIn = function (_React$Component) {
         showSignInError: false
       });
 
-      fetch('http://localhost:3000/users/signin', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({
-          username: this.inputLogin.value,
-          password: this.inputPass.value
-        })
-      }).then(function (res) {
-        return res.json();
+      (0, _user2.signInUser)({
+        username: this.inputLogin.value,
+        password: this.inputPass.value
       }).then(function (res) {
         if (res.success) {
           _this2.props.setLoggedIn(res.user);
           _this2.props.history.push('/blogs');
         } else {
-          _this2.errorResponseHandler(res.msg);
+          _this2.errorResponseHandler(res.message);
         }
       }).catch(function (err) {
         _this2.errorResponseHandler(err.message);
@@ -2798,7 +2074,7 @@ var SignIn = function (_React$Component) {
           },
           disable: this.state.disableElements ? 'true' : 'false'
         }),
-        _react2.default.createElement('input', { className: 'auth-form__submit',
+        _react2.default.createElement('input', { className: 'auth-form__submit hoverable',
           type: 'submit',
           value: 'Sign In',
           disable: this.state.disableElements ? 'true' : 'false'
@@ -2809,11 +2085,6 @@ var SignIn = function (_React$Component) {
           this.state.errorMsg
         )
       );
-    }
-  }, {
-    key: '__reactstandin__regenerateByEval',
-    value: function __reactstandin__regenerateByEval(key, code) {
-      this[key] = eval(code);
     }
   }]);
 
@@ -2828,34 +2099,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-var _default = (0, _reactRedux.connect)(null, mapDispatchToProps)(SignIn);
-
-exports.default = _default;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(SignIn, 'SignIn', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/forms/auth/signin/SignIn.jsx');
-  reactHotLoader.register(mapDispatchToProps, 'mapDispatchToProps', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/forms/auth/signin/SignIn.jsx');
-  reactHotLoader.register(_default, 'default', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/client/components/forms/auth/signin/SignIn.jsx');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
-
-/***/ }),
-/* 55 */
-/***/ (function(module, exports) {
-
-
+exports.default = (0, _reactRedux.connect)(null, mapDispatchToProps)(SignIn);
 
 /***/ }),
 /* 56 */
@@ -2865,22 +2109,22 @@ exports.default = _default;
 
 /***/ }),
 /* 57 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
 
-  enterModule && enterModule(module);
-})();
-
-var signInUser = __webpack_require__(58);
-var signUpUser = __webpack_require__(59);
-var User = __webpack_require__(7);
+var signInUser = __webpack_require__(59);
+var signUpUser = __webpack_require__(60);
+var User = __webpack_require__(4);
 var bCrypt = __webpack_require__(12);
-var LocalStrategy = __webpack_require__(6).Strategy;
+var LocalStrategy = __webpack_require__(3).Strategy;
 
 var initPassport = function initPassport(passport) {
 
@@ -2899,40 +2143,16 @@ var initPassport = function initPassport(passport) {
 };
 
 module.exports = initPassport;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(LocalStrategy, 'LocalStrategy', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/passport/init.js');
-  reactHotLoader.register(initPassport, 'initPassport', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/passport/init.js');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
 
-(function () {
-  var enterModule = __webpack_require__(0).enterModule;
 
-  enterModule && enterModule(module);
-})();
-
-var LocalStrategy = __webpack_require__(6).Strategy;
-var User = __webpack_require__(7);
+var LocalStrategy = __webpack_require__(3).Strategy;
+var User = __webpack_require__(4);
 var bCrypt = __webpack_require__(12);
 
 var isValidPassword = function isValidPassword(user, password) {
@@ -2973,41 +2193,16 @@ var signInUser = function signInUser(passport) {
 };
 
 module.exports = signInUser;
-;
-
-(function () {
-  var reactHotLoader = __webpack_require__(0).default;
-
-  var leaveModule = __webpack_require__(0).leaveModule;
-
-  if (!reactHotLoader) {
-    return;
-  }
-
-  reactHotLoader.register(LocalStrategy, 'LocalStrategy', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/passport/signin.js');
-  reactHotLoader.register(isValidPassword, 'isValidPassword', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/passport/signin.js');
-  reactHotLoader.register(signInUser, 'signInUser', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/passport/signin.js');
-  leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(module) {
 
-(function () {
-                var enterModule = __webpack_require__(0).enterModule;
 
-                enterModule && enterModule(module);
-})();
-
-var LocalStrategy = __webpack_require__(6).Strategy;
-var User = __webpack_require__(7);
+var LocalStrategy = __webpack_require__(3).Strategy;
+var User = __webpack_require__(4);
 var bCrypt = __webpack_require__(12);
 
 var createHash = function createHash(password) {
@@ -3017,7 +2212,7 @@ var createHash = function createHash(password) {
 var signUpUser = function signUpUser(passport) {
 
                 passport.use('signup', new LocalStrategy({
-                                passReqToCallback: true // allows us to pass back the entire request to the callback
+                                passReqToCallback: true
                 }, function (req, username, password, done) {
                                 // find a user in Mongo with provided username
                                 User.findOne({ 'username': username }, function (err, user) {
@@ -3051,25 +2246,6 @@ var signUpUser = function signUpUser(passport) {
 };
 
 module.exports = signUpUser;
-;
-
-(function () {
-                var reactHotLoader = __webpack_require__(0).default;
-
-                var leaveModule = __webpack_require__(0).leaveModule;
-
-                if (!reactHotLoader) {
-                                return;
-                }
-
-                reactHotLoader.register(LocalStrategy, 'LocalStrategy', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/passport/signup.js');
-                reactHotLoader.register(createHash, 'createHash', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/passport/signup.js');
-                reactHotLoader.register(signUpUser, 'signUpUser', 'D:/FrontCamp/anton-paskanny.github.io/FrontCamp/react/part2/app/server/passport/signup.js');
-                leaveModule(module);
-})();
-
-;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)(module)))
 
 /***/ })
 /******/ ]);

@@ -3,7 +3,7 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import appReducer from '../../client/reducers/index.js';
-import App from '../../client/components/app/App.jsx';
+import App from '../../client/containers/app/App.jsx';
 
 const renderFullPage = (html, preloadedState) => (
   `

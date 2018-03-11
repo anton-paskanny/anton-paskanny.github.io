@@ -460,3 +460,39 @@
 {"level":"debug","message":"Get blogs","timestamp":"Tue, 06 Mar 2018 17:34:11 GMT","label":{"params":{},"url":"http://localhost:3000/api/blogs"}}
 {"level":"debug","message":"Signin action","timestamp":"Tue, 06 Mar 2018 17:40:33 GMT","label":{"url":"http://localhost:3000/users/signin","body":{"username":"aaa","password":"123"}}}
 {"level":"debug","message":"Get blogs","timestamp":"Tue, 06 Mar 2018 17:40:33 GMT","label":{"params":{},"url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Signin action","timestamp":"Sat, 10 Mar 2018 18:46:58 GMT","label":{"url":"http://localhost:3000/users/signin","body":{"username":"aaa","password":"123"}}}
+{"level":"debug","message":"Get blogs","timestamp":"Sat, 10 Mar 2018 18:47:13 GMT","label":{"params":{},"url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Add new blog","timestamp":"Sat, 10 Mar 2018 18:47:23 GMT","label":{"author":"kek","text":"kek","url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Signup action","timestamp":"Sat, 10 Mar 2018 18:59:55 GMT","label":{"url":"http://localhost:3000/users/signup","body":{"username":"123","password":"aaa"}}}
+{"level":"debug","message":"Get blogs","timestamp":"Sat, 10 Mar 2018 18:59:55 GMT","label":{"params":{},"url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Signin action","timestamp":"Sat, 10 Mar 2018 19:00:10 GMT","label":{"url":"http://localhost:3000/users/signin","body":{"username":"123","password":"aaa"}}}
+{"level":"debug","message":"Get blogs","timestamp":"Sat, 10 Mar 2018 19:00:10 GMT","label":{"params":{},"url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Delete blog by id","timestamp":"Sat, 10 Mar 2018 19:00:13 GMT","label":{"id":"5aa4283b4d869922987dfb2f","url":"http://localhost:3000/api/blogs/5aa4283b4d869922987dfb2f"}}
+{"level":"debug","message":"Delete blog by id","timestamp":"Sat, 10 Mar 2018 19:00:17 GMT","label":{"id":"5a9ed0ffdaa1c5ca0c835f7b","url":"http://localhost:3000/api/blogs/5a9ed0ffdaa1c5ca0c835f7b"}}
+{"level":"debug","message":"Add new blog","timestamp":"Sat, 10 Mar 2018 19:00:24 GMT","label":{"author":"123","text":"123","url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Add new blog","timestamp":"Sat, 10 Mar 2018 19:00:29 GMT","label":{"author":"lol","text":"lol","url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Add new blog","timestamp":"Sat, 10 Mar 2018 19:00:35 GMT","label":{"author":"Pepa","text":"Pepa","url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Signin action","timestamp":"Sat, 10 Mar 2018 19:08:35 GMT","label":{"url":"http://localhost:3000/users/signin","body":{"username":"aaa","password":"123"}}}
+{"level":"debug","message":"Get blogs","timestamp":"Sat, 10 Mar 2018 19:08:35 GMT","label":{"params":{},"url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Signin action","timestamp":"Sat, 10 Mar 2018 19:09:40 GMT","label":{"url":"http://localhost:3000/users/signin","body":{"username":"123","password":"aaa"}}}
+{"level":"debug","message":"Get blogs","timestamp":"Sat, 10 Mar 2018 19:09:40 GMT","label":{"params":{},"url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Delete blog by id","timestamp":"Sat, 10 Mar 2018 19:09:45 GMT","label":{"id":"5aa42b48c4c1771cc8303a24","url":"http://localhost:3000/api/blogs/5aa42b48c4c1771cc8303a24"}}
+{"level":"debug","message":"Delete blog by id","timestamp":"Sat, 10 Mar 2018 19:09:50 GMT","label":{"id":"5aa42b53c4c1771cc8303a26","url":"http://localhost:3000/api/blogs/5aa42b53c4c1771cc8303a26"}}
+{"level":"debug","message":"Signin action","timestamp":"Sat, 10 Mar 2018 19:13:01 GMT","label":{"url":"http://localhost:3000/users/signin","body":{"username":"123","password":"aaa"}}}
+{"level":"debug","message":"Get blogs","timestamp":"Sat, 10 Mar 2018 19:13:01 GMT","label":{"params":{},"url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Get blogs","timestamp":"Sat, 10 Mar 2018 19:13:06 GMT","label":{"params":{},"url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Signin action","timestamp":"Sat, 10 Mar 2018 19:13:26 GMT","label":{"url":"http://localhost:3000/users/signin","body":{"username":"123","password":"aaa"}}}
+{"level":"debug","message":"Get blogs","timestamp":"Sat, 10 Mar 2018 19:13:26 GMT","label":{"params":{},"url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Signin action","timestamp":"Sat, 10 Mar 2018 19:15:39 GMT","label":{"url":"http://localhost:3000/users/signin","body":{"username":"123","password":"aaa"}}}
+{"level":"debug","message":"Get blogs","timestamp":"Sat, 10 Mar 2018 19:15:39 GMT","label":{"params":{},"url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Signin action","timestamp":"Sat, 10 Mar 2018 19:16:34 GMT","label":{"url":"http://localhost:3000/users/signin","body":{"username":"123","password":"aaa"}}}
+{"level":"debug","message":"Get blogs","timestamp":"Sat, 10 Mar 2018 19:16:34 GMT","label":{"params":{},"url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Signin action","timestamp":"Sat, 10 Mar 2018 19:20:43 GMT","label":{"url":"http://localhost:3000/users/signin","body":{"username":"123","password":"aaa"}}}
+{"level":"debug","message":"Get blogs","timestamp":"Sat, 10 Mar 2018 19:20:43 GMT","label":{"params":{},"url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Signin action","timestamp":"Sat, 10 Mar 2018 19:30:08 GMT","label":{"url":"http://localhost:3000/users/signin","body":{"username":"aaa","password":"123"}}}
+{"level":"debug","message":"Get blogs","timestamp":"Sat, 10 Mar 2018 19:30:08 GMT","label":{"params":{},"url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Add new blog","timestamp":"Sat, 10 Mar 2018 19:30:14 GMT","label":{"author":"kek","text":"kek","url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Delete blog by id","timestamp":"Sat, 10 Mar 2018 19:30:26 GMT","label":{"id":"5aa42b4dc4c1771cc8303a25","url":"http://localhost:3000/api/blogs/5aa42b4dc4c1771cc8303a25"}}
+{"level":"debug","message":"Signup action","timestamp":"Sat, 10 Mar 2018 19:44:28 GMT","label":{"url":"http://localhost:3000/users/signup","body":{"username":"lol","password":"123"}}}
+{"level":"debug","message":"Get blogs","timestamp":"Sat, 10 Mar 2018 19:44:28 GMT","label":{"params":{},"url":"http://localhost:3000/api/blogs"}}
+{"level":"debug","message":"Add new blog","timestamp":"Sat, 10 Mar 2018 19:44:39 GMT","label":{"author":"diablo","text":"sda","url":"http://localhost:3000/api/blogs"}}

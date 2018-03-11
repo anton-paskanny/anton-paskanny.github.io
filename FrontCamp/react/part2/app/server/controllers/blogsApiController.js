@@ -48,10 +48,10 @@ exports.deleteBlog = function(req, res, next) {
   Blog.findById(decodeURI(req.params.id), function(err, blog) {
     if (err) throw next(err);
 
-    blog.remove(function(err) {
+    blog.remove(function(err, result) {
       if (err) throw next(err);
 
-      res.send({msg: 'Blog was deleted'});
+      res.send({msg: 'Blog was deleted', _id: result._id});
     });
   });
 }
