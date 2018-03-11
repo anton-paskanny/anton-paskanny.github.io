@@ -19,15 +19,6 @@ class Header extends React.Component {
     logoutUser().then(res => {
       this.props.setLoggedIn(res.user);
     });
-    
-    // fetch('http://localhost:3000/users/logout', {
-    //   credentials: 'include'
-    // })
-    // .then(res => res.json())
-    // .then(res => {
-    //   console.log('Logout handler: ', res);
-    //   this.props.setLoggedIn(res.user);
-    // });
   }
   render() {
     return (
@@ -38,16 +29,16 @@ class Header extends React.Component {
         <nav className="header__nav">
           {
             !this.props.isLoggedIn &&
-            <Link className="header__link" to="/signin">Sign In</Link>
+            <Link className="header__link hoverable" to="/signin">Sign In</Link>
           }
-          <Link className="header__link" to="/signup">Sign Up</Link>
+          <Link className="header__link hoverable" to="/signup">Sign Up</Link>
           {
             this.props.isLoggedIn &&
-            <Link className="header__link" to="/blogs">Blogs</Link>
+            <Link className="header__link hoverable" to="/blogs">Blogs</Link>
           }
           {
             this.props.isLoggedIn &&
-            <a className="header__link" href="#" onClick={this.logOutHandler}>Log Out</a>
+            <a className="header__link hoverable" href="#" onClick={this.logOutHandler}>Log Out</a>
           }
         </nav>
       </header>

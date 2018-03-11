@@ -39,6 +39,7 @@ class SignIn extends React.Component {
       disableElements: !this.state.disableElements,
       showSignInError: false
     });
+
     signInUser({
       username: this.inputLogin.value,
       password: this.inputPass.value
@@ -49,13 +50,13 @@ class SignIn extends React.Component {
         this.props.history.push('/blogs');
       }
       else {
-        this.errorResponseHandler(res.msg);
+        this.errorResponseHandler(res.message);
       }
     })
     .catch(err => {
       this.errorResponseHandler(err.message);
     });
-    
+
   }
   errorResponseHandler(msg) {
     this.setState({
@@ -80,7 +81,7 @@ class SignIn extends React.Component {
                ref={input => this.inputPass = input}
                disable={this.state.disableElements ? 'true' : 'false'}
         />
-        <input className="auth-form__submit"
+        <input className="auth-form__submit hoverable"
                type="submit"
                value="Sign In"
                disable={this.state.disableElements ? 'true' : 'false'}

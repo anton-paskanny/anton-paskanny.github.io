@@ -18,37 +18,7 @@ exports.doSignup = function(req, res, next) {
     msg: 'You have successfully signed up!',
     user: req.user
   });
-
-  // return passport.authenticate('signup', (err, userData) => {
-  //
-  //   if (err) {
-  //     return res.status(400).json({
-  //       success: false,
-  //       msg: err.message
-  //     });
-  //   }
-  //
-  //   return res.status(200).json({
-  //     success: true,
-  //     msg: 'You have successfully signed up! Now you should be able to log in',
-  //     userSessionId: userData._id
-  //   });
-  //
-  // })(req, res, next);
 };
-
-// signin page
-/*exports.signin = function(req, res) {
-
-  logger.log({
-    level: 'debug',
-    message: 'Redirect to login page',
-    timestamp: (new Date()).toUTCString(),
-    label: { url: getRequestURL(req) }
-  });
-
-  res.send({ succes: true, msg: "Signin page" });
-};*/
 
 // signin action
 exports.doSignIn = function(req, res, next) {

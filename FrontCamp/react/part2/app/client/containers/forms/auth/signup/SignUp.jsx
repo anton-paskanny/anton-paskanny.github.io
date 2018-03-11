@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setLoggedIn } from '../../../../actions/user';
-import { signUpUser } from '../../../../actions/user';
+import { signUpUser } from '../../../../services/user';
 
 import '../styles.css';
 
@@ -82,7 +82,7 @@ class SignUp extends React.Component {
                ref={input => this.inputPass = input}
                disable={this.state.disableElements ? 'true' : 'false'}
         />
-        <input className="auth-form__submit"
+        <input className="auth-form__submit hoverable"
                type="submit"
                value="Sign Up"
                disable={this.state.disableElements ? 'true' : 'false'}

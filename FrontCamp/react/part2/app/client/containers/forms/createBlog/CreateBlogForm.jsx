@@ -68,7 +68,7 @@ class CreateBlogForm extends React.PureComponent {
                   onChange={this.handleDescriptionChange}
                   placeholder="Description"
         />
-        <input className="form__submit" type="submit" value="Send"/>
+        <input className="form__submit hoverable" type="submit" value="Send"/>
         { this.state.showError && <p className="form__error">Please, fill in all necessary fields</p> }
       </form>
     )

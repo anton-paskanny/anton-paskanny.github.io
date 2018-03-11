@@ -1,12 +1,13 @@
-export const ADD_BLOG = "ADD_BLOG";
-export const DELETE_BLOG = "DELETE_BLOG";
-export const FETCH_BLOGS = "FETCH_BLOGS";
+import { ADD_BLOG, DELETE_BLOG, FETCH_BLOGS } from './actionsTypes';
+import serverConfig from '../../server/config';
+
+const baseUrl = `http://${serverConfig.db.host}:${serverConfig.port}/${serverConfig.routes.blogs.base}`;
 
 
 export const addBlog = blog => {
   return dispatch => {
 
-    fetch('http://localhost:3000/api/blogs', {
+    return fetch(baseUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(blog),
@@ -15,8 +16,6 @@ export const addBlog = blog => {
     })
     .then(res => res.json())
     .then(res => {
-      console.log('Add blog, response: ', res);
-
       dispatch({
         type: ADD_BLOG,
         blog: res.blog
@@ -27,22 +26,27 @@ export const addBlog = blog => {
 }
 
 export const deleteBlog = id => {
-    fetch('http://localhost:3000/api/blogs/' + encodeURI(id), {
+  return dispatch => {
+
+    return fetch(`${baseUrl}/${encodeURI(id)}`, {
       method: 'DELETE',
       mode: 'cors',
       credentials: 'include'
+    })
+    .then(res => res.json())
+    .then(res => {
+      dispatch({
+        type: DELETE_BLOG,
+        _id: res._id
+      });
     });
-
-    return {
-      type: DELETE_BLOG,
-      _id: id
-    }
+  }
 }
 
 export const fetchBlogs = () => {
   return dispatch => {
 
-    fetch('http://localhost:3000/api/blogs', {
+    return fetch(baseUrl, {
       method: 'GET',
       mode: 'cors',
       credentials: 'include'
