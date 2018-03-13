@@ -8,7 +8,7 @@ import thunk from 'redux-thunk';
 
 import appReducer from './reducers/index.js';
 
-import App from './containers/app/App.jsx';
+import App from './components/app/App.jsx';
 
 const renderMethod = window ? ReactDOM.render : ReactDOM.hydrate;
 

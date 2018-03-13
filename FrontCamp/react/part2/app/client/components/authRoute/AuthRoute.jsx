@@ -1,9 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
 
-
-class AuthRoute extends React.Component {
+export default class AuthRoute extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -14,10 +12,8 @@ class AuthRoute extends React.Component {
       }} />
     )
   }
-};
-
-const mapStateToProps = state => ({
-  isLoggedIn: state.user.isLoggedIn
-});
-
-export default connect(mapStateToProps, null)(AuthRoute);
+}
+//
+// export default (props) => (
+//
+// );

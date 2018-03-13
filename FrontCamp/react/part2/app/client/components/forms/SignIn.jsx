@@ -1,11 +1,10 @@
 import React from 'react';
-import { setLoggedIn } from '../../../../actions/user.js';
-import { connect } from 'react-redux';
-import { signInUser } from '../../../../services/user';
+import { signInUser } from '../../services/user';
 
-import '../styles.css';
+import './styles.css';
 
-class SignIn extends React.Component {
+
+export default class SignIn extends React.Component {
   constructor(props) {
     super(props);
     this.inputLogin = {};
@@ -96,11 +95,3 @@ class SignIn extends React.Component {
     )
   }
 }
-
-const mapDispatchToProps = dispatch => ({
-  setLoggedIn(user) {
-    dispatch(setLoggedIn(user));
-  }
-});
-
-export default connect(null, mapDispatchToProps)(SignIn);
