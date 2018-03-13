@@ -1,8 +1,10 @@
-import { ADD_BLOG, DELETE_BLOG, FETCH_BLOGS } from './actionsTypes';
 import serverConfig from '../../server/config';
 
-const baseUrl = `http://${serverConfig.db.host}:${serverConfig.port}/${serverConfig.routes.blogs.base}`;
+export const ADD_BLOG = "ADD_BLOG";
+export const DELETE_BLOG = "DELETE_BLOG";
+export const FETCH_BLOGS = "FETCH_BLOGS";
 
+const baseUrl = `http://${serverConfig.db.host}:${serverConfig.port}/${serverConfig.routes.blogs.base}`;
 
 export const addBlog = blog => {
   return dispatch => {

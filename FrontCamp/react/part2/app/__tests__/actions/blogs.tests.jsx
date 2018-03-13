@@ -1,30 +1,17 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
-import * as userActions from '../client/actions/user';
-import * as blogsActions from '../client/actions/blogs';
-import * as types from '../client/actions/actionsTypes';
-
+import {
+        addBlog,
+        deleteBlog,
+        fetchBlogs,
+        ADD_BLOG,
+        DELETE_BLOG,
+        FETCH_BLOGS
+} from '../../client/actions/blogs';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
-
-describe('User actions', () => {
-  test('should create an action to log user in', () => {
-    const user = {
-      _id: 1,
-      username: 'Test',
-      password: '1234'
-    };
-
-    const expectedAction = {
-      type: types.SET_LOGGED_IN,
-      user
-    };
-
-    expect(userActions.setLoggedIn(user)).toEqual(expectedAction);
-  });
-});
 
 describe('Blogs actions', () => {
   afterEach(() => {
@@ -46,14 +33,14 @@ describe('Blogs actions', () => {
 
     const expectedActions = [
       {
-        type: types.FETCH_BLOGS,
+        type: FETCH_BLOGS,
         blogs: [testBlog]
       }
     ];
 
     const store = mockStore({ blogs: [] });
 
-    return store.dispatch(blogsActions.fetchBlogs()).then(() => {
+    return store.dispatch(fetchBlogs()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     })
   });
@@ -69,7 +56,7 @@ describe('Blogs actions', () => {
     };
     const expectedActions = [
       {
-        type: types.ADD_BLOG,
+        type: ADD_BLOG,
         blog: testBlog
       }
     ];
@@ -77,7 +64,7 @@ describe('Blogs actions', () => {
 
     fetchMock.once('http://localhost:3000/api/blogs', serverResponse, { method: 'POST' });
 
-    return store.dispatch(blogsActions.addBlog(testBlog)).then(() => {
+    return store.dispatch(addBlog(testBlog)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     })
   });
@@ -89,7 +76,7 @@ describe('Blogs actions', () => {
     };
     const expectedActions = [
       {
-        type: types.DELETE_BLOG,
+        type: DELETE_BLOG,
         _id: _id
       }
     ];
@@ -98,7 +85,7 @@ describe('Blogs actions', () => {
 
     fetchMock.once(`http://localhost:3000/api/blogs/${encodeURI(_id)}`, serverResponse, { method: 'DELETE' });
 
-    return store.dispatch(blogsActions.deleteBlog(_id)).then(() => {
+    return store.dispatch(deleteBlog(_id)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     })
   });

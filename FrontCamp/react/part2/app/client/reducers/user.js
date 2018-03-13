@@ -1,4 +1,4 @@
-import { SET_LOGGED_IN } from '../actions/actionsTypes';
+import { SET_LOGGED_IN } from '../actions/user';
 
 export default (state = { isLoggedIn: false, data: null }, action) => {
   switch(action.type) {
