@@ -11,10 +11,11 @@ var config = require("./config.js");
 var blogs_router = require('./routes/blogs.js');
 var users_router = require('./routes/users.js');
 var index_router = require('./routes/index.js');
+var ssr_router = require('./routes/ssr.js');
 
 var app = express();
 
-app.use(express.static('dist'));
+app.use('/dist', express.static('dist'));
 
 // MongoDB connection
 mongoose.connect(`mongodb://${config.db.host}/${config.db.name}`);
@@ -47,6 +48,7 @@ app.use(express.json());
 app.use('/', index_router);
 app.use('/users', users_router);
 app.use('/api/blogs', blogs_router);
+app.use('*', ssr_router);
 
 // Handler for errors
 app.use(function(req, res, next) {
@@ -55,13 +57,6 @@ app.use(function(req, res, next) {
   next(err);
 });
 app.use(function(err, req, res, next) {
-
-  if (err.status === 400) {
-    res.render('error', {
-      message: err.message
-    });
-  }
-
   res.status(err.status || 500).send({ message: err.message });
 });
 

@@ -1,6 +1,6 @@
 var express = require("express");
 var blogsApiController = require('../controllers/blogsApiController.js');
-var isAuthenticated = require('../utils/authChecker.js');
+var isAuthenticated = require('../passport/authChecker.js');
 
 var router = express.Router();
 
