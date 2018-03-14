@@ -7,7 +7,7 @@ import { logoutUser } from '../../services/user';
 import './styles.css';
 
 
-class Header extends React.Component {
+export default class Header extends React.Component {
   constructor(props) {
     super(props);
 
@@ -16,9 +16,7 @@ class Header extends React.Component {
   logOutHandler(event) {
     event.preventDefault();
 
-    logoutUser().then(res => {
-      this.props.setLoggedIn(res.user);
-    });
+    this.props.logOut();
   }
   render() {
     return (
@@ -31,10 +29,9 @@ class Header extends React.Component {
             !this.props.isLoggedIn &&
             <Link className="header__link hoverable" to="/signin">Sign In</Link>
           }
-          <Link className="header__link hoverable" to="/signup">Sign Up</Link>
           {
-            this.props.isLoggedIn &&
-            <Link className="header__link hoverable" to="/blogs">Blogs</Link>
+            !this.props.isLoggedIn &&
+            <Link className="header__link hoverable" to="/signup">Sign Up</Link>
           }
           {
             this.props.isLoggedIn &&
@@ -45,16 +42,3 @@ class Header extends React.Component {
     )
   }
 }
-
-const mapStateToProps = state => ({
-  isLoggedIn: state.user.isLoggedIn,
-  user: state.user.data
-});
-
-const mapDispatchToProps = dispatch => ({
-  setLoggedIn(user) {
-    dispatch(setLoggedIn(user));
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);

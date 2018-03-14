@@ -1,4 +1,4 @@
-import { ADD_BLOG, DELETE_BLOG, FETCH_BLOGS } from '../actions/actionsTypes';
+import { ADD_BLOG, DELETE_BLOG, FETCH_BLOGS } from '../actions/blogs';
 
 export default (state = [], action) => {
   switch(action.type) {

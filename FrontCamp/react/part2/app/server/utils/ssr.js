@@ -3,7 +3,8 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import appReducer from '../../client/reducers/index.js';
-import App from '../../client/containers/app/App.jsx';
+import App from '../../client/components/app/App.jsx';
+
 
 const renderFullPage = (html, preloadedState) => (
   `
@@ -28,12 +29,13 @@ const renderFullPage = (html, preloadedState) => (
   `
 );
 
-const handleInitialRender = (req, res) => {
+const handleInitialRender = (req, res, next) => {
   const store = createStore(appReducer);
+  const context = {};
 
   const html = renderToString(
     <Provider store={store}>
-      <StaticRouter>
+      <StaticRouter location={req.url} context={context}>
         <App />
       </StaticRouter>
     </Provider>
@@ -41,7 +43,12 @@ const handleInitialRender = (req, res) => {
 
   const preloadedState = store.getState();
 
-  res.send(renderFullPage(html, preloadedState));
+  if (context.url) {
+    res.redirect(context.url);
+    return;
+  }
+
+  res.status(200).send(renderFullPage(html, preloadedState));
 }
 
 export default handleInitialRender;

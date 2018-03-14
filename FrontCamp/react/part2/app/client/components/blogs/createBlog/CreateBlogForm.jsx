@@ -1,11 +1,9 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { addBlog } from '../../../actions/blogs.js';
 
 import "./styles.css";
 
 
-class CreateBlogForm extends React.PureComponent {
+export default class CreateBlogForm extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -74,11 +72,3 @@ class CreateBlogForm extends React.PureComponent {
     )
   }
 }
-
-const mapDispatchToProps = dispatch => ({
-  addBlog(blog) {
-    dispatch(addBlog(blog));
-  }
-})
-
-export default connect(null, mapDispatchToProps)(CreateBlogForm);

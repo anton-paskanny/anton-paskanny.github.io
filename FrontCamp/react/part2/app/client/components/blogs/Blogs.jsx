@@ -1,18 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
-import { deleteBlog, fetchBlogs } from '../../actions/blogs.js';
-
-import AddBlogBtn from '../../components/addBlogBtn/AddBlogBtn.jsx';
+import AddBlogBtn from '../addBlogBtn/AddBlogBtn.jsx';
 import BlogsList from './list/BlogsList.jsx';
-import CreateBlogForm from '../forms/createBlog/CreateBlogForm.jsx';
-import Filter from '../../components/filter/Filter.jsx';
-import Overlay from '../../components/overlay/Overlay.jsx';
+import CreateBlogForm from '../../containers/CreateBlogForm.jsx';
+import Filter from '../filter/Filter.jsx';
+import Overlay from '..//overlay/Overlay.jsx';
 
 import './styles.css';
 
 
-class Blogs extends React.Component {
+export default class Blogs extends React.Component {
   constructor(props) {
     super(props);
 
@@ -89,18 +86,3 @@ class Blogs extends React.Component {
     )
   }
 }
-
-const mapStateToProps = state => ({
-  blogs: state.blogs
-});
-
-const mapDispatchToProps = dispatch => ({
-  fetchBlogs() {
-    dispatch(fetchBlogs());
-  },
-  deleteBlog(id) {
-    dispatch(deleteBlog(id));
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Blogs);
