@@ -1,12 +1,23 @@
 import { connect } from 'react-redux';
-import { setLoggedIn } from '../actions/user';
+import { signUp } from '../thunks/user';
+import { errorHandler } from '../actions/user';
+
 import SignUp from '../components/forms/SignUp.jsx';
 
 
+const mapStateToProps = state => ({
+  errorMsg: state.user.error,
+  isLoading: state.user.isLoading,
+  isLoggedIn: state.user.isLoggedIn
+});
+
 const mapDispatchToProps = dispatch => ({
-  setLoggedIn(user) {
-    dispatch(setLoggedIn(user))
+  signUp(user) {
+    dispatch(signUp(user))
+  },
+  errorHandler(error) {
+    dispatch(errorHandler(error))
   }
 });
 
-export default connect(null, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

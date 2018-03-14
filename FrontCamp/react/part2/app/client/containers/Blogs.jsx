@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { deleteBlog, fetchBlogs } from '../actions/blogs.js';
+import { deleteBlog, fetchBlogs } from '../thunks/blogs.js';
+
 import Blogs from '../components/blogs/Blogs.jsx';
 
 

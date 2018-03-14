@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { addBlog } from '../actions/blogs.js';
+import { addBlog } from '../thunks/blogs.js';
+
 import CreateBlogForm from '../components/blogs/createBlog/CreateBlogForm.jsx';
 
 

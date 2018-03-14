@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { setLoggedIn } from '../actions/user';
+import { logOut } from '../actions/user';
+
 import Header from '../components/header/Header.jsx';
 
 
@@ -9,8 +10,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setLoggedIn(user) {
-    dispatch(setLoggedIn(user));
+  logOut() {
+    dispatch(logOut());
   }
 });
 
