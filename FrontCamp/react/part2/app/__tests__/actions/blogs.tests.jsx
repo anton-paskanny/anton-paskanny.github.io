@@ -1,14 +1,8 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
-import {
-        addBlog,
-        deleteBlog,
-        fetchBlogs,
-        ADD_BLOG,
-        DELETE_BLOG,
-        FETCH_BLOGS
-} from '../../client/actions/blogs';
+import { ADD_BLOG, DELETE_BLOG, FETCH_BLOGS } from '../../client/actions/blogs';
+import { addBlog, deleteBlog, fetchBlogs } from '../../client/thunks/blogs';
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);

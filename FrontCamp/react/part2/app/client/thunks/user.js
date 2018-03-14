@@ -10,21 +10,21 @@ export const signIn = user => {
 
     dispatch(actions.isLoading());
 
-    fetch(`${baseUrl}/${serverConfig.routes.users.signin}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      credentials: 'include',
-      body: JSON.stringify(user)
-    })
-    .then(res => res.json())
-    .then(res => {
-      res.success ?
-      dispatch(actions.signIn(res.user)) :
-      dispatch(actions.errorHandler(res.message));
-    })
-    .catch(err => {
-      dispatch(actions.errorHandler(err.message));
-    })
+    return fetch(`${baseUrl}/${serverConfig.routes.users.signin}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(user)
+      })
+      .then(res => res.json())
+      .then(res => {
+        res.success ?
+        dispatch(actions.signIn(res.user)) :
+        dispatch(actions.errorHandler(res.message));
+      })
+      .catch(err => {
+        dispatch(actions.errorHandler(err.message));
+      })
   }
 }
 
