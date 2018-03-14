@@ -6,14 +6,12 @@ export default class AuthRoute extends React.Component {
     super(props);
   }
   render() {
+    const Component = this.props.component;
+
     return (
-      <Route path={this.props.path} render={() => {
-        return this.props.isLoggedIn ? this.props.component : <Redirect to="/" />
+      <Route path={this.props.path} render={(props) => {
+        return this.props.isLoggedIn ? <Component {...props} /> : <Redirect to="/" />
       }} />
     )
   }
 }
-//
-// export default (props) => (
-//
-// );

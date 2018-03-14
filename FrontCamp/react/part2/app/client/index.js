@@ -10,14 +10,13 @@ import appReducer from './reducers/index.js';
 
 import App from './components/app/App.jsx';
 
-const renderMethod = window ? ReactDOM.render : ReactDOM.hydrate;
 
 const store = createStore(
   appReducer,
   composeWithDevTools(applyMiddleware(thunk))
 );
 
-renderMethod(
+ReactDOM.hydrate(
   <Provider store={store}>
     <BrowserRouter>
       <App />

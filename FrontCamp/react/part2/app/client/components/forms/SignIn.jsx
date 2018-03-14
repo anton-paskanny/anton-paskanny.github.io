@@ -1,5 +1,5 @@
 import React from 'react';
-import { signInUser } from '../../services/user';
+import { Redirect } from 'react-router-dom';
 
 import './styles.css';
 
@@ -10,61 +10,38 @@ export default class SignIn extends React.Component {
     this.inputLogin = {};
     this.inputPass = {};
 
-    this.state = {
-      showSignInError: false,
-      disableElements: false,
-      errorMsg: ''
-    }
-
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.signInRequest = this.signInRequest.bind(this);
   }
   handleSubmit(event) {
     event.preventDefault();
 
     if (this.inputPass.value && this.inputLogin.value.trim()) {
-        this.signInRequest();
+
+        this.props.signIn({
+          username: this.inputLogin.value.trim(),
+          password: this.inputPass.value
+        });
+
+        return;
     }
-    else {
-      this.setState({
-        showSignInError: true,
-        errorMsg: 'Fill in all necessary fields'
-      });
+
+    this.props.errorHandler('Fill in all necessary fields');
+  }
+  renderErrorMsg() {
+    if (this.props.errorMsg && !this.props.isLoading) {
+      return (
+        <p className="auth-form__error">
+          {this.props.errorMsg}
+        </p>
+      )
     }
-  }
-  signInRequest() {
-
-    this.setState({
-      disableElements: !this.state.disableElements,
-      showSignInError: false
-    });
-
-    signInUser({
-      username: this.inputLogin.value,
-      password: this.inputPass.value
-    })
-    .then(res => {
-      if (res.success) {
-        this.props.setLoggedIn(res.user);
-        this.props.history.push('/blogs');
-      }
-      else {
-        this.errorResponseHandler(res.message);
-      }
-    })
-    .catch(err => {
-      this.errorResponseHandler(err.message);
-    });
-
-  }
-  errorResponseHandler(msg) {
-    this.setState({
-      disableElements: !this.state.disableElements,
-      showSignInError: true,
-      errorMsg: msg
-    });
   }
   render() {
+
+    if (this.props.isLoggedIn) {
+     return <Redirect to='/blogs' />
+    }
+
     return (
       <form className="auth-form" onSubmit={this.handleSubmit}>
         <h2 className="auth-form__title">Sign In</h2>
@@ -72,25 +49,20 @@ export default class SignIn extends React.Component {
                type="text"
                placeholder="Login"
                ref={input => this.inputLogin = input}
-               disable={this.state.disableElements ? 'true' : 'false'}
+               disabled={this.props.isLoading}
         />
         <input className="auth-form__input"
                type="password"
                placeholder="Password"
                ref={input => this.inputPass = input}
-               disable={this.state.disableElements ? 'true' : 'false'}
+               disabled={this.props.isLoading}
         />
         <input className="auth-form__submit hoverable"
                type="submit"
                value="Sign In"
-               disable={this.state.disableElements ? 'true' : 'false'}
+               disabled={this.props.isLoading}
         />
-        {
-          this.state.showSignInError &&
-          <p className="auth-form__error">
-            {this.state.errorMsg}
-          </p>
-        }
+        {this.renderErrorMsg()}
       </form>
     )
   }

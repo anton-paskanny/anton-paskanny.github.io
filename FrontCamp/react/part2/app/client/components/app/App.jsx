@@ -11,6 +11,7 @@ import SignIn from '../../containers/SignIn.jsx';
 import './styles.css';
 import "./normalize.css";
 
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -24,7 +25,7 @@ export default class App extends React.Component {
             <Route exact path="/" component={Intro} />
             <Route path="/signup" component={SignUp} />
             <Route path="/signin" component={SignIn} />
-            <AuthRoute path="/blogs" component={<Blogs />} />
+            <AuthRoute path="/blogs" component={Blogs} />
           </Switch>
         </div>
       </React.Fragment>
