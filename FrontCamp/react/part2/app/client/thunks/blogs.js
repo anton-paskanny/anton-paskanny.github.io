@@ -16,7 +16,7 @@ export const addBlog = blog => {
     })
     .then(res => res.json())
     .then(res => {
-      dispatch(actions.addBlog());
+      dispatch(actions.addBlog(res.blog));
     });
 
   }
@@ -32,8 +32,9 @@ export const deleteBlog = id => {
     })
     .then(res => res.json())
     .then(res => {
-      dispatch(actions.deleteBlog());
+      dispatch(actions.deleteBlog(res._id));
     });
+
   }
 }
 
