@@ -83,6 +83,12 @@ module.exports = require("react-router-dom");
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("express");
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -133,12 +139,6 @@ var isLoading = exports.isLoading = function isLoading() {
 exports.default = { signIn: signIn, signUp: signUp, logOut: logOut, errorHandler: errorHandler, isLoading: isLoading };
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-module.exports = require("express");
-
-/***/ }),
 /* 5 */
 /***/ (function(module, exports) {
 
@@ -146,6 +146,40 @@ module.exports = require("passport-local");
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var mongoose = __webpack_require__(7);
+var passportLocalMongoose = __webpack_require__(28);
+var Schema = mongoose.Schema;
+
+var userSchema = new Schema({
+    username: { type: String, required: true, unique: true },
+    password: { type: String, required: true }
+});
+
+userSchema.plugin(passportLocalMongoose);
+
+var User = mongoose.model('User', userSchema);
+
+module.exports = User;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = require("mongoose");
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = require("passport");
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -170,40 +204,6 @@ var config = {
 };
 
 module.exports = config;
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var mongoose = __webpack_require__(8);
-var passportLocalMongoose = __webpack_require__(28);
-var Schema = mongoose.Schema;
-
-var userSchema = new Schema({
-    username: { type: String, required: true, unique: true },
-    password: { type: String, required: true }
-});
-
-userSchema.plugin(passportLocalMongoose);
-
-var User = mongoose.model('User', userSchema);
-
-module.exports = User;
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-module.exports = require("mongoose");
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-module.exports = require("passport");
 
 /***/ }),
 /* 10 */
@@ -301,7 +301,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.fetchBlogs = exports.deleteBlog = exports.addBlog = undefined;
 
-var _config = __webpack_require__(6);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -372,11 +372,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.logOut = exports.signUp = exports.signIn = undefined;
 
-var _config = __webpack_require__(6);
+var _config = __webpack_require__(9);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _user = __webpack_require__(3);
+var _user = __webpack_require__(4);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -390,7 +390,7 @@ var signIn = exports.signIn = function signIn(user) {
 
     dispatch(_user2.default.isLoading());
 
-    fetch(baseUrl + '/' + _config2.default.routes.users.signin, {
+    return fetch(baseUrl + '/' + _config2.default.routes.users.signin, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -452,14 +452,14 @@ var logOut = exports.logOut = function logOut() {
 "use strict";
 /* WEBPACK VAR INJECTION */(function(__dirname) {
 
-var express = __webpack_require__(4);
+var express = __webpack_require__(3);
 var path = __webpack_require__(19);
-var mongoose = __webpack_require__(8);
-var passport = __webpack_require__(9);
+var mongoose = __webpack_require__(7);
+var passport = __webpack_require__(8);
 var session = __webpack_require__(20);
 var LocalStrategy = __webpack_require__(5).Strategy;
 
-var config = __webpack_require__(6);
+var config = __webpack_require__(9);
 
 // App's routes
 var blogs_router = __webpack_require__(21);
@@ -494,7 +494,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Initialize passport
-var initPassport = __webpack_require__(66);
+var initPassport = __webpack_require__(65);
 initPassport(passport);
 
 // Enable taking data from req.body
@@ -540,7 +540,7 @@ module.exports = require("express-session");
 "use strict";
 
 
-var express = __webpack_require__(4);
+var express = __webpack_require__(3);
 var blogsApiController = __webpack_require__(22);
 var isAuthenticated = __webpack_require__(25);
 
@@ -632,7 +632,7 @@ module.exports = require("winston");
 "use strict";
 
 
-var mongoose = __webpack_require__(8);
+var mongoose = __webpack_require__(7);
 var Schema = mongoose.Schema;
 
 var blogSchema = new Schema({
@@ -669,8 +669,8 @@ module.exports = isAuthenticated;
 "use strict";
 
 
-var express = __webpack_require__(4);
-var passport = __webpack_require__(9);
+var express = __webpack_require__(3);
+var passport = __webpack_require__(8);
 var usersApiController = __webpack_require__(27);
 
 var router = express.Router();
@@ -695,8 +695,8 @@ module.exports = router;
 
 var logger = __webpack_require__(11);
 var getRequestURL = __webpack_require__(12);
-var passport = __webpack_require__(9);
-var User = __webpack_require__(7);
+var passport = __webpack_require__(8);
+var User = __webpack_require__(6);
 
 // signup action
 exports.doSignup = function (req, res, next) {
@@ -758,7 +758,7 @@ module.exports = require("passport-local-mongoose");
 "use strict";
 
 
-var express = __webpack_require__(4);
+var express = __webpack_require__(3);
 var router = express.Router();
 
 router.use(function (req, res, next) {
@@ -783,7 +783,7 @@ var _ssr2 = _interopRequireDefault(_ssr);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var express = __webpack_require__(4);
+var express = __webpack_require__(3);
 var router = express.Router();
 
 router.get('*', function (req, res, next) {
@@ -940,7 +940,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _user = __webpack_require__(3);
+var _user = __webpack_require__(4);
 
 var initialState = {
   isLoggedIn: false,
@@ -1031,21 +1031,21 @@ var _Header = __webpack_require__(54);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Intro = __webpack_require__(58);
+var _Intro = __webpack_require__(57);
 
 var _Intro2 = _interopRequireDefault(_Intro);
 
-var _SignUp = __webpack_require__(60);
+var _SignUp = __webpack_require__(59);
 
 var _SignUp2 = _interopRequireDefault(_SignUp);
 
-var _SignIn = __webpack_require__(62);
+var _SignIn = __webpack_require__(61);
 
 var _SignIn2 = _interopRequireDefault(_SignIn);
 
-__webpack_require__(64);
+__webpack_require__(63);
 
-__webpack_require__(65);
+__webpack_require__(64);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1807,7 +1807,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _reactRedux = __webpack_require__(1);
 
-var _user = __webpack_require__(3);
+var _user = __webpack_require__(4);
 
 var _Header = __webpack_require__(55);
 
@@ -1853,11 +1853,7 @@ var _reactRouterDom = __webpack_require__(2);
 
 var _reactRedux = __webpack_require__(1);
 
-var _user = __webpack_require__(3);
-
-var _user2 = __webpack_require__(56);
-
-__webpack_require__(57);
+__webpack_require__(56);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1931,62 +1927,12 @@ exports.default = Header;
 
 /***/ }),
 /* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.signUpUser = exports.signInUser = exports.logoutUser = undefined;
-
-var _config = __webpack_require__(6);
-
-var _config2 = _interopRequireDefault(_config);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var baseUrl = 'http://' + _config2.default.db.host + ':' + _config2.default.port;
-
-var logoutUser = exports.logoutUser = function logoutUser() {
-  return fetch(baseUrl + '/' + _config2.default.routes.users.logout, {
-    credentials: 'include'
-  }).then(function (res) {
-    return res.json();
-  });
-};
-
-var signInUser = exports.signInUser = function signInUser(data) {
-  return fetch(baseUrl + '/' + _config2.default.routes.users.signin, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    credentials: 'include',
-    body: JSON.stringify(data)
-  }).then(function (res) {
-    return res.json();
-  });
-};
-
-var signUpUser = exports.signUpUser = function signUpUser(data) {
-  return fetch(baseUrl + '/' + _config2.default.routes.users.signup, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    credentials: 'include',
-    body: JSON.stringify(data)
-  }).then(function (res) {
-    return res.json();
-  });
-};
-
-/***/ }),
-/* 57 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2000,7 +1946,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(59);
+__webpack_require__(58);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2022,13 +1968,13 @@ exports.default = function (props) {
 };
 
 /***/ }),
-/* 59 */
+/* 58 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 60 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2042,9 +1988,9 @@ var _reactRedux = __webpack_require__(1);
 
 var _user = __webpack_require__(16);
 
-var _user2 = __webpack_require__(3);
+var _user2 = __webpack_require__(4);
 
-var _SignUp = __webpack_require__(61);
+var _SignUp = __webpack_require__(60);
 
 var _SignUp2 = _interopRequireDefault(_SignUp);
 
@@ -2072,7 +2018,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SignUp2.default);
 
 /***/ }),
-/* 61 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2192,7 +2138,7 @@ var SignUp = function (_React$Component) {
 exports.default = SignUp;
 
 /***/ }),
-/* 62 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2204,11 +2150,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _user = __webpack_require__(16);
 
-var _user2 = __webpack_require__(3);
+var _user2 = __webpack_require__(4);
 
 var _reactRedux = __webpack_require__(1);
 
-var _SignIn = __webpack_require__(63);
+var _SignIn = __webpack_require__(62);
 
 var _SignIn2 = _interopRequireDefault(_SignIn);
 
@@ -2236,7 +2182,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_SignIn2.default);
 
 /***/ }),
-/* 63 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2356,6 +2302,12 @@ var SignIn = function (_React$Component) {
 exports.default = SignIn;
 
 /***/ }),
+/* 63 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
 /* 64 */
 /***/ (function(module, exports) {
 
@@ -2363,20 +2315,14 @@ exports.default = SignIn;
 
 /***/ }),
 /* 65 */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var signInUser = __webpack_require__(67);
-var signUpUser = __webpack_require__(68);
-var User = __webpack_require__(7);
+var signInUser = __webpack_require__(66);
+var signUpUser = __webpack_require__(67);
+var User = __webpack_require__(6);
 var bCrypt = __webpack_require__(10);
 var LocalStrategy = __webpack_require__(5).Strategy;
 
@@ -2399,14 +2345,14 @@ var initPassport = function initPassport(passport) {
 module.exports = initPassport;
 
 /***/ }),
-/* 67 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var LocalStrategy = __webpack_require__(5).Strategy;
-var User = __webpack_require__(7);
+var User = __webpack_require__(6);
 var bCrypt = __webpack_require__(10);
 
 var isValidPassword = function isValidPassword(user, password) {
@@ -2449,14 +2395,14 @@ var signInUser = function signInUser(passport) {
 module.exports = signInUser;
 
 /***/ }),
-/* 68 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var LocalStrategy = __webpack_require__(5).Strategy;
-var User = __webpack_require__(7);
+var User = __webpack_require__(6);
 var bCrypt = __webpack_require__(10);
 
 var createHash = function createHash(password) {

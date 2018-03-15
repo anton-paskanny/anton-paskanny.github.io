@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
-import AuthRoute from '../../containers/AuthRoute.jsx';
-import Blogs from '../../containers/Blogs.jsx';
-import Header from '../../containers/Header.jsx';
+import AuthRoute from '../../containers/AuthRoute';
+import Blogs from '../../containers/Blogs';
+import Header from '../../containers/Header';
 import Intro from '../intro/Intro.jsx';
-import SignUp from '../../containers/SignUp.jsx';
-import SignIn from '../../containers/SignIn.jsx';
+import SignUp from '../../containers/SignUp';
+import SignIn from '../../containers/SignIn';
 
 import './styles.css';
 import "./normalize.css";

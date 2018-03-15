@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { setLoggedIn } from '../../actions/user';
-import { logoutUser } from '../../services/user';
 
 import './styles.css';
 
