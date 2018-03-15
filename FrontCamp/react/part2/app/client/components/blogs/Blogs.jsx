@@ -2,7 +2,7 @@ import React from 'react';
 
 import AddBlogBtn from '../addBlogBtn/AddBlogBtn.jsx';
 import BlogsList from './list/BlogsList.jsx';
-import CreateBlogForm from '../../containers/CreateBlogForm.jsx';
+import CreateBlogForm from '../../containers/CreateBlogForm';
 import Filter from '../filter/Filter.jsx';
 import Overlay from '..//overlay/Overlay.jsx';
 
