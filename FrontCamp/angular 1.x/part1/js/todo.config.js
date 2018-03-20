@@ -18,6 +18,3 @@ angular.module('toDoApp').config(['$routeProvider', function($routeProvider) {
     });
 
 }]);
-
-
-//templateUrl: 'templates/tasksLists.html',

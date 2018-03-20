@@ -8,14 +8,15 @@ angular.module('toDoApp').controller('editTaskController', [
       $scope.submitTitle = 'Edit';
       $scope.editForm = true;
 
-      var taskToEdit = todoFactory.findTask($routeParams.id);
-      console.log("Task before editing: ", taskToEdit);
+      $scope.task = {
+        text: '',
+        date: new Date(),
+        done: false
+      }
 
-      //taskToEdit.date = new Date(taskToEdit.date);
+      //$scope.task.date = new Date(todoFactory.findTask($routeParams.id).date);
 
-      console.log("Task after editing: ", taskToEdit);
-
-      $scope.task = taskToEdit;
+      $scope.task = todoFactory.findTask($routeParams.id);
 
       $scope.clickHandler = function() {
         
