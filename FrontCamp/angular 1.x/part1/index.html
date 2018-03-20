@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tasks App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-resource.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+</head>
+<body>
+    <div ng-app="toDoApp">
+      <header class="container">
+        <nav class="navbar navbar-light">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/#!/addTask">Add task</a>
+            <a class="nav-item nav-link" href="/">Tasks</a>
+          </div>
+        </nav>
+      </header>
+        <div ng-view></div>
+    </div>
+
+    <script src="js/todo.module.js"></script>
+    <script src="js/todo.config.js"></script>
+
+    <script src="js/factories/dataService.js"></script>
+    <script src="js/factories/toDo.js"></script>
+
+    <script src="js/controllers/tasksListsController.js"></script>
+    <script src="js/controllers/addTaskController.js"></script>
+    <script src="js/controllers/editTaskController.js"></script>
+
+    <!-- <script src="js/components/tasksLists.module.js"></script> -->
+    <!-- <script src="js/components/tasksLists.js"></script> -->
+</body>
+</html>
