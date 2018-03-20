@@ -227,8 +227,13 @@ var app = (0, _express2.default)();
 app.use(_express2.default.static('dist'));
 
 app.get('/', function (res, req) {
+<<<<<<< Updated upstream
   var component = (0, _server.renderToString)(_react2.default.createElement(_App2.default, null));
   var indexPage = (0, _template2.default)(component);
+=======
+  var stringApp = (0, _server.renderToString)(_react2.default.createElement(_App2.default, null));
+  var indexPage = (0, _template2.default)(stringApp);
+>>>>>>> Stashed changes
   res.send(indexPage);
 });
 

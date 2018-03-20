@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <input class="form-controls col-md-5" type="text" ng-model="query" placeholder="Filter by task name">
+    <select class="custom-select col-md-5 offset-md-2" ng-model="order">
+      <option value="-date">Recent</option>
+      <option value="date">Older</option>
+    </select>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <h3>{{listTitle}} tasks: {{ tasks.length }}</h3>
+      <span ng-if="tasks.length === 0">You have no {{taskType}} tasks!</span>
+      <ul class="list-group" ng-repeat="task in tasks | filter: query | orderBy: order">
+          <li class="list-group-item">
+            <label> Done
+              <input type="checkbox" ng-model="task.done" ng-change="toggleListItems()"/>
+            </label>
+            <h4 ng-class="{'task__title--done': task.done}">{{ task.text }}</h4>
+            <span>{{ task.date }}</span>
+            <button class="btn btn-danger" ng-click="removeTask($index, task)">Delete</button>
+            <button class="btn btn-secondary" ng-click="editTask($index)">Edit</button>
+          </li>
+      </ul>
+      <nav>
+          <button ng-click="getAllTasks()">All</button>
+          <button ng-click="getActiveTasks()">Active</button>
+          <button ng-click="getDoneTasks()">Done</button>
+      </nav>
+    </div>
+  </div>
+</div>
