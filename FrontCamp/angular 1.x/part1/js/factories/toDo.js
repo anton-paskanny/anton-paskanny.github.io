@@ -1,6 +1,27 @@
 angular.module('toDoApp').factory("todoFactory", function(dataService) {
   
-  var tasksList = dataService.query();
+  //var tasksList = dataService.query();
+
+  var tasksList = [
+    {
+      "id": 1,
+      "text": "Clean room",
+      "date": new Date("2015-01-05T09:05:05.035Z"),
+      "done": false
+    }, 
+    {
+      "id": 2,
+      "text": "Buy food",
+      "date": new Date("2017-01-07T10:05:05.035Z"),
+      "done": false
+    }, 
+    {
+      "id": 3,
+      "text": "Study English",
+      "date": new Date("2016-01-06T08:05:05.035Z"),
+      "done": false
+    }
+  ];
 
   return {
     getAllTasks: function() {
@@ -15,17 +36,25 @@ angular.module('toDoApp').factory("todoFactory", function(dataService) {
     addTask: function(task) {
       tasksList.push(task);
     },
-    toggleTaskStatus: function(task) {
-      tasksList[task].done = !tasksList[task].done;
+    removeTask: function(task) {
+      tasksList.splice(tasksList.indexOf(task), 1);
     },
-    removeTask: function(index) {
-      tasksList.splice(tasksList.indexOf(index), 1);
+    findTask: function(id) {
+      for (var i = 0, length = tasksList.length; i < length; i++) {
+        if (tasksList[i].id == id) {
+          return tasksList[i];
+        }
+      }
+      
+      return null;
     },
-    findTask: function(index) {
-      return tasksList[index];
-    },
-    updateTask: function(index, task) {
-      tasksList[index] = task;
+    updateTask: function(id, task) {
+      for (var i = 0, length = tasksList.length; i < length; i++) {
+        if (tasksList[i].id == id) {
+          tasksList[i] = task;
+          break;
+        }
+      };
     }
   };
 });

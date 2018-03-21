@@ -7,6 +7,7 @@ angular.module('toDoApp').controller('addTaskController', [
     $scope.submitTitle = 'Add';
 
     $scope.task = {
+      id: todoFactory.getAllTasks().length + 1,
       text: '',
       date: '',
       done: false
@@ -16,6 +17,8 @@ angular.module('toDoApp').controller('addTaskController', [
       if ($scope.task.text && $scope.task.date) {
 
         todoFactory.addTask($scope.task);
+
+        console.log("lol: ", todoFactory.getAllTasks());
 
         // Redirect to main page
         $location.path('/');
