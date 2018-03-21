@@ -29,11 +29,11 @@ angular.module('toDoApp').controller('tasksListsController', [
       $scope.taskType = type;
     }
 
-    $scope.removeTask = function(index, task) {
+    $scope.removeTask = function(task) {
 
       if (window.confirm('Are you sure you want to delete the task "' + task.text + '"?')) {
      
-        todoFactory.removeTask(index);
+        todoFactory.removeTask(task);
 
         updateList();
       }
@@ -43,8 +43,8 @@ angular.module('toDoApp').controller('tasksListsController', [
       updateList();
     };
 
-    $scope.editTask = function(index) {
-      $location.path('/editTask/' + index);
+    $scope.editTask = function(id) {
+      $location.path('/editTask/' + id);
     };
 
     $scope.getAllTasks = function() {

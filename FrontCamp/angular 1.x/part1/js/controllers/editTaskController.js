@@ -3,24 +3,21 @@ angular.module('toDoApp').controller('editTaskController', [
   'todoFactory',
   '$routeParams',
   '$location',
-  function($scope, todoFactory, $routeParams, $location) {
+  'dataService',
+  function($scope, todoFactory, $routeParams, $location, dataService) {
       $scope.formTitle = 'Edit task';
       $scope.submitTitle = 'Edit';
       $scope.editForm = true;
 
-      $scope.task = {
-        text: '',
-        date: new Date(),
-        done: false
-      }
+      var taskToEdit = todoFactory.findTask($routeParams.id);
+      
+      taskToEdit.date = new Date(taskToEdit.date);
 
-      //$scope.task.date = new Date(todoFactory.findTask($routeParams.id).date);
-
-      $scope.task = todoFactory.findTask($routeParams.id);
+      $scope.task = taskToEdit;
 
       $scope.clickHandler = function() {
         
-        todoFactory.updateTask($routeParams.id, $scope.task);
+        todoFactory.updateTask($scope.task);
 
         // redirect to main page
         $location.path('/');
