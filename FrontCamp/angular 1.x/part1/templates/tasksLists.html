@@ -22,7 +22,7 @@
               <input type="checkbox" ng-model="task.done" ng-change="toggleListItems()"/>
             </label>
             <h4 ng-class="{'task__title--done': task.done}">{{ task.text }}</h4>
-            <p>{{ task.date | date: "short" }}</p>
+            <p>{{ task.date | date: "medium" }}</p>
             <button class="btn btn-dark" ng-click="removeTask(task)">Delete</button>
             <button class="btn btn-primary" ng-click="editTask(task.id)">Edit</button>
           </li>

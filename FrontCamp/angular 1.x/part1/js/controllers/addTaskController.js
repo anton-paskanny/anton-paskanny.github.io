@@ -18,8 +18,6 @@ angular.module('toDoApp').controller('addTaskController', [
 
         todoFactory.addTask($scope.task);
 
-        console.log("lol: ", todoFactory.getAllTasks());
-
         // Redirect to main page
         $location.path('/');
 
