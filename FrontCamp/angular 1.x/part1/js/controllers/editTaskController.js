@@ -10,16 +10,14 @@ angular.module('toDoApp').controller('editTaskController', [
       $scope.editForm = true;
 
       var taskToEdit = todoFactory.findTask($routeParams.id);
-      
       taskToEdit.date = new Date(taskToEdit.date);
 
       $scope.task = taskToEdit;
 
       $scope.clickHandler = function() {
         
-        todoFactory.updateTask($scope.task);
+        todoFactory.updateTask($routeParams.id, $scope.task);
 
-        // redirect to main page
         $location.path('/');
       }
   }
