@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Articles App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-messages.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-resource.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script src="js/utils/dirPagination.js"></script>
+</head>
+<body>
+    <div ng-app="testApp">
+      <header class="container">
+        <nav class="navbar navbar-expand-lg navbar-light mb-1 justify-content-center">
+            <div class="navbar-nav">
+              <add-article-btn></add-article-btn>
+              <a class="nav-item nav-link" href="/">Tasks</a>
+            </div>
+        </nav>
+      </header>
+        <div ng-view></div>
+    </div>
+
+    <script src="js/app.module.js"></script>
+    <script src="js/app.config.js"></script>
+    <script src="js/components/articlesList.js"></script>
+    <script src="js/components/articleDetail.js"></script>
+    <script src="js/components/addArticleBtn.js"></script>
+    <script src="js/components/articleForm.js"></script>
+    <script src="js/factories/articles.js"></script>
+    <script src="js/factories/dataService.js"></script>
+</body>
+</html>

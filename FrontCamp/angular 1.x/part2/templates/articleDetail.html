@@ -1,0 +1,9 @@
+<li>
+    <h4>Title: {{ $ctrl.article.title }}</h4>
+    <p>Published: {{ $ctrl.article.date | date: 'medium' }}</p>
+    <p>
+        {{ $ctrl.article.content }}
+    </p>
+    <button class="btn btn-dark" ng-click="$ctrl.editArticle($ctrl.article)">Edit</button>
+    <button class="btn btn-warning" ng-click="$ctrl.deleteArticle($ctrl.article)">Delete</button>
+</li>
