@@ -1,0 +1,60 @@
+<div class="container">
+  <h2 class="text-center">{{ $ctrl.title }}</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+        <form name="articleForm" class="form-group">
+            <div class="form-group">
+              <label for="inputText">Title: </label>
+              <input class="form-control"
+                     id="inputText"
+                     type="text"
+                     name="title"
+                     placeholder="Title"
+                     ng-model="$ctrl.article.title"
+                     ng-minlength="5"
+                     required
+              />
+              <div ng-messages="articleForm.title.$error" ng-if="articleForm.title.$touched">
+                <div ng-message="required" class="mt-1 text-danger">This field is required</div>
+                <div ng-message="minlength" class="mt-1 text-danger">Title must be over 5 characters</div>
+              </div>
+            </div>
+      
+            <div class="form-group">
+              <label for="date">Date: </label>
+              <input class="form-control"
+                     id="date"
+                     type="date"
+                     name="date"
+                     placeholder="Date"
+                     ng-model="$ctrl.article.date"
+                     required
+              />
+              <div ng-messages="articleForm.date.$error" ng-if="articleForm.date.$touched">
+                <div ng-message="required" class="mt-1 text-danger">This field is required</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="content">Content: </label>
+              <textarea class="form-control"
+                     id="content"
+                     name="content"
+                     placeholder="Content"
+                     ng-model="$ctrl.article.content"
+                     required
+              ></textarea>
+              <div ng-messages="articleForm.content.$error" ng-if="articleForm.content.$touched">
+                <div ng-message="required" class="mt-1 text-danger">This field is required</div>
+              </div>
+            </div>
+      
+            <button class="btn btn-primary"
+                    type="submit"
+                    ng-click="$ctrl.submitHandler()"
+                    ng-disabled="articleForm.$invalid"
+            >{{$ctrl.submitTitle}}</button>
+        </form>
+    </div>
+  </div>
+</div>

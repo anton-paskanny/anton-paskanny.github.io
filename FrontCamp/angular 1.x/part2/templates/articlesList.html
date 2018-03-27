@@ -1,0 +1,11 @@
+<div>
+    <input class="form-control col-6 mb-3" type="text" ng-model="query" placeholder="Filter by title">
+    <h4>Amount: {{  $ctrl.articles.length }}</h4>
+    <ul>
+        <article-detail dir-paginate="article in $ctrl.articles  | filter: {title: query} | itemsPerPage: 3 as counter" 
+        article="article">
+        </article-detail>
+        <li ng-show="counter.length === 0">No articles were found</li>
+    </ul>
+    <dir-pagination-controls ng-hide="query.length > 0"></dir-pagination-controls>
+</div>

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Article 1",
+    "date": "2015-01-05T09:05:05.035Z",
+    "content": "Lol Lol Lol Lol Lol Lol Lol Lol Lol"
+  }, 
+  {
+    "id": 2,
+    "title": "Article 2",
+    "date": "2017-01-07T10:05:05.035Z",
+    "content": "Kek Kek Kek"
+  }, 
+  {
+    "id": 3,
+    "title": "Article 3",
+    "date": "2016-01-06T08:05:05.035Z",
+    "content": "Bek bek bek"
+  },
+  {
+    "id": 4,
+    "title": "Article 4",
+    "date": "2016-02-06T08:05:05.035Z",
+    "content": "sadfasdfsafsadf"
+  },
+  {
+    "id": 5,
+    "title": "Article 5",
+    "date": "2013-12-06T08:05:05.035Z",
+    "content": "text text text"
+  },
+  {
+    "id": 6,
+    "title": "Article 6",
+    "date": "2009-11-05T08:05:05.035Z",
+    "content": "text tesadasdasdxt text"
+  }
+]
