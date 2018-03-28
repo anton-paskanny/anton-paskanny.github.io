@@ -1,8 +1,7 @@
 var АrticlesListController = function (arcticlesFactory) {
-    var ctrl = this;
 
-    ctrl.articles = arcticlesFactory.getAllArticles();
-
+    this.articles = arcticlesFactory.getAllArticles();
+    this.order = "-date";
 }
 
 АrticlesListController.$inject = ['articlesFactory'];
