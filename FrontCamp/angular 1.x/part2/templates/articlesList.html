@@ -1,11 +1,25 @@
-<div>
-    <input class="form-control col-6 mb-3" type="text" ng-model="query" placeholder="Filter by title">
-    <h4>Amount: {{  $ctrl.articles.length }}</h4>
-    <ul>
-        <article-detail dir-paginate="article in $ctrl.articles  | filter: {title: query} | itemsPerPage: 3 as counter" 
-        article="article">
-        </article-detail>
-        <li ng-show="counter.length === 0">No articles were found</li>
-    </ul>
-    <dir-pagination-controls ng-hide="query.length > 0"></dir-pagination-controls>
+<div class="container">
+    <div class="row justify-content-center">
+        <input class="form-control col-6 mb-2" type="text" ng-model="query" placeholder="Filter by title">
+        <div class="w-100"></div>
+        <select class="custom-select col-6" ng-model="$ctrl.order">
+            <option value="-date">Recent</option>
+            <option value="date">Older</option>
+        </select>
+    </div>
+    <h4 class="text-center mt-4">Common amount: {{  $ctrl.articles.length }}</h4>
+    <div class="row justify-content-center">
+        <ul class="list-group col-6 pr-0">
+            <article-detail dir-paginate="article in $ctrl.articles  | filter: {title: query} | orderBy: $ctrl.order | itemsPerPage: 3 as counter" 
+            article="article">
+            </article-detail>
+            <li class="list-group-item text-danger text-center" ng-show="counter.length === 0">No articles were found</li>
+        </ul>
+        <div class="w-100"></div>
+        <dir-pagination-controls class="col-6 mt-3"
+                                 ng-hide="query.length > 0"
+                                 template-url="/templates/dirPagination.tpl.html"
+        ></dir-pagination-controls>
+    </div>
+    
 </div>

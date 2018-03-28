@@ -1,5 +1,4 @@
 var FormController = function(articlesFactory, $routeParams, $location) {
-    console.log($routeParams);
     switch ($routeParams.type) {
         case 'add':
             var articles = articlesFactory.getAllArticles();
