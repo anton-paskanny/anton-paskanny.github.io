@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddBlogBtn component should render correctly 1`] = `
+<button
+  className="add-blog-btn hoverable"
+  onClick={undefined}
+>
+  +
+</button>
+`;

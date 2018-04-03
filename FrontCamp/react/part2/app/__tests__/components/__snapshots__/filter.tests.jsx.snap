@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Filter component should render correctly 1`] = `
+<div
+  className="filter"
+>
+  <h3
+    className="filter__title"
+  >
+    Filter blogs by author's name
+  </h3>
+  <input
+    className="filter__input"
+    onChange={undefined}
+    placeholder="Author's name"
+    type="text"
+  />
+</div>
+`;
