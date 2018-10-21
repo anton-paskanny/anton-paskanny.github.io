@@ -1,0 +1,20 @@
+{
+    "short_name": "RSS-news",
+    "name": "RSS-news reader",
+    "icons": [
+      {
+        "src": "/img/rss-square.png",
+        "type": "image/png",
+        "sizes": "128x128"
+      },
+      {
+        "src": "/img/rss-square-big.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/",
+    "background_color": "#032b2f",
+    "display": "standalone",
+    "theme_color": "#032b2f"
+  }
