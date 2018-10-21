@@ -3,17 +3,17 @@
     "name": "RSS-news reader",
     "icons": [
       {
-        "src": "/img/rss-square.png",
+        "src": "pwa/img/rss-square.png",
         "type": "image/png",
         "sizes": "128x128"
       },
       {
-        "src": "/img/rss-square-big.png",
+        "src": "pwa/img/rss-square-big.png",
         "type": "image/png",
         "sizes": "512x512"
       }
     ],
-    "start_url": "/",
+    "start_url": "/pwa",
     "background_color": "#032b2f",
     "display": "standalone",
     "theme_color": "#032b2f"
