@@ -1,7 +1,14 @@
 import React from 'React';
 
-export default () => (
-    <footer>
-        <h3>netflixroulette</h3>
-    </footer>
+const Footer = React.createElement(
+    'footer',
+    {
+        className: 'footer'
+    },
+    React.createElement(
+        'h3',
+        {},
+        'netflixroulette'
+    )
 )
+export default Footer;
