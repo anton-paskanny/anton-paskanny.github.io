@@ -1,14 +1,9 @@
 import React from 'React';
 
-const Footer = React.createElement(
-    'footer',
-    {
-        className: 'footer'
-    },
-    React.createElement(
-        'h3',
-        {},
-        'netflixroulette'
-    )
-)
-export default Footer;
+import styles from './styles.css';
+
+export default () => (
+    <footer className="main-footer">
+        <p className="main-footer__title common-title">netflixroulette</p>
+    </footer>
+);

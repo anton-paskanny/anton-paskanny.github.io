@@ -1,0 +1,22 @@
+.sort-panel {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20%;
+    background-color: var(--third-color);
+}
+
+.sort-panel__filters {
+    display: flex;
+}
+
+.sort-panel__inner-wrapper {
+    display: flex;
+}
+
+.sort-panel__filter-item {
+    margin-left: 10px;
+}
+
+.sort-panel__filter-item--active {
+    color: var(--primary-color);
+}

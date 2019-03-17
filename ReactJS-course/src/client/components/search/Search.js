@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import SearchFilter from './search-filter/SearchFilter';
 import SearchInput from './search-input/SearchInput';
 
+import styles from './styles.css';
+
 class Search extends Component {
     state = {
         searchVal: ''
@@ -21,8 +23,8 @@ class Search extends Component {
 
     render() {
         return (
-            <div className="search">
-                <h4>Find your movie</h4>
+            <div className="search-panel">
+                <h2 className="search-panel__title">Find your movie</h2>
                 <SearchInput value={this.state.searchVal} handleInputChange={this.handleInputChange} />
                 <SearchFilter onSubmit={this.handleSubmit} />
             </div>

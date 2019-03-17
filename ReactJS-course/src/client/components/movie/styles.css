@@ -1,0 +1,38 @@
+.movie__img-placeholder {
+    height: 500px;
+    background-color: var(--third-color);
+}
+
+.movie__img {
+    width: 100%;
+    height: inherit;
+    object-fit: cover;
+    object-position: top;
+}
+
+.movie__info-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 20px;
+}
+
+.movie__genres-list {
+    display: flex;
+    margin-top: 10px;
+}
+
+.movie__genre-list-item,
+.movie__genre-list-item--separator {
+    font-size: 0.6em;
+}
+
+.movie__release-date {
+    padding: 0px 6px;
+    font-size: 0.8em;
+    border: 1px solid black;
+}
+
+.movie__genre-list-item--separator {
+    margin: 0 6px;
+}

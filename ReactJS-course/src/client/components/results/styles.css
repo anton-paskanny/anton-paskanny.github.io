@@ -1,0 +1,15 @@
+.results__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
+    padding-top: 40px;
+}
+
+.results__no-items {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    font-size: 3em;
+    text-align: center;
+    transform: translateX(-50%);
+}

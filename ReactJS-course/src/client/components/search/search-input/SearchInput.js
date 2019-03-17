@@ -1,8 +1,12 @@
 import React from 'react';
 
 const SearchInput = props => (
-    <div className="search__input-wrapper">
-        <input name="movie" value={props.value} onChange={props.handleInputChange}/>
+    <div className="search-panel__input-wrapper">
+        <input name="movie"
+               className="search-panel__input"
+               value={props.value}
+               onChange={props.handleInputChange}
+        />
     </div>
 )
 

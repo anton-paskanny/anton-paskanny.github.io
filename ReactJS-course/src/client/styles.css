@@ -1,9 +1,24 @@
 /* 
     https://coolors.co/011627-fdfffc-2ec4b6-ff0000-e56700
 */
+
+* {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, figure {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
 :root {
     --primary-color: #2EC4B6;
     --secondary-color: #011627;
+    --third-color: #F5F5F5;
 }
 
 body {
@@ -17,6 +32,11 @@ body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     width: 80%;
+    max-width: 1360px;
     height: 100vh;
     margin: 0 auto;
+}
+
+.common-title {
+    color: var(--primary-color);
 }
