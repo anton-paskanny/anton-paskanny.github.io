@@ -16,9 +16,31 @@
     z-index: 2;
 }
 
-.main-header__title {
+.main-header__inner-wrapper {
     position: relative;
+    z-index: 3;
+}
+
+.main-header__title {
     margin-bottom: 40px;
     font-size: 1em;
-    z-index: 3;
+}
+
+.main-header__top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.main-header__top-bar .main-header__title {
+    margin-bottom: 0;
+}
+
+.main-header__back-link {
+    display: block;
+    padding: 5px 15px;
+    background-color: #fff;
+    text-decoration: none;
+    color: var(--primary-color);
 }

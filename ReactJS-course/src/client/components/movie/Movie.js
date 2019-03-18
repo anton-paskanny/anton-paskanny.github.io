@@ -1,9 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import styles from './styles.css';
 
 export default props => {
-    const { title, genres, poster_path, release_date } = props.data;
+    const { id, title, genres, poster_path, release_date } = props.data;
 
     function renderGenres(genres) {
         return genres && genres.map((title, index) => (
@@ -17,7 +18,7 @@ export default props => {
     }
 
     return (
-        <article className="movie">
+        <Link to={`/movie/${id}`} className="movie">
             <figure className="movie__img-placeholder">
                 <img className="movie__img"src={poster_path} alt={title}/>
             </figure>
@@ -32,6 +33,6 @@ export default props => {
                     {release_date.slice(0, 4)}
                 </time>
             </div>
-        </article>
+        </Link>
     )
 }

@@ -1,3 +1,8 @@
+.movie {
+    text-decoration: none;
+    color: inherit;
+}
+
 .movie__img-placeholder {
     height: 500px;
     background-color: var(--third-color);

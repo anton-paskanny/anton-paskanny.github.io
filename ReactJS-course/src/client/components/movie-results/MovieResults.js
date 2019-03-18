@@ -1,12 +1,11 @@
-import React, { Component } from 'React';
+import React, { PureComponent } from 'React';
 
 import Movie from '../movie/Movie';
 import SortPanel from './sortPanel/SortPanel';
-import Spinner from '../spinner/Spinner';
 
 import styles from './styles.css';
 
-class Results extends Component {
+class MovieResults extends PureComponent {
     state = {
         movies: []
     }
@@ -45,4 +44,4 @@ class Results extends Component {
     }
 }
 
-export default Results;
+export default MovieResults;
