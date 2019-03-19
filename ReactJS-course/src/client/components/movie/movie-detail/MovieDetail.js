@@ -15,10 +15,10 @@ class MovieDetail extends Component {
         this.getMovieData(this.props.id);
     }
 
-    componentDidUpdate(nextProps, nextState) {
-        if (nextProps.id !== this.props.id) {
-            this.getMovieData(nextProps.id);
-        }  
+    componentDidUpdate(prevProps) {
+        if (prevProps.id !== this.props.id) {
+            this.getMovieData(this.props.id);
+        }
     }
 
     renderGenres(genres) {
