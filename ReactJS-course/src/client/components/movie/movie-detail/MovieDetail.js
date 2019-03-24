@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { URL_BASE } from '../../../utils';
+
 import styles from './styles.css';
 
 class MovieDetail extends Component {
@@ -28,7 +30,7 @@ class MovieDetail extends Component {
     }
 
     getMovieData(id) {
-        const URL = `http://react-cdp-api.herokuapp.com/movies/${id}`;
+        const URL = `${URL_BASE}/movies/${id}`;
         
         fetch(URL)
         .then(res => res.json())

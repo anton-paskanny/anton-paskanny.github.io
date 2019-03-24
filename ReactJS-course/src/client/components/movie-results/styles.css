@@ -5,11 +5,13 @@
     padding-top: 40px;
 }
 
+.results__items {
+    position: relative;
+}
+
 .results__no-items {
-    position: absolute;
-    top: 10%;
-    left: 50%;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
     font-size: 3em;
     text-align: center;
-    transform: translateX(-50%);
 }

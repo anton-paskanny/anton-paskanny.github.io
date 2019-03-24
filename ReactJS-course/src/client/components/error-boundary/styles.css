@@ -1,0 +1,8 @@
+.error-dialog {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.error-dialog__title {
+    margin-bottom: 10px;
+}

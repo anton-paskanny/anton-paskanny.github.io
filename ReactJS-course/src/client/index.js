@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import moviesReducer from './reducers/movies';
 
 import App from './components/App';
+import ErrorBoundary from './components/error-boundary/ErrorBoundary';
 
 import normalize from './normalize.css';
 import styles from './styles.css';
@@ -18,7 +19,9 @@ const store = createStore(
 ReactDOM.render(
     <Provider store={createStore(moviesReducer)}>
          <Router>
-            <App />
+             <ErrorBoundary>
+                <App />
+             </ErrorBoundary>
         </Router>
     </Provider>,
     document.querySelector('#root')

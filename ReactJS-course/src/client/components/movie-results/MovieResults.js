@@ -3,6 +3,8 @@ import React, { PureComponent } from 'React';
 import Movie from '../movie/Movie';
 import SortPanel from './sortPanel/SortPanel';
 
+import { URL_BASE } from '../../utils';
+
 import styles from './styles.css';
 
 class MovieResults extends PureComponent {
@@ -11,7 +13,9 @@ class MovieResults extends PureComponent {
     }
 
     componentDidMount() {
-        fetch('http://react-cdp-api.herokuapp.com/movies')
+        const urlToFetch = `${URL_BASE}/movies`;
+
+        fetch(urlToFetch)
         .then(res => res.json())
         .then(json => {
             this.setState({

@@ -1,0 +1,1 @@
+export const URL_BASE = 'http://react-cdp-api.herokuapp.com';
