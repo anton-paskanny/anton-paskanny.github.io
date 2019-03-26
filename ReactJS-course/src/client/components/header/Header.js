@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Search from '../search/Search';
+import Search from '../Search/Search';
 
 import styles from './styles.css';
 

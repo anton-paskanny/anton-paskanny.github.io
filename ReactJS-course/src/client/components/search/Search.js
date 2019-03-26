@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { searchMovie } from '../../actions';
 
-import SearchFilter from './search-filter/SearchFilter';
-import SearchInput from './search-input/SearchInput';
+import SearchFilter from './SearchFilter/SearchFilter';
+import SearchInput from './SearchInput/SearchInput';
 
 import styles from './styles.css';
 
@@ -23,13 +23,16 @@ class Search extends Component {
     }
 
     handleInputChange = e => {
-        console.log("handleInputChange, e: ", e.target.value);
         this.setState({
             searchVal: e.target.value
         });
     }
 
     handleSearchByChange = e => {
+        if (e.target.classList.contains('search-filter__filter-btn--active')) {
+            return;
+        }
+
         this.setState({
             searchBy: this.state.searchBy.map(el => {
                 if (el.name === e.target.textContent) {

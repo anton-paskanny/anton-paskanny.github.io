@@ -6,10 +6,42 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import moviesReducer from './reducers/movies';
 
 import App from './components/App';
-import ErrorBoundary from './components/error-boundary/ErrorBoundary';
+import ErrorBoundary from './components/shared/ErrorBoundary/ErrorBoundary';
 
 import normalize from './normalize.css';
 import styles from './styles.css';
+
+/**
+ * 
+ * Future structure of store
+ * 
+ * {
+ *      movies: [],
+ *      selectedMovie: [],
+ *      searchBy: [
+ *          
+                name: 'title',
+                active: true
+            },
+            {
+                name: 'genre',
+                active: false
+            }
+ *      ],
+ *      sortBy: [
+ *          {
+                name: 'release date',
+                active: true
+            },
+            {
+                name: 'rating',
+                active: false
+            }
+ *      ]
+ * 
+ * }
+ * 
+ */
 
 const store = createStore(
     moviesReducer,

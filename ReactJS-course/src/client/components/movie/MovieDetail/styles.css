@@ -10,8 +10,8 @@
     background-color: var(--third-color);
 }
 
-.movie-detail__info-wrapper {
-    flex: 2;
+.main-header__inner-wrapper .lds-facebook {
+    margin: 0 auto;
 }
 
 .movie-detail__img {
@@ -23,6 +23,7 @@
 .movie-detail__info-wrapper {
     margin-left: 60px;
     color: #fff;
+    flex: 2;
 }
 
 .movie-detail__title-wrapper {
@@ -42,6 +43,10 @@
     color: var(--rating-color);
     border: 1px solid var(--rating-color);
     border-radius: 50%;
+}
+
+.movie-detail__title {
+    flex: 1;
 }
 
 .movie-detail__genres {

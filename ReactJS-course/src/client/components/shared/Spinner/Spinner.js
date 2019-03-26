@@ -1,7 +1,9 @@
 import React from 'react';
 
+import styles from './styles.css';
+
 export default () => (
-    <div class="lds-facebook">
+    <div className="lds-facebook">
         <div></div>
         <div></div>
         <div></div>

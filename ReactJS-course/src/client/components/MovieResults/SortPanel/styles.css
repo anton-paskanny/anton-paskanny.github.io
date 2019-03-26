@@ -17,6 +17,12 @@
     margin-left: 10px;
 }
 
-.sort-panel__filter-item--active {
+.sort-panel__filter-btn {
+    padding: 0;
+    border: none;
+    background-color: none;
+}
+
+.sort-panel__filter-btn--active {
     color: var(--primary-color);
 }

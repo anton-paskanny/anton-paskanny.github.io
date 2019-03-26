@@ -2,16 +2,15 @@ import React from 'react';
 
 import styles from './styles.css';
 
-const SortPanel = () => {
+const SortPanel = props => {
 
     const renderSortByItems = () => {
-        return this.props.searchByConfig.map((item) => {
-            return (
+        return props.sortByConfig.map((item) => (
                 <li key={item.name} className='sort-panel__filter-item'>
                     <button className={'sort-panel__filter-btn' + (item.active ? ' sort-panel__filter-btn--active': '')}>{item.name}</button>
                 </li>
             )
-        });
+        );
     }
 
     return (
@@ -21,9 +20,8 @@ const SortPanel = () => {
             </p>
             <div className="sort-panel__inner-wrapper">
                 <p>Sort by</p>
-                <ul className="sort-panel__filters">
-                    <li className="sort-panel__filter-item sort-panel__filter-item--active">release date</li>
-                    <li className="sort-panel__filter-item">rating</li>
+                <ul className="sort-panel__filters" onClick={props.handleSortByChange}>
+                    {renderSortByItems()}
                 </ul>
             </div>
         </div>

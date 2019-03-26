@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Header from './header/Header';
-import HeaderDetail from './header/HeaderDetail';
-import MovieResults from './movie-results/MovieResults';
-import Footer from './footer/Footer';
+import Header from './Header/Header';
+import HeaderDetail from './Header/HeaderDetail';
+import MovieResults from './MovieResults/MovieResults';
+import Footer from './Footer/Footer';
 
 const App = () => (
     <div className="app-wrapper">

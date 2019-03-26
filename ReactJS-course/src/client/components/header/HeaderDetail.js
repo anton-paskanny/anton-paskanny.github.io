@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import MovieDetail from '../movie/movie-detail/MovieDetail';
+import MovieDetail from '../Movie/MovieDetail/MovieDetail';
 
 import styles from './styles.css';
 

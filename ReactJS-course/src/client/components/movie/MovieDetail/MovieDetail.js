@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Spinner from '../../shared/Spinner/Spinner';
+
 import { URL_BASE } from '../../../utils';
 
 import styles from './styles.css';
@@ -8,7 +10,7 @@ class MovieDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoaded: false,
+            isFetching: true,
             movie: {}
         }
     }
@@ -19,6 +21,9 @@ class MovieDetail extends Component {
 
     componentDidUpdate(prevProps) {
         if (prevProps.id !== this.props.id) {
+            this.setState({
+                isFetching: true
+            });
             this.getMovieData(this.props.id);
         }
     }
@@ -30,18 +35,18 @@ class MovieDetail extends Component {
     }
 
     getMovieData(id) {
-        const URL = `${URL_BASE}/movies/${id}`;
+        const URL = `${URL_BASE}/${id}`;
         
         fetch(URL)
         .then(res => res.json())
         .then(data => this.setState({
-            isLoaded: true,
+            isFetching: false,
             movie: data
         }));
     }
 
     render() {
-        if (!this.state.isLoaded) return <p>Loading...</p>
+        if (this.state.isFetching) return <Spinner />
         
         const { title, overview, poster_path, genres, runtime, release_date, vote_average } = this.state.movie;
         
