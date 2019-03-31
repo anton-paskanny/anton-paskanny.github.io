@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
-import { createStore } from 'redux';
+import { install, combineReducers } from 'redux-loop';
+import { createStore, compose } from 'redux';
 import { BrowserRouter as Router } from 'react-router-dom';
+
 import moviesReducer from './reducers/movies';
+import movieReducer from './reducers/movie';
 
 import App from './components/App';
 import ErrorBoundary from './components/shared/ErrorBoundary/ErrorBoundary';
@@ -11,45 +14,24 @@ import ErrorBoundary from './components/shared/ErrorBoundary/ErrorBoundary';
 import normalize from './normalize.css';
 import styles from './styles.css';
 
-/**
- * 
- * Future structure of store
- * 
- * {
- *      movies: [],
- *      selectedMovie: [],
- *      searchBy: [
- *          
-                name: 'title',
-                active: true
-            },
-            {
-                name: 'genre',
-                active: false
-            }
- *      ],
- *      sortBy: [
- *          {
-                name: 'release date',
-                active: true
-            },
-            {
-                name: 'rating',
-                active: false
-            }
- *      ]
- * 
- * }
- * 
- */
-
-const store = createStore(
-    moviesReducer,
+const enhancer = compose(
+    install(),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+const rootReducer = combineReducers({
+    movies: moviesReducer,
+    selectedMovie: movieReducer
+});
+
+const store = createStore(
+    rootReducer,
+    /* preloaded state */
+    enhancer
+);
+
 ReactDOM.render(
-    <Provider store={createStore(moviesReducer)}>
+    <Provider store={store}>
          <Router>
              <ErrorBoundary>
                 <App />

@@ -5,7 +5,7 @@
 }
 
 .movie-detail__img-placeholder {
-    height: 400px;
+    height: 300px;
     flex: 1;
     background-color: var(--third-color);
 }

@@ -1,1 +1,1 @@
-export const URL_BASE = 'http://react-cdp-api.herokuapp.com/movies';
+export const URL_BASE = 'https://reactjs-cdp.herokuapp.com/movies';

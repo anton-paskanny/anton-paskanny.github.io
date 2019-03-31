@@ -7,25 +7,18 @@ import { URL_BASE } from '../../../utils';
 import styles from './styles.css';
 
 class MovieDetail extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isFetching: true,
-            movie: {}
-        }
-    }
-
     componentDidMount() {
-        this.getMovieData(this.props.id);
+        this.getMovieData();
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.id !== this.props.id) {
-            this.setState({
-                isFetching: true
-            });
-            this.getMovieData(this.props.id);
+            this.getMovieData();
         }
+    }
+
+    componentWillUnmount() {
+        this.props.resetMovie();
     }
 
     renderGenres(genres) {
@@ -34,21 +27,19 @@ class MovieDetail extends Component {
         ))
     }
 
-    getMovieData(id) {
-        const URL = `${URL_BASE}/${id}`;
-        
-        fetch(URL)
-        .then(res => res.json())
-        .then(data => this.setState({
-            isFetching: false,
-            movie: data
-        }));
+    getMovieData() {
+        const URL = `${URL_BASE}/${this.props.id}`;
+        this.props.fetchMovie(URL);
+    }
+
+    handleBtnClick = () => {
+        this.getMovieData();
     }
 
     render() {
-        if (this.state.isFetching) return <Spinner />
+        if (!this.props.selectedMovie || this.props.isFetching) return  <Spinner />;
         
-        const { title, overview, poster_path, genres, runtime, release_date, vote_average } = this.state.movie;
+        const { title, overview, poster_path, genres, runtime, release_date, vote_average } = this.props.selectedMovie;
         
         return (
             <div className="movie-detail">

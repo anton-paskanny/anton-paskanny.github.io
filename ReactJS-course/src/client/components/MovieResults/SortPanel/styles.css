@@ -20,7 +20,7 @@
 .sort-panel__filter-btn {
     padding: 0;
     border: none;
-    background-color: none;
+    background-color: transparent;
 }
 
 .sort-panel__filter-btn--active {

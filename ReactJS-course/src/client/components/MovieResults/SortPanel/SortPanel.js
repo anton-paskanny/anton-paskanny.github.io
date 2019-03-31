@@ -13,17 +13,35 @@ const SortPanel = props => {
         );
     }
 
+    if (!props.movies || props.movies.length === 0) {
+        return null;
+    }
+
+    const renderContent = () => (
+        <div className="sort-panel__inner-wrapper">
+            <p>Sort by</p>
+            <ul className="sort-panel__filters" onClick={props.handleSortByChange}>
+                {renderSortByItems()}
+            </ul>
+        </div>
+    );
+
+    const renderCounterContent = () => {
+        if (props.selectedMovie) {
+            const genres = props.selectedMovie.genres.map(genre => genre).join(', ');
+
+            return `Films by ${genres} ${props.selectedMovie.genres.length > 1 ? 'genres' : 'genre'}`;
+        }
+
+        return `${props.movies.length} ${props.movies.length > 1 ? 'movies' : 'movie'} found`;
+    };
+
     return (
         <div className="sort-panel">
             <p className="sort-panel__results-counter">
-                7 movies found
+                {renderCounterContent()}
             </p>
-            <div className="sort-panel__inner-wrapper">
-                <p>Sort by</p>
-                <ul className="sort-panel__filters" onClick={props.handleSortByChange}>
-                    {renderSortByItems()}
-                </ul>
-            </div>
+            {!props.selectedMovie && renderContent()}
         </div>
     )
 }

@@ -10,46 +10,84 @@ import styles from './styles.css';
 
 class MovieResults extends PureComponent {
     state = {
-        movies: [],
         sortBy: [
             {
                 name: 'release date',
+                fieldToSortBy: 'release_date',
                 active: true
             },
             {
                 name: 'rating',
+                fieldToSortBy: 'vote_average',
                 active: false
             }
-        ],
-        isFetching: false
+        ]
     }
 
     componentDidMount() {
-        this.setState({
-            isFetching: true
-        });
+        this.props.fetchMovies(`${URL_BASE}`);
+    }
 
-        fetch(URL_BASE)
-        .then(res => res.json())
-        .then(json => {
-            this.setState({
-                movies: json.data,
-                isFetching: false
-            })
-        });
+    componentDidUpdate(prevProps) {
+        /**
+         * 1. Take selected movies genres
+         * 2. Create url
+         * 3. Invoke action
+         * 4. Update field movies (they are with the same genres as selected move has)
+         */
+        if (this.props.selectedMovie && (!prevProps.selectedMovie || prevProps.selectedMovie.title !== this.props.selectedMovie.title)) {
+            const genres = this.props.selectedMovie.genres.map(genre => genre.toLowerCase()).join(',')
+            const URL = `${URL_BASE}?filter=${genres}`;
+            this.props.fetchMoviesByGenres(encodeURI(URL));
+        }
     }
 
     renderItems() {
-        if (this.state.isFetching) {
+        if (this.props.isFetching) {
             return <Spinner />
         }
-        if (this.state.movies.length === 0) {
+
+        if (!this.props.movies || this.props.movies.length === 0) {
             return <p className="results__no-items">No films found</p>
         }
 
-        return this.state.movies.map(movie => {
+        if (this.props.selectedMovie) {
+            if (this.props.moviesForSelectedMovie.length) {
+                 /**
+                 * Delete selected movie from received movies
+                 */
+                const movies = this.props.moviesForSelectedMovie.filter(elem => elem.id !== this.props.selectedMovie.id);
+
+                if (!movies.length) {
+                    return <p className="results__no-items">No films found with the same genre</p>;
+                }
+
+                return movies.map(movie => {
+                    return <Movie key={movie.id} data={movie} />
+                });
+            } else {
+                return <p className="results__no-items">No films found with the same genre</p>;
+            }
+        }
+
+        // For search page movies will be sorted after they
+        // where received from server
+        const sortedArr = this.sortMovies();
+        return sortedArr.map(movie => {
             return <Movie key={movie.id} data={movie} />
         })
+    }
+
+    sortMovies() {
+        const fieldToSortBy = this.state.sortBy.find(elem => elem.active).fieldToSortBy;
+        
+        return this.props.movies.slice().sort((a, b) => {
+            if (fieldToSortBy === 'release_date') {
+                return new Date(b[fieldToSortBy]) - new Date(a[fieldToSortBy]);
+            }
+
+            return b[fieldToSortBy] - a[fieldToSortBy];
+        });
     }
 
     handleSortByChange = (e) => {
@@ -71,8 +109,13 @@ class MovieResults extends PureComponent {
     render() {
         return (
             <div className="results">
-                <SortPanel sortByConfig={this.state.sortBy} handleSortByChange={this.handleSortByChange} />
-                <div className={`results__items ${this.state.isFetching ? 'results__items--fetching' : ''}`}>
+                <SortPanel 
+                           sortByConfig={this.state.sortBy}
+                           handleSortByChange={this.handleSortByChange}
+                           movies={this.props.movies}
+                           selectedMovie={this.props.selectedMovie}
+                />
+                <div className={`results__items ${this.props.isFetching ? 'results__items--fetching' : ''}`}>
                     {
                         this.renderItems()
                     }

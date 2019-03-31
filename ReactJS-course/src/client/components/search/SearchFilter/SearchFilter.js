@@ -7,7 +7,7 @@ class SearchFilter extends PureComponent {
         return this.props.searchByConfig.map((item) => {
             return (
                 <li key={item.name} className='search-filter__filter-item'>
-                    <button className={'search-filter__filter-btn' + (item.active ? ' search-filter__filter-btn--active': '')}>{item.name}</button>
+                    <button type="button" className={'search-filter__filter-btn' + (item.active ? ' search-filter__filter-btn--active': '')}>{item.name}</button>
                 </li>
             )
         });
@@ -22,7 +22,7 @@ class SearchFilter extends PureComponent {
                             { this.renderSearchByItems() }
                         </ul>
                     </div>
-                    <button className="search-filter__search-btn" onSubmit={this.props.handleSubmit}>
+                    <button className="search-filter__search-btn" type="submit">
                         Search
                     </button>
             </div>

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchMovie } from '../../actions';
+import { searchMovie } from '../../actions/movies';
 
 import SearchFilter from './SearchFilter/SearchFilter';
 import SearchInput from './SearchInput/SearchInput';
+
+import { URL_BASE } from '../../utils';
 
 import styles from './styles.css';
 
@@ -16,7 +18,7 @@ class Search extends Component {
                 active: true
             },
             {
-                name: 'genre',
+                name: 'genres',
                 active: false
             }
         ]
@@ -29,6 +31,8 @@ class Search extends Component {
     }
 
     handleSearchByChange = e => {
+        e.preventDefault();
+
         if (e.target.classList.contains('search-filter__filter-btn--active')) {
             return;
         }
@@ -45,15 +49,34 @@ class Search extends Component {
     }
 
     handleSubmit = e => {
-        console.log('Start searching movie - ', this.state.searchVal);
+        e.preventDefault();
+
+        if (!this.state.searchVal.trim()) {
+            return;
+        }
+
+        const searchVal = this.state.searchVal ? `search=${this.state.searchVal.trim()}&` : '';
+        const searchBy = this.state.searchVal ? `searchBy=${this.state.searchBy.find(elem => elem.active).name}` : '';
+        const URL = `${URL_BASE}?${searchVal}${searchBy}`;
+
+        this.props.fetchMovies(encodeURI(URL));
     }
 
     render() {
+        console.log("render");
         return (
             <div className="search-panel">
                 <h2 className="search-panel__title">Find your movie</h2>
-                <SearchInput value={this.state.searchVal} handleInputChange={this.handleInputChange} />
-                <SearchFilter onSubmit={this.handleSubmit} searchByConfig={this.state.searchBy} handleSearchByChange={this.handleSearchByChange} />
+                <form onSubmit={this.handleSubmit}>
+                    <SearchInput
+                        value={this.state.searchVal}
+                        handleInputChange={this.handleInputChange}
+                    />
+                    <SearchFilter
+                        searchByConfig={this.state.searchBy}
+                        handleSearchByChange={this.handleSearchByChange}
+                    />
+                </form>
             </div>
         )
     }

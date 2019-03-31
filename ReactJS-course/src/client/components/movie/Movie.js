@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import styles from './styles.css';
 
-export default props => {
+const Movie = props => {
     const { id, title, genres, poster_path, release_date } = props.data;
 
     function renderGenres(genres) {
@@ -35,4 +35,6 @@ export default props => {
             </div>
         </Link>
     )
-}
+};
+
+export default Movie;
