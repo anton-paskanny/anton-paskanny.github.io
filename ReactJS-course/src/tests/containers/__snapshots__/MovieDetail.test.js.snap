@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieDetail container renders correctly 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(MovieDetail)
+    id={123}
+  >
+    <MovieDetail
+      fetchMovie={[Function]}
+      id={123}
+      isFetching={false}
+      resetMovie={[Function]}
+      selectedMovie={
+        Object {
+          "budget": 0,
+          "id": 424785,
+          "overview": "Plot unknown.",
+          "poster_path": "https://image.tmdb.org/t/p/w500/432BowXw7a4fWXSONxBaFKqvW4f.jpg",
+          "release_date": "2019-06-26",
+          "revenue": 0,
+          "runtime": null,
+          "tagline": "",
+          "title": "Transformers 7",
+          "vote_average": 0,
+          "vote_count": 0,
+        }
+      }
+    >
+      <div
+        className="movie-detail"
+      >
+        <figure
+          className="movie-detail__img-placeholder"
+        >
+          <img
+            alt="Transformers 7"
+            className="movie-detail__img"
+            src="https://image.tmdb.org/t/p/w500/432BowXw7a4fWXSONxBaFKqvW4f.jpg"
+          />
+        </figure>
+        <div
+          className="movie-detail__info-wrapper"
+        >
+          <div
+            className="movie-detail__title-wrapper"
+          >
+            <h2
+              className="movie-detail__title"
+            >
+              Transformers 7
+            </h2>
+            <p
+              className="movie-detail__rating"
+            >
+              <span>
+                0
+              </span>
+            </p>
+          </div>
+          <ul
+            className="movie-detail__genres"
+          />
+          <p
+            className="movie-detail__wrapper"
+          >
+            <time
+              className="movie-detail__release-date"
+              dateTime="2019-06-26"
+            >
+              2019
+               min
+            </time>
+            <span
+              className="movie-detail__duration"
+            />
+          </p>
+          <p
+            className="movie-detail__desc"
+          >
+            Plot unknown.
+          </p>
+        </div>
+      </div>
+    </MovieDetail>
+  </Connect(MovieDetail)>
+</Provider>
+`;

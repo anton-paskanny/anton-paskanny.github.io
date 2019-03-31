@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer render component correctly 1`] = `
+<footer
+  className="main-footer"
+>
+  <p
+    className="main-footer__title common-title"
+  >
+    netflixroulette
+  </p>
+</footer>
+`;

@@ -3,7 +3,6 @@ export const FETCH_MOVIES_SUCCESS = 'FETCH_MOVIES_SUCCESS';
 export const FETCH_MOVIES_BY_GENRES = 'FETCH_MOVIES_BY_GENRES';
 export const FETCH_MOVIES_BY_GENRES_SUCCESS = 'FETCH_MOVIES_BY_GENRES_SUCCESS';
 export const FETCH_MOVIES_ERROR = 'FETCH_MOVIES_ERROR';
-export const SORT_MOVIES = 'SORT_MOVIES';
 
 export const fetchMovies = url => ({
     type: FETCH_MOVIES,
@@ -28,9 +27,4 @@ export const fetchMoviesByGenresSuccess = movies => ({
 export const fetchMoviesError = err => ({
     type: FETCH_MOVIES_ERROR,
     err
-});
-
-export const sortMovies = movies => ({
-    type: SORT_MOVIES,
-    movies
 });

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { install, combineReducers } from 'redux-loop';
 import { createStore, compose } from 'redux';
-import { BrowserRouter as Router } from 'react-router-dom';
 
 import moviesReducer from './reducers/movies';
 import movieReducer from './reducers/movie';
@@ -32,11 +31,9 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-         <Router>
-             <ErrorBoundary>
-                <App />
-             </ErrorBoundary>
-        </Router>
+        <ErrorBoundary>
+            <App />
+        </ErrorBoundary>
     </Provider>,
     document.querySelector('#root')
 );

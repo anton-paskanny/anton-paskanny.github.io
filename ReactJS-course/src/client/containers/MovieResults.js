@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchMovies, fetchMoviesByGenres, sortMovies } from '../actions/movies';
+import { fetchMovies, fetchMoviesByGenres } from '../actions/movies';
 
 import MovieResults from '../components/MovieResults/MovieResults';
 
@@ -16,9 +16,6 @@ const mapDispatchToProps = dispatch => ({
     },
     fetchMoviesByGenres(url) {
         dispatch(fetchMoviesByGenres(url))
-    },
-    sortMovies(movies) {
-        dispatch(sortMovies(movies))
     }
 });
 

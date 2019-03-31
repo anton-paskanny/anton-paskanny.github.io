@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderDetail render component correctly 1`] = `
+<header
+  className="main-header"
+>
+  <div
+    className="main-header__inner-wrapper"
+  >
+    <div
+      className="main-header__top-bar"
+    >
+      <h1
+        className="main-header__title common-title"
+      >
+        netflixroulette
+      </h1>
+      <Link
+        className="main-header__back-link"
+        replace={false}
+        to="/"
+      >
+        Search
+      </Link>
+    </div>
+    <Connect(MovieDetail)
+      id={123}
+    />
+  </div>
+</header>
+`;
