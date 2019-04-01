@@ -32,10 +32,6 @@ class MovieDetail extends Component {
         this.props.fetchMovie(URL);
     }
 
-    handleBtnClick = () => {
-        this.getMovieData();
-    }
-
     render() {
         if (!this.props.selectedMovie || this.props.isFetching) return  <Spinner />;
         

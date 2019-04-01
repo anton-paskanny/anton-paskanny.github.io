@@ -3,38 +3,28 @@ import { Provider } from 'react-redux'
 import { mount } from 'enzyme';
 import configureMockStore from 'redux-mock-store';
 
-import { resetMovie } from '../../client/actions/movie';
+import { fetchMovie, resetMovie } from '../../client/actions/movie';
+import { movieItem } from '../mocks/dataMock';
+import { URL_BASE } from '../../client/utils';
 
 import MovieDetail from '../../client/containers/MovieDetail';
 
+const initialState = {
+    selectedMovie: {
+        data: movieItem,
+        isFetching: false,
+        err: null
+    }
+};
+const initialMovieId = initialState.selectedMovie.data.id;
+const mockStore = configureMockStore();
+
+let store, container, component;
 
 describe("MovieDetail container", () => {
-    const initialState = {
-        selectedMovie: {
-            data: {
-                id: 424785,
-                title: "Transformers 7",
-                tagline: "",
-                vote_average: 0,
-                vote_count: 0,
-                release_date: "2019-06-26",
-                poster_path: "https://image.tmdb.org/t/p/w500/432BowXw7a4fWXSONxBaFKqvW4f.jpg",
-                overview: "Plot unknown.",
-                budget: 0,
-                revenue: 0,
-                runtime: null,
-            },
-            isFetching: false,
-            err: null
-        }
-    };
-    const mockStore = configureMockStore();
-
-    let store, container, component;
-    
     beforeEach(() => {
         store = mockStore(initialState);
-        container = mount(<Provider store={store}><MovieDetail id={123}/></Provider>);
+        container = mount(<Provider store={store}><MovieDetail id={initialMovieId}/></Provider>);
         component = container.find('MovieDetail');
     });
     
@@ -44,8 +34,42 @@ describe("MovieDetail container", () => {
     });
     
     it("selected movie was reset on unmount event", () => {
-        const instance = component.instance();
-        instance.componentWillUnmount();
-        expect(store.getActions()).toContainEqual(resetMovie());
+        const expectedPayload = [
+            fetchMovie(`${URL_BASE}/${initialMovieId}`),
+            resetMovie()
+        ];
+        component.instance().componentWillUnmount();
+        expect(store.getActions()).toEqual(expectedPayload);
+    });
+
+    it("didUpdate was invoked and new movie started fetching", () => {
+        const newId = 222;
+        const expectedPayload = [
+            fetchMovie(`${URL_BASE}/${initialMovieId}`),
+            fetchMovie(`${URL_BASE}/${newId}`)
+        ];
+        container.setProps({
+            children: (
+                <MovieDetail id={newId} />
+            )
+        });
+        expect(store.getActions()).toEqual(expectedPayload);
+    });
+
+    it("didUpdate was invoked but new movie started fetching", () => {
+        const expectedPayload = [
+            fetchMovie(`${URL_BASE}/${initialMovieId}`)
+        ];
+        component.instance().componentDidUpdate({ id: initialMovieId });
+        expect(store.getActions()).toEqual(expectedPayload);
+    });
+
+    it("Spinner is displayed while fetching data", () => {
+        initialState.selectedMovie.data = null;
+        initialState.selectedMovie.isFetching = true;
+        store = mockStore(initialState);
+        container = mount(<Provider store={store}><MovieDetail id={initialMovieId}/></Provider>);
+        expect(component.find('Spinner')).toBeTruthy();
+        expect(container).toMatchSnapshot();
     });
   });

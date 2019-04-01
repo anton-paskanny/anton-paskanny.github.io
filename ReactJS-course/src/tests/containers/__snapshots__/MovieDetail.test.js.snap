@@ -1,5 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`MovieDetail container Spinner is displayed while fetching data 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <Connect(MovieDetail)
+    id={424785}
+  >
+    <MovieDetail
+      fetchMovie={[Function]}
+      id={424785}
+      isFetching={true}
+      resetMovie={[Function]}
+      selectedMovie={null}
+    >
+      <_default>
+        <div
+          className="lds-facebook"
+        >
+          <div />
+          <div />
+          <div />
+        </div>
+      </_default>
+    </MovieDetail>
+  </Connect(MovieDetail)>
+</Provider>
+`;
+
 exports[`MovieDetail container renders correctly 1`] = `
 <Provider
   store={
@@ -14,16 +51,20 @@ exports[`MovieDetail container renders correctly 1`] = `
   }
 >
   <Connect(MovieDetail)
-    id={123}
+    id={424785}
   >
     <MovieDetail
       fetchMovie={[Function]}
-      id={123}
+      id={424785}
       isFetching={false}
       resetMovie={[Function]}
       selectedMovie={
         Object {
           "budget": 0,
+          "genres": Array [
+            "Action",
+            "Adventure",
+          ],
           "id": 424785,
           "overview": "Plot unknown.",
           "poster_path": "https://image.tmdb.org/t/p/w500/432BowXw7a4fWXSONxBaFKqvW4f.jpg",
@@ -70,7 +111,20 @@ exports[`MovieDetail container renders correctly 1`] = `
           </div>
           <ul
             className="movie-detail__genres"
-          />
+          >
+            <li
+              className="movie-detail__genre"
+              key="Action"
+            >
+              Action
+            </li>
+            <li
+              className="movie-detail__genre"
+              key="Adventure"
+            >
+              Adventure
+            </li>
+          </ul>
           <p
             className="movie-detail__wrapper"
           >

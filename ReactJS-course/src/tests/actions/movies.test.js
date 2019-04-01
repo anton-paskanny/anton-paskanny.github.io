@@ -1,6 +1,6 @@
-import * as actions from '../../../client/actions/movies';
+import * as actions from '../../client/actions/movies';
 
-import { URL_BASE } from '../../../client/utils';
+import { URL_BASE } from '../../client/utils';
 
 describe('movies actions', () => {
     it('should create an action to fetch array of movies', () => {

@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie render component correctly 1`] = `
+<Link
+  className="movie"
+  replace={false}
+  to="/movie/424785"
+>
+  <figure
+    className="movie__img-placeholder"
+  >
+    <img
+      alt="Transformers 7"
+      className="movie__img"
+      src="https://image.tmdb.org/t/p/w500/432BowXw7a4fWXSONxBaFKqvW4f.jpg"
+    />
+  </figure>
+  <div
+    className="movie__info-wrapper"
+  >
+    <div
+      className="movie__desc-wrapper"
+    >
+      <h3
+        className="movie__title"
+      >
+        Transformers 7
+      </h3>
+      <ul
+        className="movie__genres-list"
+      >
+        <li
+          className="movie__genre-list-item"
+          key="Action"
+        >
+          Action
+        </li>
+        <li
+          className="movie__genre-list-item--separator"
+        >
+          /
+        </li>
+        <li
+          className="movie__genre-list-item"
+        >
+          Adventure
+        </li>
+      </ul>
+    </div>
+    <time
+      className="movie__release-date"
+      dateTime="2019-06-26"
+    >
+      2019
+    </time>
+  </div>
+</Link>
+`;
