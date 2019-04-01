@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search render component correctly 1`] = `
+<Search
+  fetchMovies={[MockFunction]}
+>
+  <div
+    className="search-panel"
+  >
+    <h2
+      className="search-panel__title"
+    >
+      Find your movie
+    </h2>
+    <form
+      onSubmit={[Function]}
+    >
+      <SearchInput
+        handleInputChange={[Function]}
+        value=""
+      >
+        <div
+          className="search-panel__input-wrapper"
+        >
+          <input
+            className="search-panel__input"
+            name="movie"
+            onChange={[Function]}
+            value=""
+          />
+        </div>
+      </SearchInput>
+      <SearchFilter
+        handleSearchByChange={[Function]}
+        searchByConfig={
+          Array [
+            Object {
+              "active": true,
+              "name": "title",
+            },
+            Object {
+              "active": false,
+              "name": "genres",
+            },
+          ]
+        }
+      >
+        <div
+          className="search-filter"
+        >
+          <div
+            className="search-filter__inner-wrapper"
+          >
+            <p
+              className="search-filter__desc"
+            >
+              Search by
+            </p>
+            <ul
+              className="search-filter__filters"
+              onClick={[Function]}
+            >
+              <li
+                className="search-filter__filter-item"
+                key="title"
+              >
+                <button
+                  className="search-filter__filter-btn search-filter__filter-btn--active"
+                  type="button"
+                >
+                  title
+                </button>
+              </li>
+              <li
+                className="search-filter__filter-item"
+                key="genres"
+              >
+                <button
+                  className="search-filter__filter-btn"
+                  type="button"
+                >
+                  genres
+                </button>
+              </li>
+            </ul>
+          </div>
+          <button
+            className="search-filter__search-btn"
+            type="submit"
+          >
+            Search
+          </button>
+        </div>
+      </SearchFilter>
+    </form>
+  </div>
+</Search>
+`;

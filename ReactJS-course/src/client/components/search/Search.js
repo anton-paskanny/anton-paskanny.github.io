@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { searchMovie } from '../../actions/movies';
 
 import SearchFilter from './SearchFilter/SearchFilter';
 import SearchInput from './SearchInput/SearchInput';
@@ -55,15 +53,14 @@ class Search extends Component {
             return;
         }
 
-        const searchVal = this.state.searchVal ? `search=${this.state.searchVal.trim()}&` : '';
-        const searchBy = this.state.searchVal ? `searchBy=${this.state.searchBy.find(elem => elem.active).name}` : '';
+        const searchVal = `search=${this.state.searchVal.trim()}&`;
+        const searchBy = `searchBy=${this.state.searchBy.find(elem => elem.active).name}`;
         const URL = `${URL_BASE}?${searchVal}${searchBy}`;
 
         this.props.fetchMovies(encodeURI(URL));
     }
 
     render() {
-        console.log("render");
         return (
             <div className="search-panel">
                 <h2 className="search-panel__title">Find your movie</h2>
@@ -82,11 +79,5 @@ class Search extends Component {
     }
 }
 
-function mapDispatchToProps() {
-    return {
-        searchMovie
-    }
-}
-
-export default connect(null, mapDispatchToProps)(Search);
+export default Search;
 

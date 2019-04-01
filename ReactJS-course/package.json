@@ -9,7 +9,7 @@
     "server": "node ./src/server/index.js",
     "test": "jest --verbose --coverage",
     "test:watch": "jest --verbose --watch",
-    "test:coverage": "jest --verbose --coverage && start ./coverage/lcov-report/index.html"
+    "test:coverage": "jest --verbose --coverage && open ./coverage/lcov-report/index.html"
   },
   "keywords": [],
   "author": "",

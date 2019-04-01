@@ -12,7 +12,7 @@ exports[`Header render component correctly 1`] = `
     >
       netflixroulette
     </h1>
-    <Connect(Connect(Search)) />
+    <Connect(Search) />
   </div>
 </header>
 `;
