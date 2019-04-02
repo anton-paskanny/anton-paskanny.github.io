@@ -47,7 +47,7 @@ class MovieResults extends PureComponent {
             return <Spinner />
         }
 
-        if (!this.props.movies || this.props.movies.length === 0) {
+        if (this.props.movies.length === 0) {
             return <p className="results__no-items">No films found</p>
         }
 

@@ -2,6 +2,7 @@ import React from 'react';
 
 import styles from './styles.css';
 
+
 const SortPanel = props => {
 
     const renderSortByItems = () => {
@@ -11,10 +12,6 @@ const SortPanel = props => {
                 </li>
             )
         );
-    }
-
-    if (!props.movies || props.movies.length === 0) {
-        return null;
     }
 
     const renderContent = () => (
@@ -35,6 +32,11 @@ const SortPanel = props => {
 
         return `${props.movies.length} ${props.movies.length > 1 ? 'movies' : 'movie'} found`;
     };
+
+    
+    if (props.movies.length === 0) {
+        return null;
+    }
 
     return (
         <div className="sort-panel">

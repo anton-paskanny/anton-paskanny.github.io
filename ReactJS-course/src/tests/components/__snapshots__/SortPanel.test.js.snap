@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SortPanel render component correctly 1`] = `
+<div
+  className="sort-panel"
+>
+  <p
+    className="sort-panel__results-counter"
+  >
+    4 movies found
+  </p>
+  <div
+    className="sort-panel__inner-wrapper"
+  >
+    <p>
+      Sort by
+    </p>
+    <ul
+      className="sort-panel__filters"
+    >
+      <li
+        className="sort-panel__filter-item"
+        key="release date"
+      >
+        <button
+          className="sort-panel__filter-btn sort-panel__filter-btn--active"
+        >
+          release date
+        </button>
+      </li>
+      <li
+        className="sort-panel__filter-item"
+        key="rating"
+      >
+        <button
+          className="sort-panel__filter-btn"
+        >
+          rating
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`SortPanel should contain one movie in render output 1`] = `
+<div
+  className="sort-panel"
+>
+  <p
+    className="sort-panel__results-counter"
+  >
+    1 movie found
+  </p>
+  <div
+    className="sort-panel__inner-wrapper"
+  >
+    <p>
+      Sort by
+    </p>
+    <ul
+      className="sort-panel__filters"
+    >
+      <li
+        className="sort-panel__filter-item"
+        key="release date"
+      >
+        <button
+          className="sort-panel__filter-btn sort-panel__filter-btn--active"
+        >
+          release date
+        </button>
+      </li>
+      <li
+        className="sort-panel__filter-item"
+        key="rating"
+      >
+        <button
+          className="sort-panel__filter-btn"
+        >
+          rating
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`SortPanel should not rendere anything when no movies were received 1`] = `""`;
