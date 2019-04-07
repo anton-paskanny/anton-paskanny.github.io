@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'React';
 
 import Movie from '../Movie/Movie';
-import SortPanel from './SortPanel/SortPanel';
+// import SortPanel from './SortPanel/SortPanel';
+import SortPanel from '../../containers/SortPanel';
 import Spinner from '../shared/Spinner/Spinner';
 
 import { URL_BASE } from '../../utils';
@@ -9,21 +10,6 @@ import { URL_BASE } from '../../utils';
 import styles from './styles.css';
 
 class MovieResults extends PureComponent {
-    state = {
-        sortBy: [
-            {
-                name: 'release date',
-                fieldToSortBy: 'release_date',
-                active: true
-            },
-            {
-                name: 'rating',
-                fieldToSortBy: 'vote_average',
-                active: false
-            }
-        ]
-    }
-
     componentDidMount() {
         this.props.fetchMovies(`${URL_BASE}`);
     }
@@ -70,16 +56,13 @@ class MovieResults extends PureComponent {
             }
         }
 
-        // For search page movies will be sorted after they
-        // where received from server
-        const sortedArr = this.sortMovies();
-        return sortedArr.map(movie => {
+        return this.sortMovies().map(movie => {
             return <Movie key={movie.id} data={movie} />
         })
     }
 
     sortMovies() {
-        const fieldToSortBy = this.state.sortBy.find(elem => elem.active).fieldToSortBy;
+        const fieldToSortBy = this.props.sortType;
         
         return this.props.movies.slice().sort((a, b) => {
             if (fieldToSortBy === 'release_date') {
@@ -90,35 +73,12 @@ class MovieResults extends PureComponent {
         });
     }
 
-    handleSortByChange = (e) => {
-        if (e.target.classList.contains('sort-panel__filter-btn--active')) {
-            return;
-        }
-
-        this.setState({
-            sortBy: this.state.sortBy.map(el => {
-                if (el.name === e.target.textContent) {
-                    return {...el, active: !el.active};
-                }
-
-                return {...el, active: false};
-            })
-        });
-    }
-
     render() {
         return (
             <div className="results">
-                <SortPanel 
-                           sortByConfig={this.state.sortBy}
-                           handleSortByChange={this.handleSortByChange}
-                           movies={this.props.movies}
-                           selectedMovie={this.props.selectedMovie}
-                />
+                <SortPanel />
                 <div className={`results__items ${this.props.isFetching ? 'results__items--fetching' : ''}`}>
-                    {
-                        this.renderItems()
-                    }
+                    {this.renderItems()}
                 </div>
             </div>
         )

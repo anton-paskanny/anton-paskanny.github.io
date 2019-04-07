@@ -6,6 +6,8 @@ import { createStore, compose } from 'redux';
 
 import moviesReducer from './reducers/movies';
 import movieReducer from './reducers/movie';
+import sortReducer from './reducers/sort';
+import searchReducer from './reducers/search';
 
 import App from './components/App';
 import ErrorBoundary from './components/shared/ErrorBoundary/ErrorBoundary';
@@ -20,7 +22,9 @@ const enhancer = composeEnhancers(install());
 
 const rootReducer = combineReducers({
     movies: moviesReducer,
-    selectedMovie: movieReducer
+    selectedMovie: movieReducer,
+    sort: sortReducer,
+    search: searchReducer
 });
 
 const store = createStore(

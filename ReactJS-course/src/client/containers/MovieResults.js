@@ -7,7 +7,8 @@ const mapStateToProps = state => ({
     movies: state.movies.data,
     moviesForSelectedMovie: state.movies.moviesForSelectedMovie,
     selectedMovie: state.selectedMovie.data,
-    isFetching: state.movies.isFetching
+    isFetching: state.movies.isFetching,
+    sortType: state.sort.type
 });
 
 const mapDispatchToProps = dispatch => ({
