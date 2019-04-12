@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search Filter render component correctly 1`] = `
+<div
+  className="search-filter"
+>
+  <div
+    className="search-filter__inner-wrapper"
+  >
+    <p
+      className="search-filter__desc"
+    >
+      Search by
+    </p>
+    <ul
+      className="search-filter__filters"
+      onClick={[Function]}
+    >
+      <li
+        className="search-filter__filter-item"
+        key="title"
+      >
+        <button
+          className="search-filter__filter-btn search-filter__filter-btn--active"
+          type="button"
+        >
+          title
+        </button>
+      </li>
+      <li
+        className="search-filter__filter-item"
+        key="genres"
+      >
+        <button
+          className="search-filter__filter-btn"
+          type="button"
+        >
+          genres
+        </button>
+      </li>
+    </ul>
+  </div>
+  <button
+    className="search-filter__search-btn"
+    type="submit"
+  >
+    Search
+  </button>
+</div>
+`;

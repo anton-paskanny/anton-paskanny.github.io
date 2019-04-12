@@ -3,11 +3,11 @@ import { fetchMovies } from '../actions/movies';
 
 import Search from '../components/Search/Search';
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
     searchType: state.search.type
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
     fetchMovies(url) {
         dispatch(fetchMovies(url));
     }

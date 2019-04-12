@@ -6,7 +6,6 @@ import {
     FETCH_MOVIES_BY_GENRES,
     FETCH_MOVIES_BY_GENRES_SUCCESS,
     FETCH_MOVIES_ERROR,
-    SORT_MOVIES,
     fetchMoviesSuccess,
     fetchMoviesByGenresSuccess,
     fetchMoviesError,
@@ -59,8 +58,6 @@ const moviesReducer = (state = initialState, action) => {
             return { ...state, moviesForSelectedMovie: action.movies.data, isFetching: false };
         case FETCH_MOVIES_ERROR:
             return { ...state, err: action.err, isFetching: false };
-        case SORT_MOVIES:
-            return { ...state, data: action.movies };
         default:
             return state;
     } 

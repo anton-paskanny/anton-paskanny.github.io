@@ -1,4 +1,4 @@
-describe ('Search', () => {
+xdescribe ('Search', () => {
     it ('Search exact movie', () => {
         const strToSearch = 'Spider-Man 2';
         const regExp = new RegExp(strToSearch, '');

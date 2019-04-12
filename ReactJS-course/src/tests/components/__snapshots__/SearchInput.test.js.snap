@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie render component correctly 1`] = `
+<div
+  className="search-panel__input-wrapper"
+>
+  <input
+    className="search-panel__input"
+    name="movie"
+    onChange={[MockFunction]}
+    value=""
+  />
+</div>
+`;

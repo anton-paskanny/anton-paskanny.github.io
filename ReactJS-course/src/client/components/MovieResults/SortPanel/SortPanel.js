@@ -23,7 +23,7 @@ const SortPanel = props => {
 
         const sortItem = SORT_BY_CONFIG.find(item => item.name === e.target.textContent);
 
-        props.toggleSort(sortItem.fieldToSortBy);
+        sortItem && sortItem.fieldToSortBy && props.toggleSort(sortItem.fieldToSortBy);
     }
 
     const renderContent = () => (

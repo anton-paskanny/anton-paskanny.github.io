@@ -15,7 +15,7 @@ const initialState = {
     err: null
 };
 
-const fetchMovie = (url) => {
+const makeRequest = (url) => {
     return fetch(url).then(res => res.json());
 }
 
@@ -24,7 +24,7 @@ const movieReducer = (state = initialState, action) => {
         case FETCH_MOVIE:
             return loop(
                 { ...state, isFetching: true },
-                Cmd.run(fetchMovie, {
+                Cmd.run(makeRequest, {
                     successActionCreator: fetchMovieSuccess,
                     failActionCreator: fetchMovieError,
                     args: [action.url]

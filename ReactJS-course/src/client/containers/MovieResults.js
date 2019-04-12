@@ -3,7 +3,7 @@ import { fetchMovies, fetchMoviesByGenres } from '../actions/movies';
 
 import MovieResults from '../components/MovieResults/MovieResults';
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
     movies: state.movies.data,
     moviesForSelectedMovie: state.movies.moviesForSelectedMovie,
     selectedMovie: state.selectedMovie.data,
@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
     sortType: state.sort.type
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
     fetchMovies(url) {
         dispatch(fetchMovies(url));
     },

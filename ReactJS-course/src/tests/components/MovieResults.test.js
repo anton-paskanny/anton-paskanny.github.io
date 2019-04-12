@@ -4,26 +4,19 @@ import { shallow } from 'enzyme';
 import MovieResults from '../../client/components/MovieResults/MovieResults';
 
 import { movieItem, movies } from '../mocks/dataMock';
+import { SORT_BY_DEFAULT } from '../../client/utils';
 
-let component, props, sortBy, event;
+let component, props, event;
 
 describe('SortPanel', () => {
     beforeEach(() => {
-        sortBy = [
-            {
-                name: 'release date',
-                fieldToSortBy: 'release_date',
-                active: true
-            },
-            {
-                name: 'rating',
-                fieldToSortBy: 'vote_average',
-                active: false
-            }
-        ];
         props = { 
             fetchMovies: jest.fn(),
+            fetchMoviesByGenres: jest.fn(),
             movies,
+            sortType: SORT_BY_DEFAULT,
+            selectedMovie: null,
+            moviesForSelectedMovie: [],
             isFetching: false
         };
         event = {
@@ -37,16 +30,6 @@ describe('SortPanel', () => {
     it('render component correctly', () => {
         expect(component).toMatchSnapshot();
     });
-    it('should correctly update state on handleSortByChange event', () => {
-        event.target.classList.contains = jest.fn().mockReturnValue(false);
-        component.instance().handleSortByChange(event);
-        expect(component.state().sortBy[1].active).toBe(true);
-    });
-    it('should not update state on handleSortByChange event when active item was selected', () => {
-        event.target.classList.contains = jest.fn().mockReturnValue(true);
-        component.instance().handleSortByChange(event);
-        expect(component.state().sortBy[1].active).toBe(false);
-    });
     it('should display Spinner when movies are fetching', () => {
         component.setProps({ isFetching: true });
         expect(component.find('.results__items--fetching').length).toBe(1);
@@ -54,5 +37,44 @@ describe('SortPanel', () => {
     it('should not show any movies', () => {
         component.setProps({ movies: [] });
         expect(component.find('.results__no-items').length).toBe(1);
+    });
+    it('should fetch movies with genres of selected movie', () => {
+        component.setProps({
+            selectedMovie: movieItem,
+            moviesForSelectedMovie: movies
+        });
+        component.instance().componentDidUpdate({});
+
+        expect(props.fetchMoviesByGenres).toHaveBeenCalled();
+    });
+    it('should fetch data for updated selected movie', () => {
+        component.setProps({
+            selectedMovie: movieItem
+        });
+        component.instance().componentDidUpdate({
+            selectedMovie: {
+                title: 'Test title'
+            }
+        });
+
+        expect(props.fetchMoviesByGenres).toHaveBeenCalled();
+    });
+    it('selected movie was deleted from received array of movies', () => {
+        component.setProps({
+            selectedMovie: movieItem,
+            moviesForSelectedMovie: [ movieItem ]
+        });
+
+        expect(component.find('.results__no-items')).toBeTruthy();
+    });
+    it('should display movies for selected one', () => {
+        const fieldToSortBy = 'vote_average';
+        const sortedMovies = movies.sort((a, b) => b[fieldToSortBy] - a[fieldToSortBy]);
+        
+        component.setProps({
+            sortType: fieldToSortBy
+        });
+        
+        expect(component.find('Movie').first().prop('data').id).toEqual(sortedMovies[0].id);
     });
 });

@@ -1,7 +1,8 @@
 import { TOGGLE_SORT } from '../actions/sortPanel';
+import { SORT_BY_DEFAULT } from '../utils';
 
 const initialState = {
-    type: 'release_date'
+    type: SORT_BY_DEFAULT
 };
 
 const sortReducer = (state = initialState, action) => {

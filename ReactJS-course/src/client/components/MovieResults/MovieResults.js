@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'React';
 
 import Movie from '../Movie/Movie';
-// import SortPanel from './SortPanel/SortPanel';
 import SortPanel from '../../containers/SortPanel';
 import Spinner from '../shared/Spinner/Spinner';
 

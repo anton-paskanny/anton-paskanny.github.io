@@ -3,11 +3,11 @@ import { toggleSearch } from '../actions/searchFilter';
 
 import SeachFilter from '../components/Search/SearchFilter/SearchFilter';
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
     searchType: state.search.type
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
     toggleSearch(type) {
         dispatch(toggleSearch(type));
     }

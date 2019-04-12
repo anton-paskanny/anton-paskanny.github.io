@@ -4,31 +4,20 @@ import { shallow } from 'enzyme';
 import SortPanel from '../../client/components/MovieResults/SortPanel/SortPanel';
 
 import { movieItem, movies } from '../mocks/dataMock';
+import { SORT_BY_CONFIG } from '../../client/utils';
 
-let component, props, sortByConfig;
+let component, props;
 
 describe('SortPanel', () => {
     beforeEach(() => {
-        sortByConfig = [
-            {
-                name: 'release date',
-                fieldToSortBy: 'release_date',
-                active: true
-            },
-            {
-                name: 'rating',
-                fieldToSortBy: 'vote_average',
-                active: false
-            }
-        ];
-        props = { sortByConfig, movies };
+        props = { sortType: 'release_date', movies, toggleSort: jest.fn() };
         component = shallow(<SortPanel {...props} />);
     });
     it('render component correctly', () => {
         expect(component).toMatchSnapshot();
     });
     it('should contain list with sort items', () => {
-        expect(component.find('.sort-panel__filter-item')).toHaveLength(sortByConfig.length);
+        expect(component.find('.sort-panel__filter-item')).toHaveLength(SORT_BY_CONFIG.length);
     });
     it('should contain several genres in render output', () => {
         component.setProps({
@@ -51,13 +40,29 @@ describe('SortPanel', () => {
         expect(component).toMatchSnapshot();
         expect(component.find('.sort-panel__results-counter').text()).toMatch(/movie/);
     });
-    it('should not rendere anything when no movies were received', () => {
-        component.setProps({
-            movies: []
-        });
-        expect(component).toMatchSnapshot();
-        expect(component.find('.sort-panel').length).toBe(0);
+    it('should toggle sort type', () => {
+        const event = {
+            target: {
+                classList: {
+                    contains: jest.fn().mockReturnValue(false)
+                },
+                textContent: 'rating'
+            }
+        }
+        component.find('.sort-panel__filters').simulate('click', event);
+        expect(props.toggleSort).toHaveBeenCalled();
     });
+    it('should not toggle sort when the same active item is clicked', () => {
+        const event = {
+            target: {
+                classList: {
+                    contains: jest.fn().mockReturnValue(true)
+                }
+            }
+        }
+        component.find('.sort-panel__filters').simulate('click', event);
+        expect(props.toggleSort).not.toHaveBeenCalled();
+    })
 });
 
 

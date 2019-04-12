@@ -8,7 +8,7 @@ let component, instance, props;
 describe('Search', () => {
     beforeEach(() => {
         props = { fetchMovies: jest.fn() };
-        component = mount(<Search {...props} />);
+        component = shallow(<Search {...props} />);
         instance = component.instance();
     });
 
@@ -24,34 +24,6 @@ describe('Search', () => {
         };
         instance.handleInputChange(event);
         expect(component.state().searchVal).toBe(event.target.value);
-    });
-
-    it('should change state when search option was changed', () => {
-        const event = {
-            preventDefault: jest.fn(),
-            target: {
-                classList: {
-                    contains: jest.fn().mockReturnValue(false)
-                },
-                textContent: 'genres'
-            }
-        };
-        instance.handleSearchByChange(event);
-        expect(component.state().searchBy[1].active).toBe(true);
-    });
-
-    it('should not change state when active search option was selected', () => {
-        const event = {
-            preventDefault: jest.fn(),
-            target: {
-                classList: {
-                    contains: jest.fn().mockReturnValue(true)
-                },
-                textContent: 'genres'
-            }
-        };
-        instance.handleSearchByChange(event);
-        expect(component.state().searchBy[0].active).toBe(true);
     });
 
     it('should fetch new movie on submit event', () => {

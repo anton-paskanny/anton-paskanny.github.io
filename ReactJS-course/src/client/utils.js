@@ -1,8 +1,9 @@
 export const URL_BASE = 'https://reactjs-cdp.herokuapp.com/movies';
 
+export const SORT_BY_DEFAULT = 'release_date';
 export const SORT_BY_CONFIG = [
     {
-        name: 'release date',
+        name: SORT_BY_DEFAULT,
         fieldToSortBy: 'release_date'
     },
     {
@@ -11,9 +12,10 @@ export const SORT_BY_CONFIG = [
     }
 ];
 
+export const SEARCH_BY_DEFAULT = 'title';
 export const SEARCH_BY_CONFIG = [
     {
-        name: 'title'
+        name: SEARCH_BY_DEFAULT
     },
     {
         name: 'genres'
