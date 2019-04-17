@@ -12,6 +12,9 @@ import searchReducer from './reducers/search';
 import App from './components/App';
 import ErrorBoundary from './components/shared/ErrorBoundary/ErrorBoundary';
 
+import { loadState, saveState } from './localStorage';
+import { throttle } from './utils';
+
 import normalize from './normalize.css';
 import styles from './styles.css';
 
@@ -27,11 +30,19 @@ const rootReducer = combineReducers({
     search: searchReducer
 });
 
+const persistedState = loadState();
+
 const store = createStore(
     rootReducer,
-    /* preloaded state */
+    persistedState,
     enhancer
 );
+
+store.subscribe(throttle(() => {
+    saveState({
+        movies: store.getState().movies
+    });
+}, 1000));
 
 ReactDOM.render(
     <Provider store={store}>

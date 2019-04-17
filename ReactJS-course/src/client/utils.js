@@ -21,3 +21,16 @@ export const SEARCH_BY_CONFIG = [
         name: 'genres'
     }
 ];
+
+export const throttle = (callback, limit) => {
+    var wait = false;                 
+    return function () {               
+        if (!wait) {                   
+            callback.call();           
+            wait = true;               
+            setTimeout(function () {   
+                wait = false;          
+            }, limit);
+        }
+    }
+}
