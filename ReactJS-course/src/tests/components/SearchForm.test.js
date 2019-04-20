@@ -1,14 +1,14 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
-import Search from '../../client/components/Search/Search';
+import SearchForm from '../../client/components/SearchForm/SearchForm';
 
 let component, instance, props;
 
 describe('Search', () => {
     beforeEach(() => {
         props = { fetchMovies: jest.fn() };
-        component = shallow(<Search {...props} />);
+        component = shallow(<SearchForm {...props} />);
         instance = component.instance();
     });
 

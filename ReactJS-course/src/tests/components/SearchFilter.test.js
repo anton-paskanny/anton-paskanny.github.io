@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import SearchFilter from '../../client/components/Search/SearchFilter/SearchFilter';
+import SearchFilter from '../../client/components/SearchForm/SearchFilter/SearchFilter';
 
 import { SEARCH_BY_DEFAULT } from '../../client/utils';
 

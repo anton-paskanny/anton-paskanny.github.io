@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchMovies } from '../actions/movies';
 
-import Search from '../components/Search/Search';
+import SearchForm from '../components/SearchForm/SearchForm';
 
 export const mapStateToProps = state => ({
     searchType: state.search.type
@@ -13,4 +13,4 @@ export const mapDispatchToProps = dispatch => ({
     }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);

@@ -1,0 +1,28 @@
+.results__items {
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 40px;
+    padding-top: 40px;
+}
+
+.results__items--fetching {
+    align-items: center;
+}
+
+.results__items {
+    position: relative;
+}
+
+.results__items .lds-facebook {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    margin: 0 auto;
+}
+
+.results__no-items {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    font-size: 3em;
+    text-align: center;
+}

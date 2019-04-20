@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { toggleSearch } from '../actions/searchFilter';
 
-import SeachFilter from '../components/Search/SearchFilter/SearchFilter';
+import SeachFilter from '../components/SearchForm/SearchFilter/SearchFilter';
 
 export const mapStateToProps = state => ({
     searchType: state.search.type

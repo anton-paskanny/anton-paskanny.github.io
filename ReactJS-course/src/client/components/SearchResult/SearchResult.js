@@ -9,21 +9,20 @@ import { URL_BASE } from '../../utils';
 
 import styles from './styles.css';
 
-class MovieResults extends PureComponent {
+class SearchResult extends PureComponent {
     componentDidMount() {
-        if (this.props.movieDetailPage && this.props.selectedMovie) {
-            this.fetchMovies();
-        }
+        this.fetchMovies();
     }
 
     componentDidUpdate(prevProps) {
         /**
-         * 1. Take selected movies genres
-         * 2. Create url
-         * 3. Invoke action
-         * 4. Update field movies (they are with the same genres as selected move has)
+         * 1. Check if searchVal or searchType has changed
+         * 2. If so - make new request
          */
-        if (this.props.selectedMovie && (!prevProps.selectedMovie || prevProps.selectedMovie.title !== this.props.selectedMovie.title)) {
+        const { searchVal: searchValPrev, searchType: searchTypePrev } = prevProps;
+        const { searchVal, searchType } = this.props;
+
+        if (searchValPrev !== searchVal || searchType !== searchTypePrev) {
             this.fetchMovies();
         }
     }
@@ -35,25 +34,6 @@ class MovieResults extends PureComponent {
 
         if (this.props.movies.length === 0) {
             return <p className="results__no-items">No films found</p>
-        }
-
-        if (this.props.selectedMovie) {
-            if (this.props.moviesForSelectedMovie.length) {
-                 /**
-                 * Delete selected movie from received movies
-                 */
-                const movies = this.props.moviesForSelectedMovie.filter(elem => elem.id !== this.props.selectedMovie.id);
-
-                if (!movies.length) {
-                    return <p className="results__no-items">No films found with the same genre</p>;
-                }
-
-                return movies.map(movie => {
-                    return <Movie key={movie.id} data={movie} />
-                });
-            } else {
-                return <p className="results__no-items">No films found with the same genre</p>;
-            }
         }
 
         return this.sortMovies().map(movie => {
@@ -74,11 +54,12 @@ class MovieResults extends PureComponent {
     }
 
     fetchMovies() {
-        const genres = this.props.selectedMovie.genres.map(genre => genre.toLowerCase()).join(',')
-        const URL = `${URL_BASE}?filter=${genres}`;
+        const { searchVal, searchType, fetchMovies } = this.props;
+        const URL = `${URL_BASE}?search=${searchVal}&searchBy=${searchType}`;
         
-        this.props.fetchMoviesByGenres(encodeURI(URL));
+        fetchMovies(URL);
     }
+
     render() {
         return (
             <div className="results">
@@ -91,4 +72,4 @@ class MovieResults extends PureComponent {
     }
 }
 
-export default ErrorBoundary(MovieResults);
+export default ErrorBoundary(SearchResult);

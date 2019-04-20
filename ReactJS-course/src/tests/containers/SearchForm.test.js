@@ -1,4 +1,4 @@
-import { mapStateToProps, mapDispatchToProps } from '../../client/containers/Search';
+import { mapStateToProps, mapDispatchToProps } from '../../client/containers/SearchForm';
 import { SEARCH_BY_DEFAULT } from '../../client/utils';
 import { FETCH_MOVIES } from '../../client/actions/movies';
 

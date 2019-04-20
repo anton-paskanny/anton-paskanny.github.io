@@ -10,7 +10,6 @@ import sortReducer from './reducers/sort';
 import searchReducer from './reducers/search';
 
 import App from './components/App';
-import ErrorBoundary from './components/shared/ErrorBoundary/ErrorBoundary';
 
 import { loadState, saveState } from './localStorage';
 import { throttle } from './utils';
@@ -40,15 +39,16 @@ const store = createStore(
 
 store.subscribe(throttle(() => {
     saveState({
-        movies: store.getState().movies
+        movies: {
+            ...store.getState().movies,
+            isFetching: false
+        }
     });
 }, 1000));
 
 ReactDOM.render(
     <Provider store={store}>
-        <ErrorBoundary>
-            <App />
-        </ErrorBoundary>
+        <App />
     </Provider>,
     document.querySelector('#root')
 );

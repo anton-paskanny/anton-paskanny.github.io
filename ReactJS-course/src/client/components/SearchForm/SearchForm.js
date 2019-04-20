@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 
 import SearchFilter from '../../containers/SearchFilter';
 import SearchInput from './SearchInput/SearchInput';
+import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary';
 
 import { URL_BASE } from '../../utils';
 
 import styles from './styles.css';
 
-class Search extends Component {
+class SearchForm extends Component {
     state = {
         searchVal: ''
     }
@@ -25,11 +26,7 @@ class Search extends Component {
             return;
         }
 
-        const searchVal = `search=${this.state.searchVal.trim()}&`;
-        const searchBy = `searchBy=${this.props.searchType}`;
-        const URL = `${URL_BASE}?${searchVal}${searchBy}`;
-
-        this.props.fetchMovies(encodeURI(URL));
+        this.props.history.push(`/search/${this.state.searchVal.trim()}/${this.props.searchType}`)
     }
 
     render() {
@@ -48,5 +45,5 @@ class Search extends Component {
     }
 }
 
-export default Search;
+export default ErrorBoundary(SearchForm);
 

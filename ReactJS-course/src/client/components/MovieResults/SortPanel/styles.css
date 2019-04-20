@@ -1,6 +1,7 @@
 .sort-panel {
     display: flex;
     justify-content: space-between;
+    min-height: 40px;
     padding: 10px 20%;
     background-color: var(--third-color);
 }

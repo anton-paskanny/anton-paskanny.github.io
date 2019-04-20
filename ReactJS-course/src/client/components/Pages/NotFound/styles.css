@@ -1,0 +1,39 @@
+.not-found__container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.not-found__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    mix-blend-mode: overlay;
+    background-color: var(--third-color);
+    background-image: url('https://images.unsplash.com/photo-1506773090264-ac0b07293a64?ixlib=rb-1.2.1&auto=format&fit=crop&w=1276&q=80');
+    pointer-events: none;
+}
+
+.not-found__title {
+    font-size: 8rem;
+    color: white;
+}
+
+.not-found__desc {
+    color: white;
+}
+
+.not-found__link {
+    display: block;
+    margin-top: 20px;
+    padding: 10px 16px;
+    color: var(--primary-color);
+    background-color: white;
+    text-decoration: none;
+    cursor: pointer;
+}

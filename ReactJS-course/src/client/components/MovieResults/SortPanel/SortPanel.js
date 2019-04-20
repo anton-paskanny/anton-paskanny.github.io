@@ -45,6 +45,10 @@ const SortPanel = props => {
         return `${props.movies.length} ${props.movies.length > 1 ? 'movies' : 'movie'} found`;
     };
 
+    if (props.movies.length === 0) {
+        return <div className="sort-panel" />
+    }
+
     return (
         <div className="sort-panel">
             <p className="sort-panel__results-counter">
