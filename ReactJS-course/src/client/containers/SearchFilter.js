@@ -7,10 +7,8 @@ export const mapStateToProps = state => ({
     searchType: state.search.type
 });
 
-export const mapDispatchToProps = dispatch => ({
-    toggleSearch(type) {
-        dispatch(toggleSearch(type));
-    }
-});
+export const mapDispatchToProps = {
+    toggleSearch
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SeachFilter);

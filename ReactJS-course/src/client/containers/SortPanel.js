@@ -9,10 +9,8 @@ export const mapStateToProps = state => ({
     sortType: state.sort.type
 });
 
-export const mapDispatchToProps = dispatch => ({
-    toggleSort(type) {
-        dispatch(toggleSort(type));
-    }
-});
+export const mapDispatchToProps = {
+    toggleSort
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SortPanel);

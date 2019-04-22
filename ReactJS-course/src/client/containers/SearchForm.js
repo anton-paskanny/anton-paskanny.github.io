@@ -7,10 +7,8 @@ export const mapStateToProps = state => ({
     searchType: state.search.type
 });
 
-export const mapDispatchToProps = dispatch => ({
-    fetchMovies(url) {
-        dispatch(fetchMovies(url));
-    }
-});
+export const mapDispatchToProps = {
+    fetchMovies
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchForm);

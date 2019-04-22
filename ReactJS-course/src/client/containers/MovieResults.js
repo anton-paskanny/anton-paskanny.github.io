@@ -11,13 +11,9 @@ export const mapStateToProps = state => ({
     sortType: state.sort.type
 });
 
-export const mapDispatchToProps = dispatch => ({
-    fetchMovies(url) {
-        dispatch(fetchMovies(url));
-    },
-    fetchMoviesByGenres(url) {
-        dispatch(fetchMoviesByGenres(url))
-    }
-});
+export const mapDispatchToProps = {
+    fetchMovies,
+    fetchMoviesByGenres
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieResults);

@@ -8,13 +8,9 @@ const mapStateToProps = state => ({
     isFetching: state.selectedMovie.isFetching
 });
 
-const mapDispatchToProps = dispatch => ({
-    fetchMovie(url) {
-        dispatch(fetchMovie(url));
-    },
-    resetMovie() {
-        dispatch(resetMovie());
-    }
-});
+const mapDispatchToProps = {
+    fetchMovie,
+    resetMovie
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieDetail);
