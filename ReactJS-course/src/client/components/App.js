@@ -5,31 +5,21 @@ import Home from './Pages/Home/Home';
 import NotFound from './Pages/NotFound/NotFound';
 import MovieInfo from './Pages/Movie/Movie';
 import Search from './Pages/Search/Search';
+import Footer from './Footer/Footer';
 
 const App = () => (
     <Router>
         <div className="app-wrapper">
             <Switch>
                 <Route path="/" component={Home} exact />
-                <Route path="/movie/:id" component={MovieInfo} />
-                <Route path="/search/:searchVal/:searchType" component={Search} />
+                <Route path="/movie/:id" component={MovieInfo} exact />
+                <Route path="/search/:searchVal/:searchType" component={Search} exact/>
                 <Route component={NotFound} />
             </Switch>
+            <Footer />
         </div>
     </Router>
 );
 
 export default App;
-
-/* <Switch>
-    <Route path="/" component={Home} exact />
-    <Route path="/movie/:id" component={TestKek} />
-    <Route path="/search/:query" component={SearchResult} />
-    <Route component={NotFound} />
-</Switch> */
-
-// <Switch>
-//     <Route path="/" component={Home} />
-//     <Route path="/not-found" component={NotFound} />
-// </Switch>
         
