@@ -6,8 +6,9 @@
   "scripts": {
     "cypress": "cypress open",
     "build": "webpack --config webpack.prod.js",
+    "build:server": "webpack --config webpack.server.js",
     "start": "webpack-dev-server --open --config webpack.dev.js",
-    "server": "node ./src/server/index.js",
+    "server": "node ./server/server_bundle.js",
     "test": "jest --verbose --coverage",
     "test:watch": "jest --verbose --watch",
     "test:coverage": "jest --verbose --coverage && open ./coverage/lcov-report/index.html"
@@ -39,7 +40,8 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1",
-    "webpack-merge": "^4.2.1"
+    "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "express": "^4.16.4",
