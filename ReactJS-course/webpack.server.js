@@ -8,7 +8,7 @@ const common = require('./webpack.common');
 
 module.exports = merge(common, {
   name: 'server',
-  mode: 'development',
+  mode: 'production',
   target: 'node',
   node: {
     __dirname: true,
