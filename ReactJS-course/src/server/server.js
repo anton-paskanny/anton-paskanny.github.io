@@ -15,17 +15,7 @@ const PORT = 2048;
 const staticPath = path.resolve(__dirname, "../../dist" );
 
 // All the content inside the dist folder is going to be served as-is, statically by Express.
-//app.use(express.static(staticPath));
-// app.use('/dist', express.static('/dist'));
-app.use('/', express.static(staticPath));
-// app.use((req, res, next) => {
-//     if(/\.js|\.css/.test(req.path)) {
-//         res.redirect(staticPath + req.path);
-//     } else {
-//         next();
-//     }
-// });
-//app.use(/\.js$/, express.static(staticPath));
+app.use('/', express.static('dist'));
 
 app.get( "/*", ( req, res ) => {
     const context = {};
@@ -68,7 +58,7 @@ function htmlTemplate(reactDom, preloadedState) {
                 // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
                 window.PRELOADED_STATE = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
             </script>
-            <script src="/client_bundle.js"></script>
+            <script src="/main.bundle.js"></script>
         </body>
         </html>
     `;
