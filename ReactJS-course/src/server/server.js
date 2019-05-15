@@ -1,48 +1,48 @@
-import express from "express";
-import path from "path";
+import express from 'express';
+import path from 'path';
 
-import React from "react";
-import { renderToString } from "react-dom/server";
-import { StaticRouter } from "react-router-dom";
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
 
-import App from "../client/components/App";
+import App from '../client/components/App';
 
 import configureStore from '../client/modules/configureStore';
 
 const app = express();
 const PORT = 2048;
 
-const staticPath = path.resolve(__dirname, "../../dist" );
+const staticPath = path.resolve(__dirname, '../../dist');
 
 // All the content inside the dist folder is going to be served as-is, statically by Express.
 app.use('/', express.static('dist'));
 
-app.get( "/*", ( req, res ) => {
-    const context = {};
-    const store = configureStore();
-    const jsx = (
-        <App 
+app.get('/*', (req, res) => {
+  const context = {};
+  const store = configureStore();
+  const jsx = (
+        <App
             context={context}
             location={req.url}
             Router={StaticRouter}
             store={store}
         />
-    );
+  );
 
-    const reactDom = renderToString(jsx);
-    const preloadedState = store.getState();
+  const reactDom = renderToString(jsx);
+  const preloadedState = store.getState();
 
-    res.writeHead( 200, { "Content-Type": "text/html" } );
-    res.end(htmlTemplate(reactDom, preloadedState));
-} );
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.end(htmlTemplate(reactDom, preloadedState));
+});
 
-app.listen(PORT, () =>  {
-    console.log(`Server is listening on port ${PORT}`);
-    console.log('staticPath: ', staticPath);
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`); // eslint-disable-line no-console
+  console.log('staticPath: ', staticPath); // eslint-disable-line no-console
 });
 
 function htmlTemplate(reactDom, preloadedState) {
-    return `
+  return `
         <!DOCTYPE html>
         <html>
         <head>
@@ -52,7 +52,7 @@ function htmlTemplate(reactDom, preloadedState) {
         </head>
         
         <body>
-            <div id="root">${ reactDom }</div>
+            <div id="root">${reactDom}</div>
             <script>
                 // WARNING: See the following for security issues around embedding JSON in HTML:
                 // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations

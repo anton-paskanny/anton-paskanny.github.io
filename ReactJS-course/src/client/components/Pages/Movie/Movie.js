@@ -8,6 +8,6 @@ const Movie = ({ match }) => (
         <HeaderDetail movieId={match.params.id} />
         <MovieResults movieDetailPage={true} />
     </>
-)
+);
 
 export default Movie;

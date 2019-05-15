@@ -1,23 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import styles from './styles.css';
+import './styles.css';
 
-const Movie = props => {
-    const { id, title, genres, poster_path, release_date } = props.data;
+const Movie = (props) => {
+  const {
+    id, title, genres, poster_path, release_date,
+  } = props.data;
 
-    function renderGenres(genres) {
-        return genres && genres.map((title, index) => (
-            index > 0 ?
-            <React.Fragment key={title}>
+  function renderGenres(genres) {
+    return genres && genres.map((title, index) => (
+      index > 0
+        ? <React.Fragment key={title}>
                 <li className='movie__genre-list-item--separator'>/</li>
                 <li className='movie__genre-list-item'>{title}</li>
-            </React.Fragment> :
-            <li key={title} className='movie__genre-list-item'>{title}</li>
-        ));
-    }
+            </React.Fragment>
+        : <li key={title} className='movie__genre-list-item'>{title}</li>
+    ));
+  }
 
-    return (
+  return (
         <Link to={`/movie/${id}`} className="movie">
             <figure className="movie__img-placeholder">
                 <img className="movie__img"src={poster_path} alt={title}/>
@@ -34,7 +36,7 @@ const Movie = props => {
                 </time>
             </div>
         </Link>
-    )
+  );
 };
 
 export default Movie;

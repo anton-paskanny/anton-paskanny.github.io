@@ -4,20 +4,20 @@ export const FETCH_MOVIE_ERROR = 'FETCH_MOVIE_ERROR';
 export const RESET_MOVIE = 'RESET_MOVIE';
 
 export const fetchMovie = url => ({
-    type: FETCH_MOVIE,
-    url
+  type: FETCH_MOVIE,
+  url,
 });
 
 export const fetchMovieSuccess = movie => ({
-    type: FETCH_MOVIE_SUCCESS,
-    movie
+  type: FETCH_MOVIE_SUCCESS,
+  movie,
 });
 
 export const fetchMovieError = err => ({
-    type: FETCH_MOVIE_ERROR,
-    err
+  type: FETCH_MOVIE_ERROR,
+  err,
 });
 
 export const resetMovie = () => ({
-    type: RESET_MOVIE
+  type: RESET_MOVIE,
 });

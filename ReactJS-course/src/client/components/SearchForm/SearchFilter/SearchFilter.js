@@ -1,40 +1,38 @@
 import React, { PureComponent } from 'react';
 
-import { SEARCH_BY_CONFIG } from '../../../utils'; 
+import { SEARCH_BY_CONFIG } from '../../../utils';
 
-import styles from './styles.css';
+import './styles.css';
 
 class SearchFilter extends PureComponent {
     handleSearchByChange = (e) => {
-        e.preventDefault();
+      e.preventDefault();
 
-        if (e.target.classList.contains('search-filter__filter-btn--active')) {
-            return;
-        }
+      if (e.target.classList.contains('search-filter__filter-btn--active')) {
+        return;
+      }
 
-        this.props.toggleSearch(e.target.textContent);
+      this.props.toggleSearch(e.target.textContent);
     }
 
     renderSearchByItems() {
-        return SEARCH_BY_CONFIG.map((item) => {
-            return (
+      return SEARCH_BY_CONFIG.map(item => (
                 <li key={item.name} className='search-filter__filter-item'>
-                    <button 
+                    <button
                         type="button"
                         className={
-                            'search-filter__filter-btn' + 
-                            (item.name === this.props.searchType ? ' search-filter__filter-btn--active' : '')
+                            `search-filter__filter-btn${
+                              item.name === this.props.searchType ? ' search-filter__filter-btn--active' : ''}`
                         }
                     >
                         {item.name}
                     </button>
                 </li>
-            )
-        });
+      ));
     }
 
     render() {
-        return (
+      return (
             <div className="search-filter">
                     <div className="search-filter__inner-wrapper">
                         <p className="search-filter__desc">Search by</p>
@@ -46,7 +44,7 @@ class SearchFilter extends PureComponent {
                         Search
                     </button>
             </div>
-        )
+      );
     }
 }
 

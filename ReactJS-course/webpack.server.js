@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require('path');
 const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const common = require('./webpack.common');
@@ -11,7 +11,7 @@ module.exports = merge(common, {
   entry: './src/server/server.js',
   externals: [nodeExternals()],
   output: {
-    path: path.join(__dirname, "/server"),
+    path: path.join(__dirname, '/server'),
     filename: 'server_bundle.js',
     libraryTarget: 'commonjs2',
   },

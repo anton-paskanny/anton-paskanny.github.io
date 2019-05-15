@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 
 import MovieDetail from '../../containers/MovieDetail';
 
-import styles from './styles.css';
+import './styles.css';
 
-const HeaderDetail = (props) => {
-    return (
+const HeaderDetail = props => (
         <header className="main-header">
             <div className="main-header__inner-wrapper">
                 <div className="main-header__top-bar">
@@ -16,7 +15,6 @@ const HeaderDetail = (props) => {
                 <MovieDetail id={props.movieId} />
             </div>
         </header>
-    )
-};
+);
 
 export default HeaderDetail;

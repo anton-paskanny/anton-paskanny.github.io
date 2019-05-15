@@ -5,18 +5,18 @@ import rootReducer from './rootReducer';
 
 // HACK FOR SSR
 if (typeof window === 'undefined') {
-    global.window = {};
+  global.window = {};
 }
 
 const composeEnhancers = (window && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 const enhancer = composeEnhancers(install());
 
 export default (initialState) => {
-    const store = createStore(
-        rootReducer,
-        initialState,
-        enhancer
-    );
+  const store = createStore(
+    rootReducer,
+    initialState,
+    enhancer,
+  );
 
-    return store;
+  return store;
 };

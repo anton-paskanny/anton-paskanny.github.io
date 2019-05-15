@@ -8,6 +8,6 @@ const SearchInput = props => (
                onChange={props.handleInputChange}
         />
     </div>
-)
+);
 
 export default SearchInput;

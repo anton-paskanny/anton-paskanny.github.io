@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'React';
+import React, { PureComponent } from 'react';
 
 import Movie from '../Movie/Movie';
 import SortPanel from '../../containers/SortPanel';
@@ -7,69 +7,67 @@ import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary';
 
 import { URL_BASE } from '../../utils';
 
-import styles from './styles.css';
+import './styles.css';
 
 class SearchResult extends PureComponent {
-    componentDidMount() {
-        this.fetchMovies();
-    }
+  componentDidMount() {
+    this.fetchMovies();
+  }
 
-    componentDidUpdate(prevProps) {
-        /**
+  componentDidUpdate(prevProps) {
+    /**
          * 1. Check if searchVal or searchType has changed
          * 2. If so - make new request
          */
-        const { searchVal: searchValPrev, searchType: searchTypePrev } = prevProps;
-        const { searchVal, searchType } = this.props;
+    const { searchVal: searchValPrev, searchType: searchTypePrev } = prevProps;
+    const { searchVal, searchType } = this.props;
 
-        if (searchValPrev !== searchVal || searchType !== searchTypePrev) {
-            this.fetchMovies();
-        }
+    if (searchValPrev !== searchVal || searchType !== searchTypePrev) {
+      this.fetchMovies();
+    }
+  }
+
+  renderItems() {
+    if (this.props.isFetching) {
+      return <Spinner />;
     }
 
-    renderItems() {
-        if (this.props.isFetching) {
-            return <Spinner />
-        }
-
-        if (this.props.movies.length === 0) {
-            return <p className="results__no-items">No films found</p>
-        }
-
-        return this.sortMovies().map(movie => {
-            return <Movie key={movie.id} data={movie} />
-        })
+    if (this.props.movies.length === 0) {
+      return <p className="results__no-items">No films found</p>;
     }
 
-    sortMovies() {
-        const fieldToSortBy = this.props.sortType;
-        
-        return this.props.movies.slice().sort((a, b) => {
-            if (fieldToSortBy === 'release_date') {
-                return new Date(b[fieldToSortBy]) - new Date(a[fieldToSortBy]);
-            }
+    return this.sortMovies().map(movie => <Movie key={movie.id} data={movie} />);
+  }
 
-            return b[fieldToSortBy] - a[fieldToSortBy];
-        });
-    }
+  sortMovies() {
+    const fieldToSortBy = this.props.sortType;
 
-    fetchMovies() {
-        const { searchVal, searchType, fetchMovies } = this.props;
-        const URL = `${URL_BASE}?search=${searchVal}&searchBy=${searchType}`;
-        
-        fetchMovies(URL);
-    }
+    return this.props.movies.slice().sort((a, b) => {
+      if (fieldToSortBy === 'release_date') {
+        return new Date(b[fieldToSortBy]) - new Date(a[fieldToSortBy]);
+      }
 
-    render() {
-        return (
+      return b[fieldToSortBy] - a[fieldToSortBy];
+    });
+  }
+
+  fetchMovies() {
+    const { searchVal, searchType, fetchMovies } = this.props;
+    const URL = `${URL_BASE}?search=${searchVal}&searchBy=${searchType}`;
+
+    fetchMovies(URL);
+  }
+
+  render() {
+    return (
             <div className="results">
                 <SortPanel />
                 <div className={`results__items ${this.props.isFetching ? 'results__items--fetching' : ''}`}>
                     {this.renderItems()}
                 </div>
             </div>
-        )
-    }
+    );
+  }
 }
 
 export default ErrorBoundary(SearchResult);

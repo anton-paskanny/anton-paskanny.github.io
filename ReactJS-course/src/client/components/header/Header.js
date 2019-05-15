@@ -1,9 +1,9 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 import SearchForm from '../../containers/SearchForm';
 
-import styles from './styles.css';
+import './styles.css';
 
 const SearchFormWithRouter = withRouter(({ history }) => <SearchForm history={history} />);
 

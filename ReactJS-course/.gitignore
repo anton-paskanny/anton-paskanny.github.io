@@ -5,4 +5,5 @@
 /cypress/videos
 /cypress/screenshots
 .DS_Store
+.eslintcache
 npm-debug.log

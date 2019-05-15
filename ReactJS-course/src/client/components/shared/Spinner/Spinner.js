@@ -1,11 +1,13 @@
 import React from 'react';
 
-import styles from './styles.css';
+import './styles.css';
 
-export default () => (
+const Spinner = () => (
     <div className="lds-facebook main-spinner">
         <div></div>
         <div></div>
         <div></div>
     </div>
-)
+);
+
+export default Spinner;

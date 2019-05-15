@@ -6,10 +6,10 @@ import sortReducer from '../reducers/sort';
 import searchReducer from '../reducers/search';
 
 const rootReducer = combineReducers({
-    movies: moviesReducer,
-    selectedMovie: movieReducer,
-    sort: sortReducer,
-    search: searchReducer
+  movies: moviesReducer,
+  selectedMovie: movieReducer,
+  sort: sortReducer,
+  search: searchReducer,
 });
 
 export default rootReducer;
