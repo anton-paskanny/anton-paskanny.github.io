@@ -1,0 +1,11 @@
+/coverage
+/cypress
+/node_modules
+/server
+/dist
+/src/tests
+/cypress/videos
+/cypress/screenshots
+.DS_Store
+webpack.*
+npm-debug.log
