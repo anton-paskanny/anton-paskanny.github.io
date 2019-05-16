@@ -1,18 +1,30 @@
 {
-    "parser": "babel-eslint",
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-        "max-len": [1, 120, 2, { "ignoreComments": true } ],
-        "react/prop-types": 0,
-        "import/no-extraneous-dependencies": [ "error", { "devDependencies": true }]
-    },
-    "globals": {
-        "document": true,
-        "localStorage": true,
-        "window": true,
-        "fetch": true
-    },
-    "extends": [ "airbnb-base", "eslint:recommended", "plugin:react/recommended" ]
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import",
+    "flowtype"
+  ],
+  "rules": {
+    "max-len": [1, 120, 2, { "ignoreComments": true } ],
+    "react/prop-types": 0,
+    "import/no-extraneous-dependencies": [ "error", { "devDependencies": true }]
+  },
+  "globals": {
+    "document": true,
+    "localStorage": true,
+    "window": true,
+    "fetch": true
+  },
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "extends": [
+    "airbnb-base",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:flowtype/recommended"
+  ]
 }
