@@ -9,8 +9,8 @@ const SortPanel = (props) => {
   const renderSortByItems = () => SORT_BY_CONFIG.map(item => (
     <li key={item.name} className='sort-panel__filter-item'>
         <button className={
-          `sort-panel__filter-btn${item.fieldToSortBy === props.sortType ? 
-          ' sort-panel__filter-btn--active' : ''}
+          `sort-panel__filter-btn${item.fieldToSortBy === props.sortType
+            ? ' sort-panel__filter-btn--active' : ''}
           `}
         >
           {item.name}

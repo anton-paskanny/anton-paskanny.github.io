@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 
 import SearchFilter from '../../containers/SearchFilter';
@@ -6,12 +7,22 @@ import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary';
 
 import './styles.css';
 
-class SearchForm extends Component {
+type Props = {
+  searchType: string,
+  history: {
+    push: (url: string) => void
+  }
+}
+type State = {
+  searchVal: string
+}
+
+class SearchForm extends Component<Props, State> {
     state = {
       searchVal: '',
     }
 
-    handleInputChange = (e) => {
+    handleInputChange = (e: SyntheticInputEvent<HTMLInputElement>) => {
       this.setState({
         searchVal: e.target.value,
       });
