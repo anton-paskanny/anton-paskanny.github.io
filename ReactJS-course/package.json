@@ -15,7 +15,9 @@
     "lint": "eslint ./ --cache --ignore-pattern .gitignore --fix",
     "flow": "flow",
     "flow:status": "flow status",
-    "flow:stop": "flow stop"
+    "flow:stop": "flow stop",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "keywords": [],
   "author": "",
@@ -57,7 +59,11 @@
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1",
     "webpack-merge": "^4.2.1",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "@storybook/react": "^5.0.11",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/addons": "^5.0.11"
   },
   "dependencies": {
     "@babel/runtime": "^7.4.4",
