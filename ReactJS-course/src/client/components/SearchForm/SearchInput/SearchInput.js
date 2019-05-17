@@ -1,13 +1,21 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const SearchInput = props => (
-    <div className="search-panel__input-wrapper">
-        <input name="movie"
-               className="search-panel__input"
-               value={props.value}
-               onChange={props.handleInputChange}
-        />
-    </div>
+const SearchInput = ({ className, value, handleInputChange }) => (
+  <input name="movie"
+        className={className}
+        value={value}
+        onChange={handleInputChange}
+  />
 );
 
-export default SearchInput;
+export default styled(SearchInput)`
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  color: #fff;
+  background-color: var(--secondary-color);
+  border: none;
+  border-bottom: 3px solid var(--primary-color);
+`;

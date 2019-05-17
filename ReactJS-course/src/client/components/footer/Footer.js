@@ -1,11 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 
-import './styles.css';
-
-const Footer = () => (
-    <footer className="main-footer">
+const Footer = ({ className }) => (
+    <footer className={className}>
         <p className="main-footer__title common-title">netflixroulette</p>
     </footer>
 );
 
-export default Footer;
+export default styled(Footer)`
+    margin-top: 70px;
+    padding: 20px 20%;
+    background-color: var(--secondary-color);
+`;

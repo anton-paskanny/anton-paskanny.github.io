@@ -1,21 +1,29 @@
 // @flow
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 import SearchFilter from '../../containers/SearchFilter';
 import SearchInput from './SearchInput/SearchInput';
 import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary';
 
-import './styles.css';
-
 type Props = {
   searchType: string,
   history: {
     push: (url: string) => void
-  }
+  },
+  className: string,
 }
 type State = {
   searchVal: string
 }
+
+const SearchPanelTitle = styled.h1`
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: #fff;
+`;
 
 class SearchForm extends Component<Props, State> {
     state = {
@@ -40,8 +48,8 @@ class SearchForm extends Component<Props, State> {
 
     render() {
       return (
-            <div className="search-panel">
-                <h2 className="search-panel__title">Find your movie</h2>
+            <div className={this.props.className}>
+                <SearchPanelTitle>Find your movie</SearchPanelTitle>
                 <form onSubmit={this.handleSubmit}>
                     <SearchInput
                         value={this.state.searchVal}
@@ -54,4 +62,9 @@ class SearchForm extends Component<Props, State> {
     }
 }
 
-export default ErrorBoundary(SearchForm);
+const styledSearrchForm = styled(SearchForm)`
+  position: relative;
+  z-index: 3;
+`;
+
+export default ErrorBoundary(styledSearrchForm);
