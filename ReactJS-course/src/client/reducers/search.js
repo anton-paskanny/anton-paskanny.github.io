@@ -1,7 +1,9 @@
 import { TOGGLE_SEARCH } from '../actions/searchFilter';
 
+import { SEARCH_BY_DEFAULT } from '../utils';
+
 const initialState = {
-  type: 'title',
+  type: SEARCH_BY_DEFAULT,
 };
 
 const searchReducer = (state = initialState, action) => {

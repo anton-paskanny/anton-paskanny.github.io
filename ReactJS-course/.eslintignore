@@ -1,5 +1,6 @@
 /coverage
 /cypress
+/stories
 /node_modules
 /server
 /dist
