@@ -4,10 +4,9 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './components/App';
 
-import configureStore from './modules/configureStore';
+import { CSSNormalize, GlobalDefaults } from './commonStyles';
 
-import './normalize.css';
-import './styles.css';
+import configureStore from './modules/configureStore';
 
 const store = configureStore(window.PRELOADED_STATE);
 
@@ -17,6 +16,10 @@ delete window.__PRELOADED_STATE__;
 const renderMethod = !window.PRELOADED_STATE ? ReactDOM.render : ReactDOM.hydrate;
 
 renderMethod(
-    <App Router={BrowserRouter} store={store} />,
-    document.querySelector('#root'),
+  <>
+    <CSSNormalize />
+    <GlobalDefaults />
+    <App Router={BrowserRouter} store={store} />
+  </>,
+  document.querySelector('#root'),
 );

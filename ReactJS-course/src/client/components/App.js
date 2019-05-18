@@ -13,19 +13,19 @@ const AsyncSearch = AsyncComp(() => import('./Pages/Search/Search'));
 const App = ({
   Router, location, context, store,
 }) => (
-    <Provider store={store}>
-        <Router location={location} context={context}>
-            <div className="app-wrapper">
-                <Switch>
-                    <Route path="/" component={AsyncHome} exact />
-                    <Route path="/movie/:id" component={AsyncMovieInfo} exact />
-                    <Route path="/search/:searchVal/:searchType" component={AsyncSearch} exact/>
-                    <Route component={AsyncNotFound} />
-                </Switch>
-                <Footer />
-            </div>
-        </Router>
-    </Provider>
+  <Provider store={store}>
+    <Router location={location} context={context}>
+      <div className="app-wrapper">
+        <Switch>
+          <Route path="/" component={AsyncHome} exact />
+          <Route path="/movie/:id" component={AsyncMovieInfo} exact />
+          <Route path="/search/:searchVal/:searchType" component={AsyncSearch} exact/>
+          <Route component={AsyncNotFound} />
+        </Switch>
+        <Footer />
+      </div>
+    </Router>
+  </Provider>
 );
 
 export default App;
