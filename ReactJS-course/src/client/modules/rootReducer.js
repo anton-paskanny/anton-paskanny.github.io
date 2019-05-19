@@ -1,4 +1,4 @@
-import { combineReducers } from 'redux-loop';
+import { combineReducers } from 'redux-loop-immutable';
 
 import moviesReducer from '../reducers/movies';
 import movieReducer from '../reducers/movie';

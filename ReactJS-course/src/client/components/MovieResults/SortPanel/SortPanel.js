@@ -38,16 +38,18 @@ const SortPanel = (props) => {
   );
 
   const renderCounterContent = () => {
-    if (props.selectedMovie) {
-      const genres = props.selectedMovie.genres.map(genre => genre).join(', ');
+    const { selectedMovie, movies } = props;
 
-      return `Films by ${genres} ${props.selectedMovie.genres.length > 1 ? 'genres' : 'genre'}`;
+    if (selectedMovie) {
+      const genres = selectedMovie.get('genres').map(genre => genre).join(', ');
+
+      return `Films by ${genres} ${selectedMovie.get('genres').length > 1 ? 'genres' : 'genre'}`;
     }
 
-    return `${props.movies.length} ${props.movies.length > 1 ? 'movies' : 'movie'} found`;
+    return `${movies.size} ${movies.size > 1 ? 'movies' : 'movie'} found`;
   };
 
-  if (props.movies.length === 0) {
+  if (!props.movies || props.movies.length === 0) {
     return <div className="sort-panel" />;
   }
 

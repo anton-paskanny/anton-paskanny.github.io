@@ -9,7 +9,10 @@ import ErrorBoundary from '../shared/ErrorBoundary/ErrorBoundary';
 type Props = {
   searchType: string,
   history: {
-    push: (url: string) => void
+    push: (url: string) => void,
+    location: {
+      pathname: string
+    }
   },
   className: string,
 }
@@ -27,7 +30,7 @@ const SearchPanelTitle = styled.h1`
 
 class SearchForm extends Component<Props, State> {
     state = {
-      searchVal: '',
+      searchVal: this.props.history.location.pathname.split('/')[2] || '',
     }
 
     handleInputChange = (e: SyntheticInputEvent<HTMLInputElement>) => {

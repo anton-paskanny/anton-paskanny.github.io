@@ -4,9 +4,9 @@ import { toggleSort } from '../actions/sortPanel';
 import SortPanel from '../components/MovieResults/SortPanel/SortPanel';
 
 export const mapStateToProps = state => ({
-  movies: state.movies.data,
-  selectedMovie: state.selectedMovie.data,
-  sortType: state.sort.type,
+  movies: state.getIn(['movies', 'data']),
+  selectedMovie: state.getIn(['selectedMovie', 'data']),
+  sortType: state.getIn(['sort', 'type']),
 });
 
 export const mapDispatchToProps = {

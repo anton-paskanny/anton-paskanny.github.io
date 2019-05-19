@@ -28,16 +28,24 @@ class MovieDetail extends Component {
   }
 
   getMovieData() {
-    const URL = `${URL_BASE}/${this.props.id}`;
-    this.props.fetchMovie(URL);
+    const { fetchMovie, id } = this.props;
+
+    const URL = `${URL_BASE}/${id}`;
+    fetchMovie(URL);
   }
 
   render() {
-    if (!this.props.selectedMovie || this.props.isFetching) return <Spinner />;
+    const { selectedMovie, isFetching } = this.props;
 
-    const {
-      title, overview, poster_path, genres, runtime, release_date, vote_average,
-    } = this.props.selectedMovie;
+    if (!selectedMovie || isFetching) return <Spinner />;
+
+    const title = selectedMovie.get('title');
+    const overview = selectedMovie.get('overview');
+    const poster_path = selectedMovie.get('poster_path');
+    const genres = selectedMovie.get('genres');
+    const runtime = selectedMovie.get('runtime');
+    const release_date = selectedMovie.get('release_date');
+    const vote_average = selectedMovie.get('vote_average');
 
     return (
       <div className="movie-detail">

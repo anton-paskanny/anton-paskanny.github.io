@@ -4,7 +4,7 @@ import { fetchMovies } from '../actions/movies';
 import SearchForm from '../components/SearchForm/SearchForm';
 
 export const mapStateToProps = state => ({
-  searchType: state.search.type,
+  searchType: state.getIn(['search', 'type']),
 });
 
 export const mapDispatchToProps = {

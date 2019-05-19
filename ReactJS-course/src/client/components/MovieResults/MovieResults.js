@@ -27,56 +27,62 @@ class MovieResults extends PureComponent {
     const { selectedMovie } = this.props;
     const { selectedMovie: prevSelectedMovie } = prevProps;
 
-    if (selectedMovie && (!prevSelectedMovie || prevSelectedMovie.title !== selectedMovie.title)) {
+    if (selectedMovie && (!prevSelectedMovie || prevSelectedMovie.get('title') !== selectedMovie.get('title'))) {
       this.fetchMovies();
     }
   }
 
   renderItems() {
-    if (this.props.isFetching) {
+    const { isFetching, movies, moviesForSelectedMovie, selectedMovie } = this.props;
+
+    if (isFetching) {
       return <Spinner />;
     }
 
-    if (this.props.movies.length === 0) {
+    if ((!movies || movies.size === 0) && !selectedMovie) {
       return <p className="results__no-items">No films found</p>;
     }
 
-    if (this.props.selectedMovie) {
-      if (this.props.moviesForSelectedMovie.length) {
-        /**
-                 * Delete selected movie from received movies
-                 */
-        const movies = this.props.moviesForSelectedMovie.filter(elem => elem.id !== this.props.selectedMovie.id);
 
-        if (!movies.length) {
+    if (selectedMovie) {
+      if (moviesForSelectedMovie && moviesForSelectedMovie.size) {
+        /**
+        * Delete selected movie from received movies
+        */
+        const updatedMovies = moviesForSelectedMovie.filter(elem => elem.id !== selectedMovie.get('id'));
+
+        if (!updatedMovies.size) {
           return <p className="results__no-items">No films found with the same genre</p>;
         }
 
-        return movies.map(movie => <Movie key={movie.id} data={movie} />);
+        return updatedMovies.map(movie => <Movie key={movie.id} data={movie} />);
       }
       return <p className="results__no-items">No films found with the same genre</p>;
     }
 
-    return this.sortMovies().map(movie => <Movie key={movie.id} data={movie} />);
+    const sortedMovies = this.sortMovies();
+
+    return sortedMovies && sortedMovies.map(movie => <Movie key={movie.id} data={movie} />);
   }
 
   sortMovies() {
-    const fieldToSortBy = this.props.sortType;
+    const { sortType, movies } = this.props;
 
-    return this.props.movies.slice().sort((a, b) => {
-      if (fieldToSortBy === 'release_date') {
-        return new Date(b[fieldToSortBy]) - new Date(a[fieldToSortBy]);
+    return movies && movies.slice().sort((a, b) => {
+      if (sortType === 'release_date') {
+        return new Date(b[sortType]) - new Date(a[sortType]);
       }
 
-      return b[fieldToSortBy] - a[fieldToSortBy];
+      return b[sortType] - a[sortType];
     });
   }
 
   fetchMovies() {
-    const genres = this.props.selectedMovie.genres.map(genre => genre.toLowerCase()).join(',');
+    const { fetchMoviesByGenres, selectedMovie } = this.props;
+    const genres = selectedMovie.get('genres').map(genre => genre.toLowerCase()).join(',');
     const URL = `${URL_BASE}?filter=${genres}`;
 
-    this.props.fetchMoviesByGenres(encodeURI(URL));
+    fetchMoviesByGenres(encodeURI(URL));
   }
 
   render() {

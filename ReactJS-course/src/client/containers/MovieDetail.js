@@ -4,8 +4,8 @@ import { fetchMovie, resetMovie } from '../actions/movie';
 import MovieDetail from '../components/Movie/MovieDetail/MovieDetail';
 
 const mapStateToProps = state => ({
-  selectedMovie: state.selectedMovie.data,
-  isFetching: state.selectedMovie.isFetching,
+  selectedMovie: state.getIn(['selectedMovie', 'data']),
+  isFetching: state.getIn(['selectedMovie', 'isFetching']),
 });
 
 const mapDispatchToProps = {

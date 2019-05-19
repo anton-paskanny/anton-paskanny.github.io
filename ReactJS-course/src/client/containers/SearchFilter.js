@@ -4,7 +4,7 @@ import { toggleSearch } from '../actions/searchFilter';
 import SeachFilter from '../components/SearchForm/SearchFilter/SearchFilter';
 
 export const mapStateToProps = state => ({
-  searchType: state.search.type,
+  searchType: state.getIn(['search', 'type']),
 });
 
 export const mapDispatchToProps = {

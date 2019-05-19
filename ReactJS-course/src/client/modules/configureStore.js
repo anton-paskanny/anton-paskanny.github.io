@@ -1,5 +1,6 @@
 import { createStore, compose } from 'redux';
 import { install } from 'redux-loop';
+import { fromJS } from 'immutable';
 
 import rootReducer from './rootReducer';
 
@@ -14,7 +15,7 @@ const enhancer = composeEnhancers(install());
 export default (initialState) => {
   const store = createStore(
     rootReducer,
-    initialState,
+    fromJS(initialState),
     enhancer,
   );
 

@@ -1,3 +1,4 @@
+import { fromJS, Map } from 'immutable';
 import { loop, Cmd } from 'redux-loop';
 
 import {
@@ -9,11 +10,11 @@ import {
   fetchMovieError,
 } from '../actions/movie';
 
-const initialState = {
+const initialState = fromJS({
   isFetching: false,
   data: null,
   err: null,
-};
+});
 
 const makeRequest = url => fetch(url).then(res => res.json());
 
@@ -21,7 +22,7 @@ const movieReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_MOVIE:
       return loop(
-        { ...state, isFetching: true },
+        state.setIn(['isFetching'], true),
         Cmd.run(makeRequest, {
           successActionCreator: fetchMovieSuccess,
           failActionCreator: fetchMovieError,
@@ -29,11 +30,19 @@ const movieReducer = (state = initialState, action) => {
         }),
       );
     case FETCH_MOVIE_SUCCESS:
-      return { ...state, data: action.movie, isFetching: false };
+      return state.merge({
+        data: Map(action.movie),
+        isFetching: false
+      });
     case FETCH_MOVIE_ERROR:
-      return { ...state, err: action.err, isFetching: false };
+      return state.merge({
+        err: action.err,
+        isFetching: false,
+      });
     case RESET_MOVIE:
-      return { ...state, data: null };
+      return state.merge({
+        data: null,
+      });
     default:
       return state;
   }
